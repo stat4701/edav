@@ -1,0 +1,66 @@
+## Technical Background Questionnaire
+
+We began class with a short questionnaire. In addition to names and divisions, I asked "Which of the following tools have you used?" with 39 choices. Then, a smaller grid of 8 asked for some broad areas of technical work to rate their proficiency from "None" to "Expert".
+
+```{r load-expand, echo=FALSE, warning=FALSE}
+library(ggplot2)
+library(reshape2)
+library(plyr)
+library(RCurl)
+
+removeParentheses <- function(x){
+    gsub("\\(.*\\)$", "", x)
+}
+mrOptions <- strsplit("Excel, R, Stata, D3, Gephi, ggplot2, lattice, SQL, git / Github, SPSS, shell (terminal / command line), regular expressions (grep), Rstudio, JSON, Python, Sweave/knitr, Processing (language), C/C++, Leaflet, CartoDB, GeoJSON, node/npm, go language, ruby, LaTeX, Heroku, Make, Pandas, Julia, non-git version control, XML, Web: html css js, vagrant/virtualbox, amazon web services, dropbox, google drive (formerly docs), OpenRefine (formerly Google refine), Pair programming", ", ")[[1]]
+
+mrOptions <- removeParentheses(mrOptions)
+expandSelections <- function(selected, options){
+    selected <- removeParentheses(selected)
+    sapply(options, grepl, x=selected, fixed=TRUE)
+}
+gridLevels <- c("None", "A little", "Confident", "Expert")
+makeOrderedFactor <- function(col, levels){
+    return (factor(col, levels=levels, labels=levels, ordered=TRUE))
+}
+
+con <- getURL("https://docs.google.com/spreadsheets/d/19a0O6C14zButypjcnWictvKWeyPjPjQdrps-UXzPDf8/export?format=csv")
+df <- read.csv(textConnection(con), stringsAsFactors=FALSE,
+               check.names=FALSE)
+#df[,7:14] <- lapply(df[,7:14], makeOrderedFactor, levels=gridLevels)
+mrLogical <- t(sapply(df[['Baseline experience']], expandSelections, 
+                      options=mrOptions))
+df <- cbind(df, mrLogical)
+
+```
+
+```{r multiresponse-barplot, fig.width=6, fig.height=8, echo=FALSE}
+plotdf <- data.frame(count=colSums(mrLogical), item=factor(colnames(mrLogical)))
+plotdf$item <- with(plotdf, reorder(item, count))
+ggplot(plotdf, aes(y=count, x=item)) + geom_bar(stat="identity") + coord_flip()
+```
+
+```{r grid-plots, echo=FALSE, fig.width=7, fig.height=7}
+gridQ <- df[,c(1,7:14)]
+## trim names
+names(gridQ) <- gsub("Software experience (the smaller list) ", "", names(gridQ), fixed=TRUE)
+foo <- reshape2::melt(gridQ, id.vars='Timestamp')
+eachCol <- function(col){
+    tapply(col, foo$variable, sum)
+}
+gridSummary <- apply(model.matrix(~0+value, foo), 2, eachCol)
+## from previous alpha order
+colnames(gridSummary) <- c("Some", "Lots", "Expert", "None")
+plotdf <- reshape2::melt(gridSummary)
+plotdf$Var2 <- factor(plotdf$Var2, levels=c("None", "Some", "Lots", "Expert"), ordered=TRUE)
+ggplot(plotdf, aes(x=Var2, y=value)) + geom_bar(stat="identity") + 
+    facet_wrap(~Var1, ncol=2) + ylab("count") + xlab("")
+```
+
+Upload to crunch because I can:
+
+```{r eval=FALSE}
+library(rcrunch)
+login()
+ds <- newDataset(df, name="EDAV Questionnaire")
+
+```
