@@ -53,9 +53,13 @@
 
 <h2>Creating a Branch, and Generating Graphs with RStudio (ggplot)</h2>
 
+<p>Some stuff to get started:</p>
+
 <p><a href="http://math.usask.ca/%7Elonghai/software/installrpkg.html">R install.packages</a></p>
 
-<p><a href="http://www.r-bloggers.com/a-tiny-rcurl-headache/">Google Docs Curl Headache</a>   </p>
+<p><a href="http://www.r-bloggers.com/a-tiny-rcurl-headache/">Google Docs Curl Headache</a></p>
+
+<h4>List of steps:</h4>
 
 <ol>
 <li>fork</li>
@@ -117,6 +121,8 @@ plotdf$item &lt;- with(plotdf, reorder(item,count))
 
 ggplot(plotdf, aes(y=count, x=item)) + geom_bar(stat=&quot;identity&quot;) + coord_flip()
 </code></pre></div>
+<p><img src="https://raw.githubusercontent.com/nygeog/edav/gh-pages/lab/questionnaire/image.png" alt="questionnare_plot"></p>
+
 <p>Notes: Maybe hunt down the CartoDB error, why it doesn&#39;t show up in chart</p>
 
 					<div class="meta">

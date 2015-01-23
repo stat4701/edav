@@ -9,10 +9,14 @@ tags: plots
 
 ##Creating a Branch, and Generating Graphs with RStudio (ggplot)
 
+Some stuff to get started:
+
 [R install.packages](http://math.usask.ca/~longhai/software/installrpkg.html)
 	
-[Google Docs Curl Headache](http://www.r-bloggers.com/a-tiny-rcurl-headache/)	
-	
+[Google Docs Curl Headache](http://www.r-bloggers.com/a-tiny-rcurl-headache/)
+
+####List of steps:	
+
 1. fork
 2. clone
 3. checkout -b <name>
@@ -74,6 +78,6 @@ Check out GitExtensions (the app).
 
 	ggplot(plotdf, aes(y=count, x=item)) + geom_bar(stat="identity") + coord_flip()
 
-
+![questionnare_plot](https://raw.githubusercontent.com/nygeog/edav/gh-pages/lab/questionnaire/image.png)
 
 Notes: Maybe hunt down the CartoDB error, why it doesn't show up in chart
