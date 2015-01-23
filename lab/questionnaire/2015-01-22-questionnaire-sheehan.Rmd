@@ -11,6 +11,7 @@ When you click the **Knit** button a document will be generated that includes bo
 
 ```{r}
 library(RCurl)
+library(ggplot2)
 con <- getURL("https://docs.google.com/spreadsheets/d/19a0O6C14zButypjcnWictvKWeyPjPjQdrps-UXzPDf8/export?format=csv", ssl.verifypeer = FALSE)
 df <- read.csv(textConnection(con), stringsAsFactors=FALSE, check.names=FALSE)
 
@@ -45,6 +46,13 @@ colSums(mrLogical)
 
 barplot(colSums(mrLogical))
 
+qplot(colSums(mrLogical))
+
+plotdf <- data.frame(count=colSums(mrLogical), item=factor(colnames(mrLogical)))
+
+plotdf$item <- with(plotdf, reorder(item,count))
+
+ggplot(plotdf, aes(y=count, x=item)) + geom_bar(stat="identity") + coord_flip()
 
 ```
 

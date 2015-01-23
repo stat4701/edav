@@ -13,7 +13,10 @@
 ##20150122
 
 ##Creating a Branch
+
+[R install.packages](http://math.usask.ca/~longhai/software/installrpkg.html)
 	
+[Google Docs Curl Headache](http://www.r-bloggers.com/a-tiny-rcurl-headache/)	
 	
 1. fork
 
@@ -23,7 +26,7 @@
 
 4. mkdir
 
-5. -> create fiel
+5. -> create field
 
 6. add 
 
@@ -35,14 +38,16 @@
 
 10. merge upstream/gh-pages
 
-11. 
+
 
 
 Check out GitExtensions (the app). 
 	
 	
 ##The Code	
+	
 	library(RCurl)
+	library(ggplot2)
 	con <- getURL("https://docs.google.com/spreadsheets/d/19a0O6C14zButypjcnWictvKWeyPjPjQdrps-UXzPDf8/export?format=csv", ssl.verifypeer = FALSE)
 	df <- read.csv(textConnection(con), stringsAsFactors=FALSE, check.names=FALSE)
 
@@ -72,6 +77,23 @@ Check out GitExtensions (the app).
 
 	View(mrLogical)
 	sum(mrLogical)
+
+	colSums(mrLogical)
+
+	barplot(colSums(mrLogical))
+
+	qplot(colSums(mrLogical))
+
+	plotdf <- data.frame(count=colSums(mrLogical), item=factor(colnames(mrLogical)))
+
+	plotdf$item <- with(plotdf, reorder(item,count))
+
+	ggplot(plotdf, aes(y=count, x=item)) + geom_bar(stat="identity") + coord_flip()
+
+
+
+###Maybe hunt down the CartoDB error, why it doesn't show up in chart
+
 
 [Class slides](http://stat4701.github.io/edav/2015/01/20/intro/#/)
 
