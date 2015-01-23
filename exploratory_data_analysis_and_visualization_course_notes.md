@@ -9,6 +9,7 @@
 
 * [Maleki Branches and GitHub](https://github.com/malecki/edav/)
 
+* [Presentation Signup on Slottr](http://www.slottr.com/sheets/76533)
 
 ##20150122
 
@@ -83,8 +84,6 @@ Check out GitExtensions (the app).
 
 Notes: Maybe hunt down the CartoDB error, why it doesn't show up in chart
 
-
-[Class slides](http://stat4701.github.io/edav/2015/01/20/intro/#/)
 
 ##20150120
 
