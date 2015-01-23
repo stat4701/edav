@@ -4,7 +4,7 @@
  <title>EDAV</title>
  <link href="http://stat4701.github.io/edav/" rel="self"/>
  <link href="http://stat4701.github.io/edav"/>
- <updated>2015-01-22T22:23:13-05:00</updated>
+ <updated>2015-01-22T22:28:28-05:00</updated>
  <id>http://stat4701.github.io/edav</id>
  <author>
    <name>Michael Malecki</name>
@@ -119,7 +119,7 @@ ggplot(plotdf, aes(y=count, x=item)) + geom_bar(stat=&amp;quot;identity&amp;quot
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h1&gt;Books&lt;/h1&gt;
 
-&lt;p&gt;&lt;a href=&quot;Tufte,%20VDQI&quot;&gt;&lt;img src=&quot;http://www.edwardtufte.com/tufte/graphics/vdqi_bookcover.gif&quot; alt=&quot;http://www.edwardtufte.com/tufte/graphics/vdqi_bookcover.gif&quot;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.edwardtufte.com/tufte/books_vdqi&quot;&gt;&lt;img src=&quot;http://www.edwardtufte.com/tufte/graphics/vdqi_bookcover.gif&quot; alt=&quot;http://www.edwardtufte.com/tufte/graphics/vdqi_bookcover.gif&quot;&gt;&lt;/a&gt;
 &lt;a href=&quot;http://www.amazon.com/Analysis-Regression-Multilevel-Hierarchical-Models/dp/052168689X&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/31ELobreacL._BO2,204,203,200_PIsitb-sticker-arrow-click-small,TopRight,12,-30_AA300_SH20_OU01_.jpg&quot; alt=&quot;ARM&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;/section&gt;
