@@ -7,6 +7,7 @@
 
 * [Syllabus/Intro](https://github.com/stat4701/edav/blob/gh-pages/intro.md)
 
+* [Maleki Branches and GitHub](https://github.com/malecki/edav/)
 ##20150122
 
 ##Creating a Branch
