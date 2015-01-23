@@ -7,7 +7,7 @@ output: html_document
 
 ```{r}
 library(RCurl)
-con <- getURL("https://docs.google.com/spreadsheets/d/19a0O6C14zButypjcnWictvKWeyPjPjQdrps-UXzPDf8/export?format=csv")
+con <- getURL("https://docs.google.com/spreadsheets/d/19a0O6C14zButypjcnWictvKWeyPjPjQdrps-UXzPDf8/export?format=csv", ssl.verifypeer = FALSE)
 df <- read.csv(textConnection(con), stringsAsFactors=FALSE,
                check.names=FALSE)
 
