@@ -5,8 +5,8 @@
         <description>EDAV - Michael Malecki</description>
         <link>http://stat4701.github.io/edav</link>
         <link>http://stat4701.github.io/edav</link>
-        <lastBuildDate>2015-01-22T22:38:22-05:00</lastBuildDate>
-        <pubDate>2015-01-22T22:38:22-05:00</pubDate>
+        <lastBuildDate>2015-01-22T22:58:16-05:00</lastBuildDate>
+        <pubDate>2015-01-22T22:58:16-05:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -37,9 +37,11 @@
 &lt;li&gt;merge upstream/gh-pages&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Check out GitExtensions (the app). &lt;/p&gt;
+&lt;h4&gt;The Plot&lt;/h4&gt;
 
-&lt;h2&gt;The Code&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nygeog/edav/gh-pages/lab/questionnaire/image.png&quot; alt=&quot;questionnare_plot&quot;&gt;&lt;/p&gt;
+
+&lt;h4&gt;The Code&lt;/h4&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;library(RCurl)
 library(ggplot2)
 con &amp;lt;- getURL(&amp;quot;https://docs.google.com/spreadsheets/d/19a0O6C14zButypjcnWictvKWeyPjPjQdrps-UXzPDf8/export?format=csv&amp;quot;, ssl.verifypeer = FALSE)
@@ -84,8 +86,6 @@ plotdf$item &amp;lt;- with(plotdf, reorder(item,count))
 
 ggplot(plotdf, aes(y=count, x=item)) + geom_bar(stat=&amp;quot;identity&amp;quot;) + coord_flip()
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nygeog/edav/gh-pages/lab/questionnaire/image.png&quot; alt=&quot;questionnare_plot&quot;&gt;&lt;/p&gt;
-
 &lt;p&gt;Notes: Maybe hunt down the CartoDB error, why it doesn&amp;#39;t show up in chart&lt;/p&gt;
 </description>
                 <link>http://stat4701.github.io/edav/2015/01/22/plotting-class-skills</link>

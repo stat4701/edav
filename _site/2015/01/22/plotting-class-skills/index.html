@@ -74,9 +74,11 @@
 <li>merge upstream/gh-pages</li>
 </ol>
 
-<p>Check out GitExtensions (the app). </p>
+<h4>The Plot</h4>
 
-<h2>The Code</h2>
+<p><img src="https://raw.githubusercontent.com/nygeog/edav/gh-pages/lab/questionnaire/image.png" alt="questionnare_plot"></p>
+
+<h4>The Code</h4>
 <div class="highlight"><pre><code class="language-text" data-lang="text">library(RCurl)
 library(ggplot2)
 con &lt;- getURL(&quot;https://docs.google.com/spreadsheets/d/19a0O6C14zButypjcnWictvKWeyPjPjQdrps-UXzPDf8/export?format=csv&quot;, ssl.verifypeer = FALSE)
@@ -121,8 +123,6 @@ plotdf$item &lt;- with(plotdf, reorder(item,count))
 
 ggplot(plotdf, aes(y=count, x=item)) + geom_bar(stat=&quot;identity&quot;) + coord_flip()
 </code></pre></div>
-<p><img src="https://raw.githubusercontent.com/nygeog/edav/gh-pages/lab/questionnaire/image.png" alt="questionnare_plot"></p>
-
 <p>Notes: Maybe hunt down the CartoDB error, why it doesn&#39;t show up in chart</p>
 
 					<div class="meta">

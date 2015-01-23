@@ -29,10 +29,11 @@ Some stuff to get started:
 10. merge upstream/gh-pages
 
 
-Check out GitExtensions (the app). 
+####The Plot
+
+![questionnare_plot](https://raw.githubusercontent.com/nygeog/edav/gh-pages/lab/questionnaire/image.png)
 	
-	
-##The Code	
+####The Code	
 	
 	library(RCurl)
 	library(ggplot2)
@@ -78,6 +79,6 @@ Check out GitExtensions (the app).
 
 	ggplot(plotdf, aes(y=count, x=item)) + geom_bar(stat="identity") + coord_flip()
 
-![questionnare_plot](https://raw.githubusercontent.com/nygeog/edav/gh-pages/lab/questionnaire/image.png)
+
 
 Notes: Maybe hunt down the CartoDB error, why it doesn't show up in chart
