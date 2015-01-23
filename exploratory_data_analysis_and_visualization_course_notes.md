@@ -8,6 +8,7 @@
 * [Syllabus/Intro](https://github.com/stat4701/edav/blob/gh-pages/intro.md)
 
 * [Maleki Branches and GitHub](https://github.com/malecki/edav/)
+* [Pre-Class Questionnaire](https://docs.google.com/forms/d/1HvALvwpH9VYkhxPkIAx3QpgKjG8JPIs0SJxMiwxXFf4/viewform)
 
 * [Presentation Signup on Slottr](http://www.slottr.com/sheets/76533)
 
@@ -82,7 +83,7 @@ Check out GitExtensions (the app).
 
 
 
-Notes: Maybe hunt down the CartoDB error, why it doesn't show up in chart
+Notes: Maybe hunt down the CartoDB error, why it doesn't show up in chart. OpenRegine and GeoJSON and Leaflet not showing up. 
 
 
 ##20150120
