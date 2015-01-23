@@ -1,4 +1,6 @@
 
+http://stat4701.github.io/edav/lab/questionnaire/2015-01-22-questionnaire-malecki.Rmd
+http://stat4701.github.io/edav/lab/questionnaire/2015-01-22-questionnaire-sheehan.Rmd
 http://stat4701.github.io/edav/agenda-page.html
 http://stat4701.github.io/edav/archive.html
 http://stat4701.github.io/edav/atom.xml
