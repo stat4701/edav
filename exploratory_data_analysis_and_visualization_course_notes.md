@@ -9,6 +9,11 @@
 
 ##20150122
 
+##Creating a Branch
+	
+	cd GitHub/edav
+	git checkout -b lab-questionnaire
+
 [Class slides](http://stat4701.github.io/edav/2015/01/20/intro/#/)
 
 
