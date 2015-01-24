@@ -5,8 +5,11 @@ Title
 
 ```{r}
 require(RCurl)
+require(ggplot2)
+
 con <- getURL("https://docs.google.com/spreadsheets/d/19a0O6C14zButypjcnWictvKWeyPjPjQdrps-UXzPDf8/export?format=csv")
 df <- read.csv(textConnection(con), stringsAsFactors=FALSE, check.names=FALSE)
+
 str(df)
 
 removeParentheses <- function(x){
@@ -23,14 +26,14 @@ gridLevels <- c("None", "A little", "Confident", "Expert")
 makeOrderedFactor <- function(col, levels){
     return (factor(col, levels=levels, labels=levels, ordered=TRUE))
 }
-mrLogical <- t(sapply(df[['Baseline experience']], expandSelections, 
-                      options=mrOptions))
-barplot(colSums(mrLogical))
+mrLogical <- t(sapply(df[['Baseline experience']], expandSelections, options=mrOptions))
 
-plotdf <- data.frame(count=colSums(mrLogical), item=factor(colnames(mrLogical)))
+#plot(colSums(mrLogical))
+#barplot(colSums(mrLogical))
+#qplot(colSums(mrLogical))
+plotdf <- data.frame(
+    count=colSums(mrLogical),
+    item=factor(colnames(mrLogical)))
+plotdf$item <- with(plotdf, reorder(item, count))
 ggplot(plotdf, aes(y=count, x=item)) + geom_bar(stat="identity") + coord_flip()
-
-
-str(df$"Are you on the waitlist?")
-
 ```
