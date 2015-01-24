@@ -4,17 +4,18 @@ Title
 
 
 ```{r}
-require(RCurl)
-require(ggplot2)
+library(RCurl)
+library(ggplot2)
 
 con <- getURL("https://docs.google.com/spreadsheets/d/19a0O6C14zButypjcnWictvKWeyPjPjQdrps-UXzPDf8/export?format=csv")
 df <- read.csv(textConnection(con), stringsAsFactors=FALSE, check.names=FALSE)
 
-str(df)
+#str(df)
 
 removeParentheses <- function(x){
     gsub("\\(.*\\)$", "", x)
 }
+
 mrOptions <- strsplit("Excel, R, Stata, D3, Gephi, ggplot2, lattice, SQL, git / Github, SPSS, shell (terminal / command line), regular expressions (grep), Rstudio, JSON, Python, Sweave/knitr, Processing (language), C/C++, Leaflet, CartoDB, GeoJSON, node/npm, go language, ruby, LaTeX, Heroku, Make, Pandas, Julia, non-git version control, XML, Web: html css js, vagrant/virtualbox, amazon web services, dropbox, google drive (formerly docs), OpenRefine (formerly Google refine), Pair programming", ", ")[[1]]
 
 mrOptions <- removeParentheses(mrOptions)
@@ -22,7 +23,7 @@ expandSelections <- function(selected, options){
     selected <- removeParentheses(selected)
     sapply(options, grepl, x=selected, fixed=TRUE) # returns a logical if ture
 }
-gridLevels <- c("None", "A little", "Confident", "Expert")
+#gridLevels <- c("None", "A little", "Confident", "Expert")
 makeOrderedFactor <- function(col, levels){
     return (factor(col, levels=levels, labels=levels, ordered=TRUE))
 }
