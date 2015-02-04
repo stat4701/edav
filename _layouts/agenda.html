@@ -1,0 +1,60 @@
+---
+layout: default
+---
+{% include JB/setup %}
+<article class="unit-article layout-page">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">{{ page.title }}</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+			<div class="bd">
+				<div class="entry-content">
+					{{ content | markdownify }}
+                                  {% for class in site.data.agenda %}
+                                  <div class="class-entry">
+                                    <h3>{{class.date}}: {{class.topic}}</h3>
+                                    {% if class.before %}
+                                    <h4>Read, watch, peruse before class:</h4>
+                                    <div class="class-before-detail">
+                                      {{class.before | markdownify}}
+                                    </div>
+                                    {% endif %}
+                                    {% if class.due %}
+                                    <h4>Due before/in class:</h4>
+                                    <div class="class-due-detail">
+                                      {{class.due | markdownify}}
+                                    </div>
+                                    {% endif %}
+                                    {% if class.during %}
+                                    <h4>During class:</h4>
+                                    <div class="class-during-detail">
+                                      {{class.during | markdownify}}
+                                    </div>
+                                    {% endif %}
+                                    {% if class.after %}
+                                    <h4>After class:</h4>
+                                    <div class="class-after-detail">
+                                      {{class.after | markdownify}}
+                                    </div>
+                                    {% endif %}
+                                  </div>
+                                  {% endfor %}
+				</div><!-- entry-content -->
+			</div><!-- bd -->
+
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>

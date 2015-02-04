@@ -1,0 +1,10 @@
+
+---
+name : "reveal"
+website :  "http://kjarnet.no/theme-reveal"
+description :  "A jekyll bootstrap theme for making reveal.js presentations."
+author:
+  name : "Oeystein Kjaernet"
+  email : "kjarnet@gmail.com"
+  website : "http://kjarnet.no/"
+
