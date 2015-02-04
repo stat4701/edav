@@ -12,7 +12,7 @@ baseurl: http://malecki.github.io/edav
 # so be sure to set them if your theme uses them.
 #
 title : MY FORK of EDAV
-tagline: Exploratory Data Analysis and Visualization
+tagline: Very much a fork and not a spoon
 author :
   name : Michael Malecki
   email : malecki@gmail.com
