@@ -11,7 +11,7 @@ baseurl: http://malecki.github.io/edav
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : EDAV
+title : MY FORK of EDAV
 tagline: Exploratory Data Analysis and Visualization
 author :
   name : Michael Malecki
