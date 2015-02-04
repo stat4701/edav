@@ -1,0 +1,8 @@
+chart error
+
+try just to run remove parenthesis and see what the list is. 
+
+add upstream to github branch
+
+git remote add upstream - figure out how to do this command
+
