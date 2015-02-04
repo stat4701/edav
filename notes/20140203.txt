@@ -6,3 +6,6 @@ add upstream to github branch
 
 git remote add upstream - figure out how to do this command
 
+figure out how to make graphs for gelman and hill 
+
+BUY gelman and hill
