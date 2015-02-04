@@ -4,7 +4,7 @@
  <title>EDAV</title>
  <link href="http://stat4701.github.io/edav/" rel="self"/>
  <link href="http://stat4701.github.io/edav"/>
- <updated>2015-01-22T22:58:16-05:00</updated>
+ <updated>2015-02-03T20:12:26-05:00</updated>
  <id>http://stat4701.github.io/edav</id>
  <author>
    <name>Michael Malecki</name>
@@ -249,7 +249,7 @@ ggplot(plotdf, aes(y=count, x=item)) + geom_bar(stat=&amp;quot;identity&amp;quot
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;State migrations&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://www.nytimes.com/2014/08/16/upshot/mapping-migration-in-the-united-states-since-1900.html?abt=0002&amp;amp;abg=0&quot;&gt;&lt;img src=&quot;http://stat4701.github.io/edav/assets/intro-statemigration.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.nytimes.com/2014/08/16/upshot/mapping-migration-in-the-united-states-since-1900.html?abt=0002&amp;amp;abg=0&quot;&gt;&lt;img src=&quot;/assets/intro-statemigration.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;
 &lt;/section&gt;
     &lt;section&gt;&lt;/p&gt;
 
@@ -305,7 +305,7 @@ ggplot(plotdf, aes(y=count, x=item)) + geom_bar(stat=&amp;quot;identity&amp;quot
 
 &lt;p&gt;&lt;/section&gt;
     &lt;section&gt;
-&lt;a href=&quot;http://pcottle.github.io/learnGitBranching/&quot;&gt;&lt;img src=&quot;http://stat4701.github.io/edav/assets/git-branching.png&quot; alt=&quot;Git branching game!&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&quot;http://pcottle.github.io/learnGitBranching/&quot;&gt;&lt;img src=&quot;/assets/git-branching.png&quot; alt=&quot;Git branching game!&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;/section&gt;
     &lt;section&gt;&lt;/p&gt;
