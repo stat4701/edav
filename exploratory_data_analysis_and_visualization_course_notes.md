@@ -1,3 +1,5 @@
+
+
 #Exploratory Data Analysis and Visualization Course
 
 * [Course Website](http://stat4701.github.io/edav/)
