@@ -1,1 +1,1 @@
-Create Gemfile
+gem 'github-pages'
