@@ -2,6 +2,7 @@
 layout: post
 title: Plotting class skills
 description: Class 2 Rstudio graphing of class poll
+date: 2014-01-01 11:31:10
 tags: plots
 ---
 
