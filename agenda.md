@@ -1,6 +1,6 @@
 ### Want to suggest a change to a presentation topic?
 > Submit a pull request updating the line on this page!
-
+don't edit Tuesday, try Thursday instead
 ## 2015-01-20 intro, some critiques, questionnaire
 ## 2015-01-22 analyze the [questionnaire](https://docs.google.com/spreadsheets/d/19a0O6C14zButypjcnWictvKWeyPjPjQdrps-UXzPDf8/), set up your repo
              
