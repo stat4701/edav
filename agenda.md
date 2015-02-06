@@ -8,7 +8,7 @@
 ## 2015-01-29 **Malecki out** [lisa video](https://archive.org/details/WhatMakesAGoodDataVisualization)
              
 ## 2015-02-03 Tufte; gh-pages and jekyll
-### [Week 3 Signup](http://www.slottr.com/sheets/76533)
+### [Presentation](http://www.slottr.com/sheets/76533)
 Read all of Tufte by this point.
 
 Read the [jekyll/gh-pages basics](https://pages.github.com/) and a [more in-depth tutorial](http://www.smashingmagazine.com/2014/08/01/build-blog-jekyll-github-pages/), and/or yet [another tutorial](http://24ways.org/2013/get-started-with-github-pages/).
