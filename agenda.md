@@ -1,6 +1,10 @@
 ### Want to suggest a change to a presentation topic?
 > Submit a pull request updating the line on this page!
 
+### Videos from class
+For Columbia people registered, use your uni to log in and find them at the [CVN site](https://video.cvn.columbia.edu/channel/STAT_W4701_S15/26924701)
+
+
 ## 2015-01-20 intro, some critiques, questionnaire
 ## 2015-01-22 analyze the [questionnaire](https://docs.google.com/spreadsheets/d/19a0O6C14zButypjcnWictvKWeyPjPjQdrps-UXzPDf8/), set up your repo
              
