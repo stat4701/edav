@@ -9,7 +9,7 @@ tags: assignments
 
 [![](http://media.tumblr.com/f77302b69f17622c7064cc2c50169dfe/tumblr_inline_n1hn0jgPsl1szvr4h.jpg)](http://iquantny.tumblr.com/post/77684693503/visualizing-traffic-safety-as-we-prepare-for)
 
-1. Get the data
+1. Get the data ([from here!](https://data.cityofnewyork.us/NYC-BigApps/NYPD-Motor-Vehicle-Collisions/h9gi-nx95))
 1. Aggregate injuries / involvement of vehicles, pedestrians, cyclists in some way
 1. Plot your findings by some other feature (vehicle type, borough, cross streets, etc.)
 1. Tell us something about date or time of day and traffic crashes.
