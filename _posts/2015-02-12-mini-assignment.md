@@ -28,6 +28,8 @@ Parse the `(long, lat)` string into numeric longitude and latitude columns.
 
 Using either the api, a filter, or another snapshot slice, compare to another month, quarter, or year. 
 
+- link to malecki's mini presentation messing with maps with this data [here](https://github.com/malecki/data-viz/blob/maps/r/maps.Rpres).
+
 ## Disease Cases in the US over time
 
 Use this from WSJ as a starting point.
