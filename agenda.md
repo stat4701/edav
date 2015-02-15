@@ -1,6 +1,10 @@
 ### Want to suggest a change to a presentation topic?
 > Submit a pull request updating the line on this page!
 
+### Videos from class
+For Columbia people registered, use your uni to log in and find them at the [CVN site](https://video.cvn.columbia.edu/channel/STAT_W4701_S15/26924701)
+
+
 ## 2015-01-20 intro, some critiques, questionnaire
 ## 2015-01-22 analyze the [questionnaire](https://docs.google.com/spreadsheets/d/19a0O6C14zButypjcnWictvKWeyPjPjQdrps-UXzPDf8/), set up your repo
              
@@ -8,7 +12,7 @@
 ## 2015-01-29 **Malecki out** [lisa video](https://archive.org/details/WhatMakesAGoodDataVisualization)
              
 ## 2015-02-03 Tufte; gh-pages and jekyll
-### [Week 3 Signup](http://www.slottr.com/sheets/76533)
+### [Presentation](http://www.slottr.com/sheets/76533)
 Read all of Tufte by this point.
 
 Read the [jekyll/gh-pages basics](https://pages.github.com/) and a [more in-depth tutorial](http://www.smashingmagazine.com/2014/08/01/build-blog-jekyll-github-pages/), and/or yet [another tutorial](http://24ways.org/2013/get-started-with-github-pages/).
