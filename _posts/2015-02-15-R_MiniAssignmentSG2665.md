@@ -218,26 +218,27 @@ plotAltBinMap(Allcollisions, "Times Square, New York", 12, 60, "Potential Causes
 ###Results:
 
 **Aggregated 5 years of traffic accidents showing most likely locations of accidents within neighborhoods or boroughs.**
-![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/sg2665_accColumbia.png)
-![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/sg2665_accMidtown.png)
-![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/sg2665_accBrooklyn.png)
-![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/sg2665_accQueens.png)
-![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/sg2665_accBronx.png)
-![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/sg2665_accStatenIsland.png)
+
+![](https://raw.githubusercontent.com/sguleff/edav/assignmentbranch/_posts/sguleff/sg2665_accColumbia.png)
+![](https://raw.githubusercontent.com/sguleff/edav/assignmentbranch/_posts/sguleff/sg2665_accMidtown.png)
+![](https://raw.githubusercontent.com/sguleff/edav/assignmentbranch/_posts/sguleff/sg2665_accBrooklyn.png)
+![](https://raw.githubusercontent.com/sguleff/edav/assignmentbranch/_posts/sguleff/sg2665_accQueens.png)
+![](https://raw.githubusercontent.com/sguleff/edav/assignmentbranch/_posts/sguleff/sg2665_accBronx.png)
+![](https://raw.githubusercontent.com/sguleff/edav/assignmentbranch/_posts/sguleff/sg2665_accStatenIsland.png)
 
 **Aggregated 5 years of traffic accidents showing pedestrian & cyclist accidents within neighborhoods or boroughs.**
-![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/sg2665_pedColumbia.png)
-![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/sg2665_pedNYC.png)
+![](https://raw.githubusercontent.com/sguleff/edav/assignmentbranch/_posts/sguleff/sg2665_pedColumbia.png)
+![](https://raw.githubusercontent.com/sguleff/edav/assignmentbranch/_posts/sguleff/sg2665_pedNYC.png)
 
 **Bins on map showing where deadly accidents have occurred by pedestrian & cyclist.**
-![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/sg2665_deathbin.png)
+![](https://raw.githubusercontent.com/sguleff/edav/assignmentbranch/_posts/sguleff/sg2665_deathbin.png)
 
 **Attempt to plot accident density overlaied onto New York City map.**
-![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/sg2665_densityplot.png)
+![](https://raw.githubusercontent.com/sguleff/edav/assignmentbranch/_posts/sguleff/sg2665_densityplot.png)
 
 **Bins on map showing possible causes of accidents**
-![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/sg2665_altbin1.png)
-![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/sg2665_altbin2.png)
+![](https://raw.githubusercontent.com/sguleff/edav/assignmentbranch/_posts/sguleff/sg2665_altbin1.png)
+![](https://raw.githubusercontent.com/sguleff/edav/assignmentbranch/_posts/sguleff/sg2665_altbin2.png)
 
 ###Difficulties and Issues:
   * Strange issue with variables and functions.  Likely relating to environment (namespace) 
