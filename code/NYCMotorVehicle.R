@@ -57,13 +57,17 @@ mth_frq_deep <- ddply(nycmvc_data, c(year_grp="strftime(nycmvc_data$DATE, format
                      Pedestrians=sum(NUMBER.OF.PEDESTRIANS.INJURED),
                      Cyclists=sum(NUMBER.OF.CYCLIST.INJURED),
                      Motorists=sum(NUMBER.OF.MOTORIST.INJURED))
-
+ 
 #CHARACTER TO NUMERIC
 mth_frq_deep$mnth_grp <- as.numeric(mth_frq_deep$mnth_grp)
 
+library(dplyr)
+fltr_mth_frq_deep <- filter(mth_frq_deep, year_grp=="2013"| year_grp=="2014")
+
+
 #MELTING DATA
 require(reshape2)
-tmp_melt <- melt(filter(mth_frq_deep,  year_grp=="2013"|year_grp=="2014"),
+tmp_melt <- melt(fltr_mth_frq_deep,
                  id = c("year_grp", "mnth_grp"),
                  variable.name = "Injury_Category", value.name = "Freq")
 
@@ -94,11 +98,11 @@ tmp_melt_line <- ddply(tmp_melt, c("mnth_grp","Injury_Category"),
  + ggtitle("Injuries by Category - 2013-2014") 
  + scale_y_continuous(labels = comma)
  + scale_x_discrete(labels = comma)
- + theme(plot.title=element_text(size=rel(2.5), face="bold"))
- + theme(axis.title=element_text(size=25), 
-         axis.text=element_text(size=16), 
-         legend.text=element_text(size=18),
-         legend.title=(element_text(size=18)))
+ + theme(plot.title=element_text(size=rel(1.5), face="bold"))
+ + theme(axis.title=element_text(size=15), 
+         axis.text=element_text(size=10), 
+         legend.text=element_text(size=10),
+         legend.title=(element_text(size=10)))
  + labs(x="Month", y="Observed Frequency", color="Category"))
 
 
@@ -130,10 +134,10 @@ require(scales) # for removing scientific notation
 # + ggtitle("Injuries by Vehicle Type - 2013-2014 - Cyclists")
 # + ggtitle("Injuries by Vehicle Type - 2013-2014 - Motorists")
  + theme(plot.title=element_text(size=rel(2), face="bold"))
- + theme(axis.title=element_text(size=25), 
-         axis.text=element_text(size=16), 
- #        legend.text=element_text(size=18),
-         legend.title=(element_text(size=18)))
+ + theme(axis.title=element_text(size=15), 
+         axis.text=element_text(size=10), 
+ #        legend.text=element_text(size=10),
+         legend.title=(element_text(size=10)))
  + guides(fill=FALSE)
  + labs(x="Injury Category", y="Observed Frequency", fill="Vehicle"))
 
