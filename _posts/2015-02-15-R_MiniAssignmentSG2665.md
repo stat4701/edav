@@ -240,7 +240,13 @@ plotAltBinMap(Allcollisions, "Times Square, New York", 12, 60, "Potential Causes
 ![](https://raw.githubusercontent.com/sguleff/edav/assignmentbranch/_posts/sguleff/sg2665_altbin1.png)
 ![](https://raw.githubusercontent.com/sguleff/edav/assignmentbranch/_posts/sguleff/sg2665_altbin2.png)
 
+**Time Lapse and 3D Map**
+[Data Time Lapse Video and 3D Map Sample](http://youtu.be/bNzFT5QjUys)
+
 ###Difficulties and Issues:
   * Strange issue with variables and functions.  Likely relating to environment (namespace) 
   * Binning proved difficult to plot and took longer to munge into the proper format for bin and density graphs
   * Would like to clean up functions to better handle sorting, filtering, grouping to make further analysis cleaner and easier.
+  
+
+  
