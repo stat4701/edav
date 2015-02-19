@@ -73,7 +73,7 @@ dat <- na.omit(dat)
 
 # Now for the plot
 P<- ggplot(dat, aes(monthweek, weekdayf, fill = dat$Freq)) + 
-    geom_tile(colour = "white") + facet_grid(year~monthf) + scale_fill_gradient(low="red", high="yellow") +
+    geom_tile(colour = "white") + facet_grid(year~monthf) + scale_fill_gradient(low="green", high="red") +
     labs(title = "NYPD Vehicle Collisions Time-Series Calendar Heatmap") +  xlab("Week of Month") + ylab(" ")
 P
 ```
