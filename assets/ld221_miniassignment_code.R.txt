@@ -1,0 +1,92 @@
+require(plyr)
+require(tidyr)
+require(lubridate)
+library(ggplot2)
+library(car)
+
+SICollisions <- read.csv("~/SCHOOL/NYPD_Motor_Vehicle_Collisions.csv")
+
+#some info about data...
+length(SICollisions)  #number of columns (variables,fields)
+dim(SICollisions)    #number of rows & columns
+SICollisions[1:10 ,] #lists first 10 records in console - not that useful if many fields
+
+# list objects in the working environment
+ls() 
+
+# list names of variables in objects
+names(SICollisions)
+
+#lists first 10 records for a single variable
+SICollisions$ZIP.CODE[1:10]
+
+
+#renames "object"...
+df <- data.frame (SICollisions)
+
+names(df)
+attributes(df)
+df$DATE
+
+#displays first 5 rows of data for selected fields
+df$DATE[1:5]
+df$TIME[1:5]
+
+
+#sorts renamed object  - why need to give new dataset name - can't it reorder the dataset in use?
+#some fields don't sort - they are "factors" or non-numeric - need to recode as needed
+dftemp <- arrange (df, ZIP.CODE)
+dftemp$ZIP.CODE[1:30]
+
+
+#displays data for columns 1 and 3 in dataset
+df[,c(1,3)]
+
+
+#adds variable to new dataset with actual day of week, but it is off by one day - says Mon when should be Tues
+dftest <- mutate(df, dow = wday(as.Date(df$DATE,"%m/%d/%y", tz="UTC"), label = TRUE, abbr = TRUE))
+#outputs a numeric value associated with day of week
+dftest2 <- mutate(df, dow = wday(as.Date(df$DATE,"%m/%d/%y", tz="UTC"), label = FALSE))
+
+#recode numeric day of week value, but then won't sort properly in graph
+dftest$DAY <- recode(dftest$dow, ("1='Mon'; 2='Tues'; 3='Wed'; 4='Thurs'; 5='Fri'; 6='Sat'; 7='Sun'"))
+dftest$DATE[1:10]
+dftest$dow[1:10]
+
+(dftest3 <- ddply(dftest, c("dow"), summarise, FreqCnt=length(dow)))
+(dftest4 <- ddply(dftest, c("DAY"), summarise, FreqCnt=length(DAY)))
+
+#parse date field into 3 fields
+df1 <- separate(df,DATE,into = c("Month", "Day","Year"), sep="/")
+
+df1$Month[1:5]
+
+#plot accidents by zip code - Staten Island, 6-7 p.m.
+
+(df2 <- ddply(df, c("ZIP.CODE"), summarise, FreqCnt=length(ZIP.CODE)))
+
+(df3 <- ggplot(df2, aes(x=factor(ZIP.CODE), y=FreqCnt)) + geom_bar(stat="identity")) 
+(df4<- df3 + geom_text(aes(label=FreqCnt), vjust=-1, size=4))
+(df5 <- df4 + ggtitle("Distribution of Accidents in Staten Island, 6-7 p.m. by Zip Code"))
+(df6 <- df5 + theme(plot.title=element_text(size=rel(1), face="bold"))) + xlab('Staten Island Zip Code') + ylab('')
+df6
+
+#would like to use this to order bars but wasn't getting it to work - 
+#df2$FreqCnt <- factor(df2$FreqCnt, levels = df2$FreqCnt, ordered = TRUE)
+
+
+#creates "value" with actual day of the week - not clear if it is associated with any dataset...
+DOWtemp = weekdays(as.Date(df$DATE,'%m/%d/%y')+ 1)
+
+#frequency bar chart by day of week
+#(df2a <- ddply(df, c("DOWtemp"), summarise, FreqCnt=length(DOWtemp)))
+
+
+(df3a <- ggplot(dftest4, aes(x=factor(DAY), y=FreqCnt)) + geom_bar(stat="identity")) 
+(df4a<- df3a + geom_text(aes(label=FreqCnt), vjust=-1, size=4))
+(df5a <- df4a + ggtitle("Distribution of Accidents in Staten Island, 6-7 p.m. by Day of Week"))
+(df6a <- df5a + theme(plot.title=element_text(size=rel(1), face="bold"))) + xlab('Day of Week') + ylab('')
+df6a
+
+#*******************
+
