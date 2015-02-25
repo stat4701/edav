@@ -238,11 +238,11 @@ nycmap <- get_map(location = "Queens, New York", zoom=11)
 
 (nyc1 <- ggmap(nycmap) + scale_color_discrete(name = ">=15 Pedestrians Injured - 2013-2014")
     + ggtitle(">=15 Pedestrians Injured - 2013-2014")
- + theme(plot.title=element_text(size=rel(2), face="bold"))
+ + theme(plot.title=element_text(size=rel(1), face="bold"))
  + theme(legend.text=element_text(size=0),
          legend.title=(element_text(size=0)),
         legend.position="none")
-+ geom_point(data=high_injure_loc_ped, aes(LONGITUDE, LATITUDE, color = 'Pedestrians'), size=3))
++ geom_point(data=high_injure_loc_ped, aes(LONGITUDE, LATITUDE, color = 'Pedestrians'), size=3, alpha=1))
 
 
 
@@ -250,7 +250,7 @@ nycmap <- get_map(location = "Flatiron, New York", zoom=13)
 
 (nyc1 <- ggmap(nycmap) + scale_color_discrete(name = ">=15 Pedestrians Injured - 2013-2014")
  + ggtitle(">=15 Pedestrians Injured - Mid, Lower Manhattan")
- + theme(plot.title=element_text(size=rel(2), face="bold"))
+ + theme(plot.title=element_text(size=rel(1), face="bold"))
  + theme(legend.text=element_text(size=0),
          legend.title=(element_text(size=0)),
          legend.position="none")
@@ -263,7 +263,7 @@ nycmap <- get_map(location = "Harlem, New York", zoom=14)
 
 (nyc1 <- ggmap(nycmap) + scale_color_discrete(name = ">=15 Pedestrians Injured - 2013-2014")
  + ggtitle(">=15 Pedestrians Injured - Upper Manhattan & Bronx")
- + theme(plot.title=element_text(size=rel(2), face="bold"))
+ + theme(plot.title=element_text(size=rel(1), face="bold"))
  + theme(legend.text=element_text(size=0),
          legend.title=(element_text(size=0)),
          legend.position="none")

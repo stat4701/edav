@@ -183,6 +183,58 @@ require(scales) # for removing scientific notation
 
 
 
+Looking for intersections that have had >= 15 pedestrians injured in last 2 years, we see clusters in mid-town and upper manahattan and Bronx. There are a few spots in Queens and Brooklyn as well.
+
+```{r, echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
+#CREATING SUMMARY TABLE
+library(plyr)
+injureped=subset(nycmvc_data,NUMBER.OF.PEDESTRIANS.INJURED > 0)
+
+injureped_loc <- ddply(injureped, c("LONGITUDE", "LATITUDE"), 
+                     summarise, Inj_No=sum(NUMBER.OF.PERSONS.INJURED))
+
+injureped_loc_sum <- ddply(injureped_loc, c("Inj_No"), 
+                       summarise, FreqCnt=length(Inj_No))
+
+high_injure_loc_ped <- subset(injureped_loc, Inj_No >= 15)
+
+library(ggmap)
+nycmap <- get_map(location = "Queens, New York", zoom=11)
+
+(nyc1 <- ggmap(nycmap) + scale_color_discrete(name = ">=15 Pedestrians Injured - 2013-2014")
+    + ggtitle(">=15 Pedestrians Injured - 2013-2014")
+ + theme(plot.title=element_text(size=rel(1), face="bold"))
+ + theme(legend.text=element_text(size=0),
+         legend.title=(element_text(size=0)),
+        legend.position="none")
++ geom_point(data=high_injure_loc_ped, aes(LONGITUDE, LATITUDE, color = 'Pedestrians'), size=2, alpha=1))
+```
 
 
-Next steps involve plotting this data on map, to see any geo spatial trends
+
+Major streets and intersections around 14th, 23rd, 34th, 42nd, and Times Square, as well as 119th, 125th, and 135th streets seem to have high number of injuries.
+
+```{r, echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
+nycmap <- get_map(location = "Flatiron, New York", zoom=13)
+
+(nyc1 <- ggmap(nycmap) + scale_color_discrete(name = ">=15 Pedestrians Injured - 2013-2014")
+ + ggtitle(">=15 Pedestrians Injured - Mid, Lower Manhattan")
+ + theme(plot.title=element_text(size=rel(1), face="bold"))
+ + theme(legend.text=element_text(size=0),
+         legend.title=(element_text(size=0)),
+         legend.position="none")
+ + geom_point(data=high_injure_loc_ped, aes(LONGITUDE, LATITUDE, color = 'Pedestrians'), size=3))
+
+
+
+
+nycmap <- get_map(location = "Harlem, New York", zoom=14)
+
+(nyc1 <- ggmap(nycmap) + scale_color_discrete(name = ">=15 Pedestrians Injured - 2013-2014")
+ + ggtitle(">=15 Pedestrians Injured - Upper Manhattan & Bronx")
+ + theme(plot.title=element_text(size=rel(1), face="bold"))
+ + theme(legend.text=element_text(size=0),
+         legend.title=(element_text(size=0)),
+         legend.position="none")
+ + geom_point(data=high_injure_loc_ped, aes(LONGITUDE, LATITUDE, color = 'Pedestrians'), size=3))
+```
