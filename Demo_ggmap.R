@@ -1,6 +1,8 @@
+require(foreign)
 library(foreign)
 
 #========= San Francisco crime data with ggmap package ========
+require(ggmap)
 library(ggmap)
 
 # 3 ways to define location
@@ -59,7 +61,7 @@ sfbase2 = qmap(location= "union square, san francisco",
                souce = "google",
                color = 'color',
                legend = 'topleft')
-
+sfbase2 + geom_point(aes(x = X, y = Y, color=crime), data = sf_crime )
 
 # add density map
 # stat_density2d
@@ -133,5 +135,4 @@ title("Homicide Rate per 100k, 1990")
 leg.txt <- c("<2%", "2-4%", "4-6%", "6-8%", "8-10%", ">10%")
 legend("top", leg.txt, horiz = TRUE, fill = colors, cex=0.5)
 
-#============ other trials ===============
 
