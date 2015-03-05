@@ -8,8 +8,15 @@ description: mini-assignment
 tags: assignments, Sam Guleff, rMaps, Sample Code, Presentation, Mexico, Crime, Data
 ---
 
-#this is RMaps Maps Tutorial #1
+Full file will be available here:
 
+[rMapsBlogSample.R](https://github.com/sguleff/edav/blob/gh-pages/_posts/sguleff/rCode/rMapsMexicoDataMap.R)
+
+[Data can be downloaded from data.gov](http://catalog.data.gov/dataset/consumer-complaint-database/resource/8842d7a8-d34e-4ad6-b324-8f8cb3c5beef)
+
+First lets pull the data from the internet and load into a dataframe.
+
+```
 #Install rMaps
 require(devtools)
 install_github('ramnathv/rCharts@dev')
@@ -25,16 +32,6 @@ library(lubridate) #clean up the dates as quickly as possible
 # Code below takes consumer complaints with financial products and plots an ichoropleth map showing state
 # by state issue counts over years.
 ###############################
-
-Full file will be available here:
-
-[rMapsBlogSample.R](https://github.com/sguleff/edav/blob/gh-pages/_posts/sguleff/rCode/rMapsMexicoDataMap.R)
-
-[Data can be downloaded from data.gov](http://catalog.data.gov/dataset/consumer-complaint-database/resource/8842d7a8-d34e-4ad6-b324-8f8cb3c5beef)
-
-First lets pull the data from the internet and load into a dataframe.
-
-```
 
 #Set working directory to dataset(s)
 setwd("~/Desktop/Dataset")
