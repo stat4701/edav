@@ -1,17 +1,10 @@
+---
+author: Dennis Lyubyvy
+layout: post
+description: mini-assignment
+---
 
 ### NYPD Motor Vehicle Collisions Calendar Heatmap
-
-**Author:** Dennis Lyubyvy
-
-**Email:** dvl2110@columbia.edu
-
-**Columbia University Spring 2015**
-
-**Course:** W4701 Exploratory Data Analysis and Visualization
-
-**Instructor:** Michael J. Malecki
-
-Feb 12, 2015
 
 **Data source:** http://dev.socrata.com/foundry/#/data.cityofnewyork.us/h9gi-nx95
 
