@@ -1,6 +1,10 @@
 ### Want to suggest a change to a presentation topic?
 > Submit a pull request updating the line on this page!
 
+### Videos from class
+For Columbia people registered, use your uni to log in and find them at the [CVN site](https://video.cvn.columbia.edu/channel/STAT_W4701_S15/26924701)
+
+
 ## 2015-01-20 intro, some critiques, questionnaire
 ## 2015-01-22 analyze the [questionnaire](https://docs.google.com/spreadsheets/d/19a0O6C14zButypjcnWictvKWeyPjPjQdrps-UXzPDf8/), set up your repo
              
@@ -8,7 +12,7 @@
 ## 2015-01-29 **Malecki out** [lisa video](https://archive.org/details/WhatMakesAGoodDataVisualization)
              
 ## 2015-02-03 Tufte; gh-pages and jekyll
-### [Week 3 Signup](http://www.slottr.com/sheets/76533)
+### [Presentation](http://www.slottr.com/sheets/76533)
 Read all of Tufte by this point.
 
 Read the [jekyll/gh-pages basics](https://pages.github.com/) and a [more in-depth tutorial](http://www.smashingmagazine.com/2014/08/01/build-blog-jekyll-github-pages/), and/or yet [another tutorial](http://24ways.org/2013/get-started-with-github-pages/).
@@ -56,8 +60,8 @@ Read and run http://ggvis.rstudio.com/ and optionally http://bokeh.pydata.org; r
 
 For this week, read Murray, [Interactive Data Visualization for the Web](http://chimera.labs.oreilly.com/books/1230000000345/)
 
-> - Presentation: 
-> - Presentation: 
+> - Presentation: html output with knitr and rcharts
+> - Presentation: moving toward the browser
 
 ## 2015-02-26 d3 introbook; making a gist and a plunk
 
@@ -76,18 +80,23 @@ Read the [introduction](http://bost.ocks.org/mike/map/) to geospatial data by Bo
 > - Presentation: Rmaps and/or leafletR / leaflet-shiny
 > - Presentation: Bostock Let's make a map redux (acquire, transform, plot)
              
-## 2015-03-10 blogposts presentations
-## 2015-03-12 blogposts presentations
+## 2015-03-10 ?
+## 2015-03-12 ?
+
              
 ## 2015-03-17 **Spring break** 
 ## 2015-03-19 **Spring break**
+
+## 2015-03-24 blogposts (due) presentations
+## 2015-03-26 blogposts presentations
+
              
-## 2015-03-24 web services/python
+## 2015-03-24 web services/python *conflict*
 
 > - Presentation: scraping something with beautifulsoup
 > - Presentation: using twitter or yelp with python
 
-## 2015-03-26 web services/r
+## 2015-03-26 web services/r *conflict*
 
 > - Presentation: twitteR and Rfacebook
 > - Presentation: scraping with rvest
