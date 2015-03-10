@@ -1,0 +1,271 @@
+---
+title: "NYC Traffic accident analysis"
+author: "[Hafiz Ahsan](mailto:aha2140@columbia.edu)"
+output: 
+    html_document:
+        toc: true
+---
+
+```{r global_options, include=FALSE, echo=FALSE}
+require(knitr)
+require(rmarkdown)
+require(ggplot2)
+require(dplyr)
+require(scales)
+require(lubridate)
+knitr::opts_chunk$set(fig.width=7.8, fig.height=4, echo=FALSE, warning=FALSE, message=FALSE)
+```
+
+
+## Approach
+
+The explorations here look into the time-domain aspects of the NYC vehicle collision data. They are also structured in a question-plot-observation format. First, a question is asked, then a plot is drawn and some observations are made from the plot. The goal is to  gradually build up our understanding of the time-domain structure of the collisions.
+
+
+Data retrieved from [NYC OpenData site](https://data.cityofnewyork.us/NYC-BigApps/NYPD-Motor-Vehicle-Collisions/h9gi-nx95). I downloaded the full dataset on Feb 11,2015. So the that's the last day we have data for in these graphs. 
+
+
+```{r loadData, cache=TRUE}
+setwd('~/learning/columbia/edav/nyc-opendata')
+c <- read.csv('collisions.csv')
+c$t <- as.POSIXct(paste(c$DATE, c$TIME), format='%m/%d/%Y %H:%M')
+
+```
+
+
+## Hourly collision rates
+
+__How many collisions occurr per hour ?__
+
+Here is a plot of all dates until Feb 11, 2015. The counts are grouped by hour.
+
+```{r allCollisionsByHour, echo=FALSE}
+t <- factor(substr(as.character(c$t), 0, 13))
+collisionsByHour <- data.frame(t) %>% group_by(t) %>% summarize(n=length(t))
+collisionsByHour$t <- as.POSIXct(collisionsByHour$t, format='%Y-%m-%d %H')
+
+ggplot(collisionsByHour, aes(x=t, y=n)) + 
+    geom_point(aes(alpha=0.02)) +
+    theme_bw() + 
+    ggtitle("All collisions by hour") + 
+    xlab('Date') + 
+    ylab('Number of collisions') +
+    theme(legend.position="none")
+```
+
+__Observations:__
+
+* We see too many data points on the graph, diificult to glean anything except ...
+* __Some outlier points stand out __
+
+
+### Outliers in hourly collision rate
+
+__What can we say about the hourly collision rate outliers?__
+
+Keeping the top 10 and removing all other data points.
+
+```{r peakHourlyCollisions, echo=FALSE}
+topHours <- collisionsByHour %>% arrange(desc(n)) %>% head(10)
+
+ggplot(topHours, aes(x=t, y=n)) + 
+    geom_point(aes(size=n)) +
+    theme_bw() + 
+    ggtitle("Top 10 collision hours") + 
+    xlab('Date') + 
+    ylab('Number of collisions') 
+```
+
+
+```{r peakHourlyCollisionsTable, fig.width=4}
+kable(data.frame(time=topHours$t), format='html', digits = 2, caption = "Top 10 collision hours.")
+```
+
+__Observations:__
+
+* Top collision rates since July 2012 are all around the winter time. 
+* Spot-checking some these dates show that it snowed on those days. We should explore weather event corrlelations.
+
+
+## Daily collision rates 
+
+__What does the daily collision counts look like ?__
+__Do we see any change over the years?__
+
+```{r allCollisionsByDate, echo=FALSE}
+df <- c %>% group_by(DATE) %>% summarize(n=length(DATE))
+df$d <- as.Date(as.character(df$DATE), format="%m/%d/%Y")
+ggplot(df, aes(x=d, y=n)) + 
+    geom_line() + 
+    geom_point() +
+    theme_bw() + 
+    ggtitle("All collisions by date") + 
+    xlab('Date') + 
+    ylab('Number of collisions') +
+    scale_x_date(labels = date_format("%Y-%m"))
+
+```
+
+__Observations:__
+* There doesn't seem to be an evidence that collision rates are increasing or decreasing. We need to do a statistical significance analysis. But just from visualizations, it doesn't jump out (not to me at least)
+* We do see a rise and fall of the collisions over time. This needs further exploration
+
+### Smoothed daily collisions rates
+
+__Do we see any pattern in a smoothed daily collision rate?__
+
+```{r allCollisionsByDateSmooth}
+df <- c %>% group_by(DATE) %>% summarize(n=length(DATE))
+df$d <- as.Date(as.character(df$DATE), format="%m/%d/%Y")
+ggplot(df, aes(x=d, y=n)) + 
+    theme_bw() + 
+    ggtitle("All collisions by date") + 
+    xlab('Date') + 
+    ylab('Number of collisions') +
+    scale_x_date(labels = date_format("%Y-%m")) +
+    geom_smooth(span=0.07) + 
+    geom_line(alpha=0.1)
+
+```
+
+__Observations:__
+
+* There seems to be some type of pattern, although that's not really clear from this plot.
+* To see if this rise and fall has anything to with the yearly cycle we need to plot different years separately.
+
+
+```{r allCollisionsByDateYearWrapped, echo=FALSE}
+df <- c %>% group_by(DATE) %>% summarize(n=length(DATE))
+df$d <- as.POSIXlt(as.character(df$DATE), format="%m/%d/%Y")
+df$year <- as.factor(1900+df$d$year)
+df$dayOfYear <- as.numeric(strftime(df$d, format='%j'))
+df$d$year <- 0
+ggplot(df, aes(x=as.Date(d), y=n)) + 
+    geom_line(aes(color=year, group=year)) + 
+    theme_bw() + 
+    ggtitle("All collisions by day of year ") + 
+    xlab('Day of Year') + 
+    ylab('Number of collisions') +
+    scale_x_date(labels = date_format("%b"), breaks=date_breaks("1 months")) +
+    geom_smooth(span=0.1) + 
+    geom_line(alpha=0.05)
+    
+
+```
+
+__Observation:__
+
+* There seems to be a pattern like this: at the start of the year collisions are very low and then they start to climb up. The rate incrases until about late June. Then it stays down until the first week of September. Could this related to schools being closed over the summer, people in vacation etc? 
+* Although the loess smoothing shows a consistent spring-to-summer rise, the data is very noisy. 
+* Collision rates take a nosedive during the Christmas season. This is clear and support for it will probably be very very strong.
+
+
+## Collisions by date of month
+
+__Does daily collision rate change over the course of the month?__
+
+(This graph turned out to be a bit crazy and difficult to explain. I still kept it because it looks interesting).
+
+Each dot represents a collision count for a specific date. The color is associated with the month. The blue lines are smoothed rates for different months. There are twelve of these blue. The idea of plotting them all is to see if there are clusters of months that show similar behavior. 
+
+
+```{r allCollisionsByDayOfMonth, echo=FALSE}
+df <- c %>% group_by(DATE) %>% summarize(n=length(DATE))
+df$d <- as.POSIXct(as.character(df$DATE), format="%m/%d/%Y")
+df$mday <- as.POSIXlt(df$d)$mday
+df$month <- factor(as.POSIXlt(df$d)$mon)
+ggplot(df, aes(x=mday, y=n, group=month)) + 
+    geom_point(aes(color=month)) +
+    theme_bw() + 
+    ggtitle("All collisions by Day of the Month") + 
+    xlab('Day of the month') + 
+    ylab('Number of collisions') +
+    theme(legend.position="none") +
+    geom_smooth(se=F)
+
+```
+
+__Observation:__ It doesn't seem that there is a strong relationship between collision rate and what day of the month it is. 
+
+
+## Time-of-day effect
+
+__Zoom into hourly collisions rates for a given random week__
+
+(would be cool to use ggvis here)
+
+
+```{r weekHourRandomWeek, echo=FALSE}
+df <- c %>% filter(t >= '2014-04-13 00:00' & t < '2014-04-21 00:00')
+t <- as.POSIXlt(df$t)
+df$whour <- t$whour
+d2 <- data.frame(whour=t$wday * 24 + t$hour)
+d3 <- d2 %>% group_by(whour) %>% summarize(n=length(whour))
+ggplot(d3, aes(x=whour, y=n)) + 
+    geom_line() + 
+    geom_point() +
+    theme_bw() + 
+    ggtitle("Hourly collisions from Sunday April 13, 2014 to Saturday April 20, 2014") + 
+    xlab('Week-Hour (0-167)') + 
+    ylab('Number of collisions') 
+
+```
+
+__Observation:__ We can see how the time-of-day changes the collision rates.
+
+
+### Consistency of the time-of-day effect
+
+__Is the time-of-day effect consistent over different quarters?__
+
+This graph shows one line for each quarter that we have the data for. Each line represents the total collisions grouped by week-hour (0-168). 
+
+
+```{r weekHourFunctions, echo=FALSE}
+t <- as.POSIXlt(c$t)
+whour <- t$wday * 24 + t$hour
+qtr <- factor(gsub('\\.', '-Q', quarter(c$t, with_year=TRUE)))
+df <- data.frame(whour, qtr) %>% group_by(qtr, whour) %>% summarize(n=length(qtr))
+# We want to show actual weekday on the x axis so we have to resort to a trick. 2/1/2015 is a Sunday.
+df$t <- as.POSIXct('2015-02-01') + df$whour * 3600
+
+ggplot(df, aes(x=t, y=n, group=qtr)) + 
+    geom_line(aes(color=qtr)) + 
+    theme_bw() + 
+    ggtitle('Time-of-day effect over different quarters') + 
+    ylab('Number of collisions') +
+    scale_x_datetime(labels=date_format("%a\n%I%P"), breaks=date_breaks("12 hours"))
+```
+
+__Observations:__
+
+* The effect is very consistent. 
+* We have fewer days of data for the first quarter of 2015. That's pretty clear from the plot. 
+* We consistently see two peaks during a weekday and one peak during the weekends.
+* Friday afternoon peak seems to be consistently worse than other weekday peaks.
+
+
+# Summary
+
+Things we can see so far
+
+* Outliers that seem to be related to weather events 
+* Seasonality: spring rise, summer taper, holiday period lull
+* No date-of-month effect
+* Strong Hour-of-day effect
+* Weekday vs weekends very distinct patterns
+* Friday evening peaks
+
+## Other things we could explore
+* Is there a weather effect in accident data outside of snow days ? 
+* Do we have more collisions the more it rains ? 
+* Are there different number of vehicles involved in collisions at different times of day ?
+* Is there a pattern of different types of vehicles involved over different times of day ?
+* Is there a difference between typical accident on a Friday evening rush hour rush our on another day ?
+* Is there a difference between morning and evening weekday peaks in vehicles involved, fatalites etc?
+* Are there locations that are more likely to have a crash during peak hours ? 
+* Do injury or fatality rates change over the course of the week ?
+* Are there months when pedestrians are more likely to be in a collision (e.g. summer months)? Is there a location affinity ? 
+
+
+
