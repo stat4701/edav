@@ -1,0 +1,18 @@
+
+#read data
+con <-getURL("https://docs.google.com/spreadsheets/d/19a0O6C14zButypjcnWictvKWeyPjPjQdrps-UXzPDf8/export?format=csv", ssl.verifypeer=FALSE)
+
+mdata<-read.csv(textConnection(con))
+
+require(ggplot2)
+mdata[,4]
+plot(mdata[,4])
+names(mdata)
+
+?colSums
+?apply
+
+tdata<-sapply(mdata[,4],col.Sum)
+
+ggplot(colSums(mdata[,4:5]),geom_bar(stat="identity"))
+names(mdata)
