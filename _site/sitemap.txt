@@ -1,6 +1,7 @@
 
 http://stat4701.github.io/edav/lab/questionnaire/2015-01-22-questionnaire-malecki.Rmd
 http://stat4701.github.io/edav/lab/questionnaire/Kdar_st4701_1_22.Rmd
+http://stat4701.github.io/edav/code/NYCMotorVehicle_Kedar.Rmd
 http://stat4701.github.io/edav/agenda-page.html
 http://stat4701.github.io/edav/archive.html
 http://stat4701.github.io/edav/atom.xml
@@ -12,6 +13,7 @@ http://stat4701.github.io/edav/rss.xml
 http://stat4701.github.io/edav/sitemap.txt
 http://stat4701.github.io/edav/tags.html
 
+http://stat4701.github.io/edav/2015/03/04/NYCMotorVehicle_Kedar
 http://stat4701.github.io/edav/2015/02/15/ggplot-with-R-talk
 http://stat4701.github.io/edav/2015/02/12/mini-assignment
 http://stat4701.github.io/edav/2015/02/11/janet-jekyll

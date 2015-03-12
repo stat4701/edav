@@ -1,27 +1,25 @@
 ---
-title: "Mini assignment 1"
-author: "Kedar Patil"
-date: "February 16, 2015"
-output: html_document
 layout: post
+title: NYC Motor Vehicle Collision Data
+author: Kedar Patil
 description: mini-assignment
-tags: assignments, Kedar Patil
+tags: assignments
 ---
 
-#NYC Motor Vehicle Collision Data
+#
 
 ###Background
 
 This data has been downloaded from as of 02/15/2015, [NYC Open Data](https://data.cityofnewyork.us/NYC-BigApps/NYPD-Motor-Vehicle-Collisions/h9gi-nx95) website. It has 531,574 records and covers activity from 07/01/2012 to 02/10/2015. This analysis focuses only on full year 2013-2014.
 
 
-
 ###Preliminary Findings
 
 Strong seasonality is observed, with injuries peaking around beginning of summer, when more people are out on street.
 
+![](/Users/kedarpatil/edav/assets/NYCMotorVehicle_Kedar_charts/yoy_overall_injuries.png)
 
-```{r, echo=FALSE, message=FALSE}
+```r
 nycmvc_data <- read.csv("/Users/kedarpatil/edav/data/NYPD_Motor_Vehicle_Collisions.csv")
 
 #FIXING DATES
@@ -56,9 +54,7 @@ require(scales) # for removing scientific notation
          legend.text=element_text(size=10),
          legend.title=(element_text(size=10)))
  + labs(x="Month", y="Observed Frequency", color="Year"))
-
 ```
-
 
 
 
@@ -68,7 +64,9 @@ require(scales) # for removing scientific notation
 Motor vehicle injuries form the biggest share of injuries, followed by pedestrians. Number of injuries has not changed substantially across two years.
 
 
-```{r, echo=FALSE, message=FALSE}
+![](/Users/kedarpatil/edav/assets/NYCMotorVehicle_Kedar_charts/yoy_injuries_by_category.png)
+
+```r
 #PLOT 2013-2014 INJURIES ONLY - DEEPER DIVE
 mth_frq_deep <- ddply(nycmvc_data, c(year_grp="strftime(nycmvc_data$DATE, format='%Y')",
                                     mnth_grp="strftime(nycmvc_data$DATE, format='%m')"), 
@@ -116,7 +114,7 @@ require(scales) # for removing scientific notation
 
 Further, pedestrians and cyclists have somewhat opposite relationship when it comes to injuries
 
-```{r, echo=FALSE, message=FALSE}
+```r
 #PLOT 2013-2014 INJURIES ONLY - DEEPER DIVE - LINE
 tmp_melt_line <- ddply(tmp_melt, c("mnth_grp","Injury_Category"),
                       summarise, "Frequency" = sum(Freq))
@@ -143,7 +141,7 @@ tmp_melt_line <- ddply(tmp_melt, c("mnth_grp","Injury_Category"),
 
 Passenger and SUVs contribute most to injuries
 
-```{r, echo=FALSE, message=FALSE}
+```r
 #PLOT VEHICLE TYPE AND INJURY
 inj_veh_typ <- ddply(filter(nycmvc_data, DATE>"2012-12-31" & DATE<"2015-01-01"),
                      c("VEHICLE.TYPE.CODE.1"), 
@@ -185,7 +183,7 @@ require(scales) # for removing scientific notation
 
 Looking for intersections that have had >= 15 pedestrians injured in last 2 years, we see clusters in mid-town and upper manahattan and Bronx. There are a few spots in Queens and Brooklyn as well.
 
-```{r, echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
+```r
 #CREATING SUMMARY TABLE
 library(plyr)
 injureped=subset(nycmvc_data,NUMBER.OF.PEDESTRIANS.INJURED > 0)
@@ -214,7 +212,7 @@ nycmap <- get_map(location = "Queens, New York", zoom=11)
 
 Major streets and intersections around 14th, 23rd, 34th, 42nd, and Times Square, as well as 119th, 125th, and 135th streets seem to have high number of injuries.
 
-```{r, echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
+```r
 nycmap <- get_map(location = "Flatiron, New York", zoom=13)
 
 (nyc1 <- ggmap(nycmap) + scale_color_discrete(name = ">=15 Pedestrians Injured - 2013-2014")
