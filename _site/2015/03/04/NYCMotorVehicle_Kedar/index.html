@@ -57,7 +57,7 @@
 
 <p>Strong seasonality is observed, with injuries peaking around beginning of summer, when more people are out on street.</p>
 
-<p><img src="/Users/kedarpatil/edav/assets/NYCMotorVehicle_Kedar_charts/yoy_overall_injuries.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/kedarp/edav/gh-pages/assets/NYCMotorVehicle_Kedar_charts/yoy_overall_injuries.png" alt=""></p>
 <div class="highlight"><pre><code class="language-r" data-lang="r">nycmvc_data <span class="o">&lt;-</span> read.csv<span class="p">(</span><span class="s">&quot;/Users/kedarpatil/edav/data/NYPD_Motor_Vehicle_Collisions.csv&quot;</span><span class="p">)</span>
 
 <span class="c1">#FIXING DATES</span>
@@ -95,7 +95,7 @@ fltr_mth_frq_all <span class="o">&lt;-</span> filter<span class="p">(</span>mth_
 </code></pre></div>
 <p>Motor vehicle injuries form the biggest share of injuries, followed by pedestrians. Number of injuries has not changed substantially across two years.</p>
 
-<p><img src="/Users/kedarpatil/edav/assets/NYCMotorVehicle_Kedar_charts/yoy_injuries_by_category.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/kedarp/edav/gh-pages/assets/NYCMotorVehicle_Kedar_charts/yoy_injuries_by_category.png" alt=""></p>
 <div class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">#PLOT 2013-2014 INJURIES ONLY - DEEPER DIVE</span>
 mth_frq_deep <span class="o">&lt;-</span> ddply<span class="p">(</span>nycmvc_data<span class="p">,</span> <span class="kt">c</span><span class="p">(</span>year_grp<span class="o">=</span><span class="s">&quot;strftime(nycmvc_data$DATE, format=&#39;%Y&#39;)&quot;</span><span class="p">,</span>
                                     mnth_grp<span class="o">=</span><span class="s">&quot;strftime(nycmvc_data$DATE, format=&#39;%m&#39;)&quot;</span><span class="p">),</span> 

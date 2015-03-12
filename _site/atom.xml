@@ -4,7 +4,7 @@
  <title>EDAV</title>
  <link href="http://stat4701.github.io/edav/" rel="self"/>
  <link href="http://stat4701.github.io/edav"/>
- <updated>2015-03-11T23:05:22-04:00</updated>
+ <updated>2015-03-11T23:21:44-04:00</updated>
  <id>http://stat4701.github.io/edav</id>
  <author>
    <name>Michael Malecki</name>
@@ -25,7 +25,7 @@
 
 &lt;p&gt;Strong seasonality is observed, with injuries peaking around beginning of summer, when more people are out on street.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/Users/kedarpatil/edav/assets/NYCMotorVehicle_Kedar_charts/yoy_overall_injuries.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kedarp/edav/gh-pages/assets/NYCMotorVehicle_Kedar_charts/yoy_overall_injuries.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;nycmvc_data &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; read.csv&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/Users/kedarpatil/edav/data/NYPD_Motor_Vehicle_Collisions.csv&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;#FIXING DATES&lt;/span&gt;
@@ -63,7 +63,7 @@ fltr_mth_frq_all &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; filter&l
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Motor vehicle injuries form the biggest share of injuries, followed by pedestrians. Number of injuries has not changed substantially across two years.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/Users/kedarpatil/edav/assets/NYCMotorVehicle_Kedar_charts/yoy_injuries_by_category.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kedarp/edav/gh-pages/assets/NYCMotorVehicle_Kedar_charts/yoy_injuries_by_category.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span class=&quot;c1&quot;&gt;#PLOT 2013-2014 INJURIES ONLY - DEEPER DIVE&lt;/span&gt;
 mth_frq_deep &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; ddply&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;nycmvc_data&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;year_grp&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;strftime(nycmvc_data$DATE, format=&amp;#39;%Y&amp;#39;)&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                                     mnth_grp&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;strftime(nycmvc_data$DATE, format=&amp;#39;%m&amp;#39;)&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
