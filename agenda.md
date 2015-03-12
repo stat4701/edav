@@ -80,8 +80,19 @@ Read the [introduction](http://bost.ocks.org/mike/map/) to geospatial data by Bo
 > - Presentation: Rmaps and/or leafletR / leaflet-shiny
 > - Presentation: Bostock Let's make a map redux (acquire, transform, plot)
              
-## 2015-03-10 ?
-## 2015-03-12 ?
+## 2015-03-10 More git+jekyll workshop
+
+## 2015-03-12 Color
+
+Please choose two or three of these and come prepared with reactions and questions.
+
+- [Semantically resonant colors](http://idl.cs.washington.edu/papers/semantically-resonant-colors)
+- [Color naming](http://idl.cs.washington.edu/papers/color-naming-models)
+- [HCL in R](http://cran.r-project.org/web/packages/colorspace/vignettes/hcl-colors.pdf)
+- [I want Hue (theory)](http://tools.medialab.sciences-po.fr/iwanthue/theory.php)
+- [Motley](http://onlinelibrary.wiley.com/doi/10.1002/col.20559/abstract)
+- [How to avoid equidistant HSV colors](http://vis4.net/blog/posts/avoid-equidistant-hsv-colors/)
+- [Mastering Multi-hued Color Scales with Chroma.js](https://vis4.net/blog/posts/mastering-multi-hued-color-scales/)
 
              
 ## 2015-03-17 **Spring break** 
