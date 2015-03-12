@@ -17,7 +17,7 @@ This data has been downloaded from as of 02/15/2015, [NYC Open Data](https://dat
 
 Strong seasonality is observed, with injuries peaking around beginning of summer, when more people are out on street.
 
-![](/Users/kedarpatil/edav/assets/NYCMotorVehicle_Kedar_charts/yoy_overall_injuries.png)
+![](https://github.com/kedarp/edav/tree/gh-pages/assets/NYCMotorVehicle_Kedar_charts/yoy_overall_injuries.png)
 
 ```r
 nycmvc_data <- read.csv("/Users/kedarpatil/edav/data/NYPD_Motor_Vehicle_Collisions.csv")
@@ -64,7 +64,7 @@ require(scales) # for removing scientific notation
 Motor vehicle injuries form the biggest share of injuries, followed by pedestrians. Number of injuries has not changed substantially across two years.
 
 
-![](/Users/kedarpatil/edav/assets/NYCMotorVehicle_Kedar_charts/yoy_injuries_by_category.png)
+![](https://github.com/kedarp/edav/tree/gh-pages/assets/NYCMotorVehicle_Kedar_charts/yoy_injuries_by_category.png)
 
 ```r
 #PLOT 2013-2014 INJURIES ONLY - DEEPER DIVE
