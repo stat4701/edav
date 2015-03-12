@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+        <title>EDAV</title>
+        <description>EDAV - Michael Malecki</description>
+        <link>http://stat4701.github.io/edav</link>
+        <link>http://stat4701.github.io/edav</link>
+        <lastBuildDate>2015-03-11T21:21:18-04:00</lastBuildDate>
+        <pubDate>2015-03-11T21:21:18-04:00</pubDate>
+        <ttl>1800</ttl>
+
+
+        <item>
+                <title>Ggplot With R Talk</title>
+                <description>&lt;h2&gt;Talk on ggplot with R&lt;/h2&gt;
+
+&lt;h4&gt;Kedar Patil, Spring 2015&lt;/h4&gt;
+
+&lt;p&gt;Please see the &lt;a href=&quot;/assets/ggplot-with-R-talk/ggplot_in_R.pptx&quot;&gt;power point deck&lt;/a&gt; and &lt;a href=&quot;/assets/ggplot-with-R-talk/ggplot_in_R_Code.R&quot;&gt;supporting R code&lt;/a&gt;, from class presentation.&lt;/p&gt;
+</description>
+                <link>http://stat4701.github.io/edav/2015/02/15/ggplot-with-R-talk</link>
+                <guid>http://stat4701.github.io/edav/2015/02/15/ggplot-with-R-talk</guid>
+                <pubDate>2015-02-15T00:00:00-05:00</pubDate>
+        </item>
+
+        <item>
+                <title>mini-assignment</title>
+                <description>&lt;h2&gt;NYPD Vehicle Collisions&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://iquantny.tumblr.com/post/77684693503/visualizing-traffic-safety-as-we-prepare-for&quot;&gt;&lt;img src=&quot;http://media.tumblr.com/f77302b69f17622c7064cc2c50169dfe/tumblr_inline_n1hn0jgPsl1szvr4h.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Get the data (&lt;a href=&quot;https://data.cityofnewyork.us/NYC-BigApps/NYPD-Motor-Vehicle-Collisions/h9gi-nx95&quot;&gt;from here!&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Aggregate injuries / involvement of vehicles, pedestrians, cyclists in some way&lt;/li&gt;
+&lt;li&gt;Plot your findings by some other feature (vehicle type, borough, cross streets, etc.)&lt;/li&gt;
+&lt;li&gt;Tell us something about date or time of day and traffic crashes.&lt;/li&gt;
+&lt;li&gt;Discuss potential research questions that you could begin to answer with this data — have intersection reconstructions or :traffic_light: (e.g. West End Ave; West 96th St/Broadwayreduced collisions or their severity? Do bike lanes make roads safer for cyclists? Are :bicyclist: a menace to :walking:?&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;Extra challenge 1&lt;/h3&gt;
+
+&lt;p&gt;Get an api key and write a script that makes a query (you can hard code the query, the point is to do away with file snapshots).&lt;/p&gt;
+
+&lt;h3&gt;Extra challenge 2&lt;/h3&gt;
+
+&lt;p&gt;Parse the &lt;code&gt;(long, lat)&lt;/code&gt; string into numeric longitude and latitude columns.&lt;/p&gt;
+
+&lt;h3&gt;Extra challenge 3&lt;/h3&gt;
+
+&lt;p&gt;Using either the api, a filter, or another snapshot slice, compare to another month, quarter, or year. &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;link to malecki&amp;#39;s mini presentation messing with maps with this data &lt;a href=&quot;https://github.com/malecki/data-viz/blob/maps/r/maps.Rpres&quot;&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Disease Cases in the US over time&lt;/h2&gt;
+
+&lt;p&gt;Use this from WSJ as a starting point.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://graphics.wsj.com/infectious-diseases-and-vaccines/&quot;&gt;&lt;img src=&quot;http://front.dadaviz.com/media/viz_images/the-impact-of-vaccines-on-measles-1423735549.08-5507041.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The data comes from the CDC, via &lt;a href=&quot;https://www.tycho.pitt.edu&quot;&gt;Project Tycho&lt;/a&gt;. &lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Get the data for one or more diseases&lt;/li&gt;
+&lt;li&gt;Read the data into R or python&lt;/li&gt;
+&lt;li&gt;Aggregate to years&lt;/li&gt;
+&lt;li&gt;Aggregate to regions&lt;/li&gt;
+&lt;li&gt;Make plots by year and/or week and discuss.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;extra challenge 1&lt;/h3&gt;
+
+&lt;p&gt;Parse the ‘week’ information into an actual date with Week resolution.&lt;/p&gt;
+
+&lt;p&gt;Does the seasonality vary across states or regions?&lt;/p&gt;
+
+&lt;h3&gt;extra challenge 2&lt;/h3&gt;
+
+&lt;p&gt;Plot something from this dataset on a map. Whether a snapshot, some summary, or some comparison, or all of them.&lt;/p&gt;
+</description>
+                <link>http://stat4701.github.io/edav/2015/02/12/mini-assignment</link>
+                <guid>http://stat4701.github.io/edav/2015/02/12/mini-assignment</guid>
+                <pubDate>2015-02-12T00:00:00-05:00</pubDate>
+        </item>
+
+        <item>
+                <title>Janet Jekyll</title>
+                <description>&lt;p&gt;&lt;a href=&quot;http://jcp1016.github.io/&quot;&gt;My Jekyll site is up and running. Check it out!&lt;/a&gt;&lt;/p&gt;
+</description>
+                <link>http://stat4701.github.io/edav/2015/02/11/janet-jekyll</link>
+                <guid>http://stat4701.github.io/edav/2015/02/11/janet-jekyll</guid>
+                <pubDate>2015-02-11T00:00:00-05:00</pubDate>
+        </item>
+
+        <item>
+                <title>Janet Exploratory Plots</title>
+                <description>&lt;p&gt;&lt;a href=&quot;/assets/jcp1016/exploratory_plots.pdf&quot;&gt;I made some explorations and this is my first jekyll post&lt;/a&gt;&lt;/p&gt;
+</description>
+                <link>http://stat4701.github.io/edav/2015/02/05/janet-exploratory-plots</link>
+                <guid>http://stat4701.github.io/edav/2015/02/05/janet-exploratory-plots</guid>
+                <pubDate>2015-02-05T00:00:00-05:00</pubDate>
+        </item>
+
+        <item>
+                <title>Organize and Present</title>
+                <description>&lt;section&gt;
+# Agenda for today
+
+1. Re-situate, review, critique
+1. Lightning demo
+1. Presentation plans
+1. Project plans
+1. Git/github/Rmd trauma triage
+
+&lt;/section&gt;
+
+&lt;section&gt;
+## Presentations
+
+_In which you are the expert on some block of material. They may be joint or individual._
+
+1. What do we need to know before we start?
+1. Demo the basics
+1. Show us the code
+1. Show us your summary on your fork or the wiki
+1. Field questions
+1. If you can work in a graph critique (even better, fix), please do!
+
+&lt;/section&gt;
+
+&lt;section&gt;
+## Projects
+
+_In which you are a specialist on a team. Use the Piazza team-finder to group yourselves into teams of 4 or 5._ 
+
+1. Some work with data — of any size — that merits your attention with a team for the next couple of months. 
+1. If you *have* a data source in mind, propose it on Piazza
+1. Data suggestions? See the wiki…
+1. It should involve exploring data or an interface.
+1. Visual? (Other senses exist too!) — some processing in your brain.
+
+&lt;/section&gt;
+
+&lt;section&gt;
+    &lt;section&gt;
+
+## Some things are… timeless? ##
+
+- [Guidance from 1915](http://sappingattention.blogspot.com/2014/08/data-visualization-rules-1915.html)
+
+![](http://4.bp.blogspot.com/-gRF2vrK5VZc/U-qIG-FLrrI/AAAAAAAAEeM/A7hLYmTbrXU/s1600/1890StatAt.jpeg)
+&lt;/section&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;section&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;State migrations&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.nytimes.com/2014/08/16/upshot/mapping-migration-in-the-united-states-since-1900.html?abt=0002&amp;amp;abg=0&quot;&gt;&lt;img src=&quot;/assets/intro-statemigration.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;
+&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;100 people&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.washingtonpost.com/blogs/worldviews/wp/2015/01/06/chart-if-the-world-were-100-people/&quot;&gt;&lt;img src=&quot;http://www.washingtonpost.com/wp-apps/imrs.php?src=http://img.washingtonpost.com/blogs/worldviews/files/2015/01/World-as-100-People.png&amp;amp;w=1484&quot; alt=&quot;&quot;&gt;&lt;/a&gt;
+&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;Diversity at Yahoo!&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://yahoo.tumblr.com/post/89085398949/workforce-diversity-at-yahoo&quot;&gt;&lt;img src=&quot;http://media.tumblr.com/d066fcf68802ae2e28541a5cd7499c42/tumblr_inline_n7fmd6mpSf1qhxx5s.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;
+&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;Huh?&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://xianblog.wordpress.com/2015/01/18/another-terrible-graph/&quot;&gt;&lt;img src=&quot;https://i0.wp.com/s1.lemde.fr/image/2015/01/12/534x0/4554677_6_7f72_sur-pres-de-7-4-milliards-d-humains-les_95361f87d1619e031d3db29e5c1b54e4.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;
+&lt;/section&gt;
+&lt;/section&gt; &lt;/p&gt;
+
+&lt;section&gt;
+    &lt;section&gt;
+## git/github/etc trauma
+
+&lt;/section&gt;
+
+&lt;p&gt;&lt;/section&gt;&lt;/p&gt;
+</description>
+                <link>http://stat4701.github.io/edav/2015/02/03/organize</link>
+                <guid>http://stat4701.github.io/edav/2015/02/03/organize</guid>
+                <pubDate>2015-02-03T00:00:00-05:00</pubDate>
+        </item>
+
+        <item>
+                <title>Introduction</title>
+                <description>&lt;section&gt;
+    &lt;section&gt;
+# Exploratory Data Analysis and Visualization
+&lt;/section&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;section&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Who are you?&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://bit.ly/edav-t0&quot;&gt;&lt;em&gt;What do you already know how to do?&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://bit.ly/edav-t0&quot;&gt;http://bit.ly/edav-t0&lt;/a&gt;
+&lt;/section&gt;
+&lt;/section&gt;&lt;/p&gt;
+
+&lt;section&gt;
+    &lt;section&gt;
+## Some administrative bits
+- [Course site](http://stat4701.github.io/edav/)
+- [Site source](http://github.com/stat4701/edav/)
+
+&lt;/section&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;section&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Books&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.edwardtufte.com/tufte/books_vdqi&quot;&gt;&lt;img src=&quot;http://www.edwardtufte.com/tufte/graphics/vdqi_bookcover.gif&quot; alt=&quot;http://www.edwardtufte.com/tufte/graphics/vdqi_bookcover.gif&quot;&gt;&lt;/a&gt;
+&lt;a href=&quot;http://www.amazon.com/Analysis-Regression-Multilevel-Hierarchical-Models/dp/052168689X&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/31ELobreacL._BO2,204,203,200_PIsitb-sticker-arrow-click-small,TopRight,12,-30_AA300_SH20_OU01_.jpg&quot; alt=&quot;ARM&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/section&gt;
+&lt;/section&gt;&lt;/p&gt;
+
+&lt;section&gt;
+    &lt;section&gt;
+## Goals
+
+[![](http://static.squarespace.com/static/5150aec6e4b0e340ec52710a/t/51525c33e4b0b3e0d10f77ab/1364352052403/Data_Science_VD.png?format=750w)](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram)
+
+&lt;/section&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;section&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Goals&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Practical&lt;/em&gt; data visualization&lt;/li&gt;
+&lt;li&gt;working with actual data&lt;/li&gt;
+&lt;li&gt;collaborating with others&lt;/li&gt;
+&lt;li&gt;using modern, rapidly changing tools&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;Rapidly Changing:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.apps.npr.org/2014/09/02/reusable-data-processing.html&quot;&gt;NPR Viz Data processing workflow&lt;/a&gt;, published on Tuesday&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/rstudio/rmarkdown/commits/master&quot;&gt;RMarkdown&lt;/a&gt; Released Tuesday&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://beakernotebook.com&quot;&gt;Beaker Notebook&lt;/a&gt; release May&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;Vega&quot;&gt;vega&lt;/a&gt; latest release July&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/hadley/dplyr&quot;&gt;dplyr&lt;/a&gt; constant development&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/mbostock/d3&quot;&gt;D3&lt;/a&gt; last point release in December&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/theupshot&quot;&gt;Upshot&lt;/a&gt; New features weekly?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;Some things are… timeless?&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://sappingattention.blogspot.com/2014/08/data-visualization-rules-1915.html&quot;&gt;Guidance from 1915&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://4.bp.blogspot.com/-gRF2vrK5VZc/U-qIG-FLrrI/AAAAAAAAEeM/A7hLYmTbrXU/s1600/1890StatAt.jpeg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h3&gt;Master the everyday, mundane but indispensible…&lt;/h3&gt;
+
+&lt;p&gt;…tools of the trade: &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;text editors&lt;/li&gt;
+&lt;li&gt;version control (git)&lt;/li&gt;
+&lt;li&gt;the command line&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Practice iterative and collaborative development of your projects&lt;/li&gt;
+&lt;li&gt;Initiate and participate in code and project reviews&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Fail early, learn from it, and ask for help&lt;/em&gt;
+&lt;/section&gt;
+&lt;/section&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;section&gt;
+&lt;section&gt;
+# My roles
+&lt;/section&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;section&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Editor, Curator&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Lots of readings to be familiar with&lt;/li&gt;
+&lt;li&gt;A few slides?&lt;/li&gt;
+&lt;li&gt;Tons of links&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;Senior Developer&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;debug&lt;/li&gt;
+&lt;li&gt;readable&lt;/li&gt;
+&lt;li&gt;reproducible&lt;/li&gt;
+&lt;li&gt;present&lt;/li&gt;
+&lt;li&gt;share mistakes!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;Project manager&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;help with presentation structure&lt;/li&gt;
+&lt;li&gt;help project organization &lt;/li&gt;
+&lt;li&gt;divide tasks&lt;/li&gt;
+&lt;li&gt;the simplest thing that could possibly work&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/section&gt;
+&lt;/section&gt;&lt;/p&gt;
+
+&lt;section&gt;
+    &lt;section&gt;
+# Think about graphs like a data scientist  
+&lt;/section&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;section&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;State migrations&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.nytimes.com/2014/08/16/upshot/mapping-migration-in-the-united-states-since-1900.html?abt=0002&amp;amp;abg=0&quot;&gt;&lt;img src=&quot;/assets/intro-statemigration.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;
+&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;100 people&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.washingtonpost.com/blogs/worldviews/wp/2015/01/06/chart-if-the-world-were-100-people/&quot;&gt;&lt;img src=&quot;http://www.washingtonpost.com/wp-apps/imrs.php?src=http://img.washingtonpost.com/blogs/worldviews/files/2015/01/World-as-100-People.png&amp;amp;w=1484&quot; alt=&quot;&quot;&gt;&lt;/a&gt;
+&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;Diversity at Yahoo!&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://yahoo.tumblr.com/post/89085398949/workforce-diversity-at-yahoo&quot;&gt;&lt;img src=&quot;http://media.tumblr.com/d066fcf68802ae2e28541a5cd7499c42/tumblr_inline_n7fmd6mpSf1qhxx5s.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;
+&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;Huh?&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://xianblog.wordpress.com/2015/01/18/another-terrible-graph/&quot;&gt;&lt;img src=&quot;https://i0.wp.com/s1.lemde.fr/image/2015/01/12/534x0/4554677_6_7f72_sur-pres-de-7-4-milliards-d-humains-les_95361f87d1619e031d3db29e5c1b54e4.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;
+&lt;/section&gt;
+&lt;/section&gt; &lt;/p&gt;
+
+&lt;section&gt;
+    &lt;section&gt;
+# After class
+- Make a Github account if you don&#39;t already have one
+- Fork the repo — your assignments will be in the form of pull requests!
+- Install [R](http://www.r-project.org/) and [RStudio](http://www.rstudio.com/products/RStudio/#Desk) for next week&#39;s gentle intro to R
+- Read about [RMarkdown](http://rmarkdown.rstudio.com/)
+
+&lt;/section&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;section&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Blogs&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://flowingdata.com&quot;&gt;Flowing Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://andrewgelman.com&quot;&gt;Gelman&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://junkcharts.typepad.com&quot;&gt;Junk Charts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.r-bloggers.com&quot;&gt;R-bloggers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://solomonmessing.wordpress.com/blog/&quot;&gt;Messing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.okcupid.com&quot;&gt;OKCupid&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://chartsnthings.tumblr.com/&quot;&gt;chartsnthings&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.fastcodesign.com/section/infographic-of-the-day&quot;&gt;FastCo Design&lt;/a&gt;
+&lt;/section&gt;
+&lt;section&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://skli.se/2012/09/22/introduction-to-git/&quot;&gt;Git intro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=LXoWxrTdXkM&quot;&gt;Another intro video&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://skli.se/2012/10/07/git-workflow-beginner/&quot;&gt;Git workflow for beginners&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/articles/fork-a-repo&quot;&gt;Forking&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/channel/UCP7RrmoueENv9TZts3HXXtw&quot;&gt;Training and Guides&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=ifAEho6BmH0&amp;amp;list=PLg7s6cbtAD17uAwaZwiykDci_q3te3CTY&quot;&gt;Sharing and Collaborating&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/section&gt;
+    &lt;section&gt;
+&lt;a href=&quot;http://pcottle.github.io/learnGitBranching/&quot;&gt;&lt;img src=&quot;/assets/git-branching.png&quot; alt=&quot;Git branching game!&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;Fork and clone&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git clone https://github.com/YOUR-NAME/edav.git
+cd edav
+git remote add upstream https://github.com/stat4701/edav.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/github/media/master/octocats/octocat.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/section&gt;
+&lt;/section&gt;&lt;/p&gt;
+</description>
+                <link>http://stat4701.github.io/edav/2015/01/20/intro</link>
+                <guid>http://stat4701.github.io/edav/2015/01/20/intro</guid>
+                <pubDate>2015-01-20T00:00:00-05:00</pubDate>
+        </item>
+
+
+</channel>
+</rss>
