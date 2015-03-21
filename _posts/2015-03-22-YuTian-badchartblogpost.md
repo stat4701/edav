@@ -9,7 +9,7 @@ tags: Bad Charts, Presentation, Music
 <section>
 ######Test for the blog post.
 
-```r
+```
 #Install rMaps
 require(devtools)
 install_github('ramnathv/rCharts@dev')
