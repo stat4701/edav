@@ -7,13 +7,12 @@ description: Blog post presentation
 tags: Bad Charts, Presentation, Music
 ---
 <section>
-Test for the blog post.
-```
+######Test for the blog post.
+```r
 #Install rMaps
 require(devtools)
 install_github('ramnathv/rCharts@dev')
 install_github('ramnathv/rMaps')
-
 #libraries to load
 library(rMaps)
 library(Quandl)
