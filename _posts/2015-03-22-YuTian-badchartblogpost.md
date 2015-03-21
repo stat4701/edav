@@ -9,7 +9,7 @@ tags: Bad Charts, Presentation, Music
 <section>
 ######Test for the blog post.
 
-```
+```{r}
 #Install rMaps
 require(devtools)
 install_github('ramnathv/rCharts@dev')
@@ -29,6 +29,7 @@ library(rcharts)
 <section>
 ###### rMaps and Leaflet Presentation
 [![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/rMapsExample.png)](http://rpubs.com/mbisaha/63535)
+
 </section>
 
 <section>
@@ -41,4 +42,5 @@ library(rcharts)
 
 * [*Leaflet*](http://leafletjs.com)
 * [*Leaflet for R*](http://rstudio.github.io/leaflet/)
+
 </section>
