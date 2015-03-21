@@ -99,46 +99,43 @@ Please choose two or three of these and come prepared with reactions and questio
 ## 2015-03-19 **Spring break**
 
 ## 2015-03-24 blogposts (due) presentations
+
 ## 2015-03-26 blogposts presentations
 
              
-## 2015-03-24 web services/python *conflict*
+## 2015-03-31 web services/python
 
 > - Presentation: scraping something with beautifulsoup
 > - Presentation: using twitter or yelp with python
 
-## 2015-03-26 web services/r *conflict*
+## 2015-04-02 web services/r
 
 > - Presentation: twitteR and Rfacebook
 > - Presentation: scraping with rvest
              
-## 2015-03-31 ipnb, beaker
+## 2015-03-07 ipnb, beaker
 
 > - Presentation: working with data across tools with beaker
 > - Presentation: making and sharing iPython notebooks
 
-## 2015-04-02 shiny and rjsonio
+## 2015-04-09 shiny and rjsonio
 
 Read: [Research directions in data wrangling](http://idl.cs.washington.edu/papers/data-wrangling) and the [Shiny tutorial](http://shiny.rstudio.com).
 
 > - Presentation: shiny app
 > - Presentation: shiny app
              
-## 2015-04-07 linked displays and brushing; parallel coordinates
+## 2015-04-14 linked displays and brushing; parallel coordinates
 
 Read [Heer et al, animated transitions](http://idl.cs.washington.edu/papers/animated-transitions/).
 
-> - Presentation: fancy linked d3 parallel coordinates for another dataset
+> - Presentation: database modeling
 > - Presentation: another linked display (slider or brush)
 
-## 2015-04-09 crossfilter, crosslet
+## 2015-04-16 crossfilter, crosslet
 
 > - Presentation: using crossfilter on some other data (acs? bls?)
 > - Presentation: crosslet for citibike data?
-
-## 2015-04-14 TBD
-
-## 2015-04-16 TBD
 
 ## 2015-04-21 demo days teams 1-3
 ## 2015-04-23 demo days teams 4-6
