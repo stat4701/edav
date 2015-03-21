@@ -8,6 +8,7 @@ tags: Bad Charts, Presentation, Music
 ---
 <section>
 ######Test for the blog post.
+
 ```r
 #Install rMaps
 require(devtools)
@@ -22,6 +23,7 @@ library(plyr)
 library(dplyr)
 library(rcharts)
 ```
+
 </section>
 
 <section>
