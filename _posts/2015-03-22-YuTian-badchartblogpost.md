@@ -6,7 +6,7 @@ date: "March 22, 2015"
 description: Blog post presentation
 tags: Bad Charts, Presentation, Music
 ---
-<section>
+Test for the blog post.
 ```
 #Install rMaps
 require(devtools)
@@ -21,7 +21,6 @@ library(knitr)
 library(plyr)
 library(dplyr)
 library(rcharts)
-
 ```
 
 <section>
