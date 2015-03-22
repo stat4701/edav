@@ -1,9 +1,9 @@
 ---
-layout: pres
+layout: post
 title: Bad Charts in Music Industry
 author: Yu Tian
 date: "March 22, 2015"
-description: Blog post presentation
+description: Blog Post & Presentation
 tags: Bad Charts, Presentation, Music
 ---
 <section>
