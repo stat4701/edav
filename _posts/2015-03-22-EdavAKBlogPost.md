@@ -13,7 +13,7 @@ A link to my previous chart project with Cathy getting NYPD Vehicla Crash data w
 
 An image, located where we had used R package rCharts and converted the same data into an interactive charts.
 
-![an image alt text]({{ site.baseurl }}rChart1.jpg) "Interactive Chart example"
+![an image alt text]({{ site.baseurl }}/assets/rChart1.jpg) "Interactive Chart example"
 
 * Here are major bullet points for this blog:
   + Create a page that can have Text, Links, enbedded images, possibly some R Code
