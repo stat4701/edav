@@ -1,3 +1,12 @@
+---
+title: "Breaking down consumer expenditures"
+author: "Jordan Rosenblum"
+output: html_document
+layout: post
+description: EDAV bad graph critique and improvement blogpost
+tags: assignments
+---
+
 # Breaking down consumer expenditures - Jordan Rosenblum's EDAV bad graph critique and improvement blogpost
 
 ## All about my junk chart
