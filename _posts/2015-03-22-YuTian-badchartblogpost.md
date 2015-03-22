@@ -27,9 +27,9 @@ With the vertical axis fixed, readers can easily read the number each bar repres
 
 ### II. Message Misalignment
 
-However, the biggest problem of this chart is not telling the story. If you read the article, you'll doubt the that the chart and the article aren't the same thing at all.
+However, the biggest problem of this chart is not telling the story. If you read the article, you'll doubt the that the chart and the article aren't about the same thing at all.
 
-*What do we get from the chart?*
+#### *What do we get from the chart?*
 
 * A decreasing trend.
 
@@ -39,17 +39,25 @@ Since the chart is organized in annual order, a very straightforward message is 
 
 The stacked column bar does give us an idea about how superstar income and remainder income compared against each other during the years, however, the exact proportiona are hard to read from the absolute amounts except for the most recent year 2013.
 
-*What the idea of the article?*
+#### *What's the idea of the article?*
+
+* Superstar Aritist Economy
+
+One of the key findings of this article is that while artists’ share of total recorded-music income has grown from 14% in 2000 to 17% in 2013, the top 1% of musical works are now accounting for 77% of all those artist revenues thanks in part to a “tyranny of choice” on digital services. One background knowledge is that digital music services were expected to balance the share of income between superstars and the remainder artists as a result of "long tail effect", but it ended up fuelling a "superstar aritist economy" because only a small portion (1%) of the digital catelogue was streamed or purchased seriously. 
+
+From the context, it would be nicer to deliver the message in the chart that the top 1% (superstar) artists continue to earn about 75 percent of total income and this distribution has not changed noticeably despite the Long Tail phenonmenon. Therefore, it would be more appropriate to emphasize the proportions instead of the absolute amounts in the *stacked column chart^{1}*. I would be more interested in how the proportions changed over time, thus I will consider using a *100% stacked column chart^{2}* to show the evolvement in proportions and use a line chart layered on top to show the trends in absolute amounts. 
+
+Note 1: *Stacked column charts* show the relationship of individual items to the whole, comparing the contribution of each value to a total across categories. 
+
+Note 2: Maybe should use *100% stacked column chart* compares the percentage that each value contributes to a total across categories.
 
 
+### III. How to improve
 
 * Bad choice of stacked column chart
 
 Trying to make it fancy to use stacked column chart but end up messy. (Nice try)
 
-Stacked column charts show the relationship of individual items to the whole, comparing the contribution of each value to a total across categories. A stacked column chart displays values in 2-D vertical stacked rectangles. A 3-D stacked column chart displays the data by using a 3-D perspective only. A third value axis (depth axis) is not used.
-
-Maybe should use 100% stacked column instead. 100% stacked column charts and 100% stacked column in 3-D charts compare the percentage that each value contributes to a total across categories. A 100% stacked column chart displays values in 2-D vertical 100% stacked rectangles. A 3-D 100% stacked column chart displays the data by using a 3-D perspective only. A third value axis (depth axis) is not used.
 
 
 ```{r}
