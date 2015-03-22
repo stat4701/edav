@@ -6,8 +6,8 @@ date: "March 22, 2015"
 description: Blog Post & Presentation
 tags: Bad Charts, Presentation, Music
 ---
-<section>
-######Test for the blog post.
+
+#Test for the blog post.
 
 ```{r}
 #Install rMaps
@@ -24,16 +24,11 @@ library(dplyr)
 library(rcharts)
 ```
 
-</section>
-
-<section>
-###### rMaps and Leaflet Presentation
+# rMaps and Leaflet Presentation
 [![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/rMapsExample.png)](http://rpubs.com/mbisaha/63535)
 
-</section>
 
-<section>
-###### rMaps and Leaflet links to get you started
+# rMaps and Leaflet links to get you started
 [![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/rMaps_logo.png)](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/rMaps.png)
 
 * [*rMaps*](http://rmaps.github.io)
@@ -43,4 +38,3 @@ library(rcharts)
 * [*Leaflet*](http://leafletjs.com)
 * [*Leaflet for R*](http://rstudio.github.io/leaflet/)
 
-</section>
