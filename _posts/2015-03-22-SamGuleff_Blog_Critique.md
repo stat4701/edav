@@ -1,5 +1,5 @@
 ---
-title: "Bad Graph Critique"
+title: "Sam Guleff Bad Graph Critique"
 author: "Sam Guleff"
 date: "Thursday, March 22, 2015"
 output: html_document
