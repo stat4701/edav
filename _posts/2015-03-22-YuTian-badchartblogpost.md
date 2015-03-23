@@ -6,9 +6,8 @@ date: "March 22, 2015"
 description: Blog Post & Presentation
 tags: Bad Charts, Presentation, Music
 ---
-# *Bad Charts in Music Industry*
 
-## Case I: A Report About "Superstar Effect", A Chart About Nothing...
+## A Report About "Superstar Effect", A Chart About Nothing...
 
 Here is a chart from the [*report*](http://musically.com/2014/03/04/how-digital-music-services-may-be-fuelling-a-superstar-artist-economy/?curator=MediaREDEF) called "How digital music services may be fuelling a ‘superstar artist economy’", by Stuart Dredge.
 
@@ -53,6 +52,27 @@ Note 2: Maybe should use *100% stacked column chart* compares the percentage tha
 
 
 ### III. How to improve
+
+The chart needs to be fixed so that it doesn't have any basic construction issues and more is consistent with the report context.
+
+Here is a table with information got directly from the chart and calculations I made accordingly.
+
+|year	|superstar	|remainder	|total	    |superstar_proportion	|remainder_proportion|
+|-----|-----------|-----------|-----------|---------------------|--------------------|
+|2000	|2.72	      |1.11	      |3.83	      |0.710182768	        |0.289817232         |
+|2001	|2.71	      |1.1	      |3.81	      |0.711286089	        |0.288713911         |
+|2002	|2.53	      |1.01	      |3.54	      |0.714689266	        |0.285310734         |
+|2003	|2.36	      |0.92	      |3.28	      |0.719512195	        |0.280487805         |
+|2004	|2.37	      |0.9	      |3.27	      |0.724770642	        |0.275229358         |
+|2005	|2.39	      |0.87	      |3.26	      |0.733128834	        |0.266871166         |
+|2006	|2.43	      |0.83	      |3.26	      |0.745398773	        |0.254601227         |
+|2007	|2.36	      |0.77	      |3.13	      |0.75399361	          |0.24600639          |
+|2008	|2.28	      |0.73	      |3.01	      |0.757475083	        |0.242524917         |
+|2009	|2.18	      |0.68	      |2.86	      |0.762237762	        |0.237762238         |
+|2010	|2.07	      |0.64	      |2.71	      |0.763837638	        |0.236162362         |
+|2011	|2.1	      |0.64	      |2.74	      |0.766423358	        |0.233576642         |
+|2012	|2.12	      |0.65	      |2.77	      |0.76534296	          |0.23465704          |
+|2013	|2.17	      |0.66	      |2.83	      |0.766784452	        |0.233215548         |
 
 * Bad choice of stacked column chart
 
