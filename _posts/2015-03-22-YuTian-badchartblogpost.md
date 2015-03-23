@@ -57,6 +57,10 @@ The chart needs to be fixed so that it doesn't have any basic construction issue
 
 Here is a table with information got directly from the chart and calculations I made accordingly.
 
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
 
 | year	|superstar	|remainder	|total	    |superstar proportion	|remainder proportion|
 | ----- |-----------|-----------|-----------|---------------------|--------------------|
