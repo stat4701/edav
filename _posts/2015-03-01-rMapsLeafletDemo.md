@@ -4,7 +4,7 @@ title: Leaflet & rMaps
 author: Sam Guleff and Mike Bisaha
 date: "March 01, 2015"
 description: Brief intro to rMaps and Leaflet
-tags: Mike, Sam Guleff, rMaps, Leaflet, Class Presentation
+tags: Mike Bisaha, Sam Guleff, rMaps, Leaflet, Class Presentation
 ---
 <section>
 	<section>
@@ -25,7 +25,6 @@ tags: Mike, Sam Guleff, rMaps, Leaflet, Class Presentation
 </section>
 </section>
 
-
 <section>
 	<section>
 ###### What is Leaflet?
@@ -39,6 +38,9 @@ tags: Mike, Sam Guleff, rMaps, Leaflet, Class Presentation
 ######  The Bad:
 <li> LeafletJS: Harder to pick up without working JS knowledge. Features great for basic mapping, but more complext styles are difficult, if even possible. </li>
 <li> Leaflet for R: This package is young and still under active development, so feature set isn't fully fleshed out. </li>
+</section>
+<section>
+* [*Leaflet for R Walkthrough/Demo*](http://rpubs.com/bisaha/64077)
 </section>
 </section>
 
@@ -87,9 +89,3 @@ tags: Mike, Sam Guleff, rMaps, Leaflet, Class Presentation
 ### Questions
 </section>
 </section>
-
-
-
-
-
-
