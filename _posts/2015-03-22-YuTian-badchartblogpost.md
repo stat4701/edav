@@ -58,8 +58,8 @@ The chart needs to be fixed so that it doesn't have any basic construction issue
 Here is a table with information got directly from the chart and calculations I made accordingly.
 
 
-|year	|superstar	|remainder	|total	    |superstar_proportion	|remainder_proportion|
-|-----|-----------|-----------|-----------|---------------------|--------------------|
+|year	|superstar	|remainder	|total	    |superstar proportion	|remainder proportion|
+| --- |-----------|-----------|-----------|---------------------|--------------------|
 |2000	|2.72	      |1.11	      |3.83	      |0.710182768	        |0.289817232         |
 |2001	|2.71	      |1.1	      |3.81	      |0.711286089	        |0.288713911         |
 |2002	|2.53	      |1.01	      |3.54	      |0.714689266	        |0.285310734         |
