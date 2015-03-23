@@ -57,23 +57,132 @@ The chart needs to be fixed so that it doesn't have any basic construction issue
 
 Here is a table with information got directly from the chart and calculations I made accordingly.
 
-<table>
-<thead>
-<tr>
-  <th>First Header</th>
-  <th>Second Header</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>Content Cell</td>
-  <td>Content Cell</td>
-</tr>
-<tr>
-  <td>Content Cell</td>
-  <td>Content Cell</td>
-</tr>
-</tbody>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-031e">year</th>
+    <th class="tg-031e">superstar</th>
+    <th class="tg-031e">remainder</th>
+    <th class="tg-031e">total</th>
+    <th class="tg-031e">superstar_proportion</th>
+    <th class="tg-031e">remainder_proportion</th>
+  </tr>
+  <tr>
+    <td class="tg-031e">2000</td>
+    <td class="tg-031e">2.72</td>
+    <td class="tg-031e">1.11</td>
+    <td class="tg-031e">3.83</td>
+    <td class="tg-031e">0.710182768</td>
+    <td class="tg-031e">0.289817232</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">2001</td>
+    <td class="tg-031e">2.71</td>
+    <td class="tg-031e">1.1</td>
+    <td class="tg-031e">3.81</td>
+    <td class="tg-031e">0.711286089</td>
+    <td class="tg-031e">0.288713911</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">2002</td>
+    <td class="tg-031e">2.53</td>
+    <td class="tg-031e">1.01</td>
+    <td class="tg-031e">3.54</td>
+    <td class="tg-031e">0.714689266</td>
+    <td class="tg-031e">0.285310734</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">2003</td>
+    <td class="tg-031e">2.36</td>
+    <td class="tg-031e">0.92</td>
+    <td class="tg-031e">3.28</td>
+    <td class="tg-031e">0.719512195</td>
+    <td class="tg-031e">0.280487805</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">2004</td>
+    <td class="tg-031e">2.37</td>
+    <td class="tg-031e">0.9</td>
+    <td class="tg-031e">3.27</td>
+    <td class="tg-031e">0.724770642</td>
+    <td class="tg-031e">0.275229358</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">2005</td>
+    <td class="tg-031e">2.39</td>
+    <td class="tg-031e">0.87</td>
+    <td class="tg-031e">3.26</td>
+    <td class="tg-031e">0.733128834</td>
+    <td class="tg-031e">0.266871166</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">2006</td>
+    <td class="tg-031e">2.43</td>
+    <td class="tg-031e">0.83</td>
+    <td class="tg-031e">3.26</td>
+    <td class="tg-031e">0.745398773</td>
+    <td class="tg-031e">0.254601227</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">2007</td>
+    <td class="tg-031e">2.36</td>
+    <td class="tg-031e">0.77</td>
+    <td class="tg-031e">3.13</td>
+    <td class="tg-031e">0.75399361</td>
+    <td class="tg-031e">0.24600639</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">2008</td>
+    <td class="tg-031e">2.28</td>
+    <td class="tg-031e">0.73</td>
+    <td class="tg-031e">3.01</td>
+    <td class="tg-031e">0.757475083</td>
+    <td class="tg-031e">0.242524917</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">2009</td>
+    <td class="tg-031e">2.18</td>
+    <td class="tg-031e">0.68</td>
+    <td class="tg-031e">2.86</td>
+    <td class="tg-031e">0.762237762</td>
+    <td class="tg-031e">0.237762238</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">2010</td>
+    <td class="tg-031e">2.07</td>
+    <td class="tg-031e">0.64</td>
+    <td class="tg-031e">2.71</td>
+    <td class="tg-031e">0.763837638</td>
+    <td class="tg-031e">0.236162362</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">2011</td>
+    <td class="tg-031e">2.1</td>
+    <td class="tg-031e">0.64</td>
+    <td class="tg-031e">2.74</td>
+    <td class="tg-031e">0.766423358</td>
+    <td class="tg-031e">0.233576642</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">2012</td>
+    <td class="tg-031e">2.12</td>
+    <td class="tg-031e">0.65</td>
+    <td class="tg-031e">2.77</td>
+    <td class="tg-031e">0.76534296</td>
+    <td class="tg-031e">0.23465704</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">2013</td>
+    <td class="tg-031e">2.17</td>
+    <td class="tg-031e">0.66</td>
+    <td class="tg-031e">2.83</td>
+    <td class="tg-031e">0.766784452</td>
+    <td class="tg-031e">0.233215548</td>
+  </tr>
 </table>
 
 | year	|superstar	|remainder	|total	    |superstar proportion	|remainder proportion|
