@@ -185,55 +185,75 @@ Here is a table with information got directly from the chart and calculations I 
   </tr>
 </table>
 
+
+#### R code
 I used the following code in R to get my improved version of the chart.
 
+*Get Set Up*
 ```{r}
-#Install rMaps
-require(devtools)
-install_github('ramnathv/rCharts@dev')
-install_github('ramnathv/rMaps')
-#libraries to load
-library(rMaps)
-library(Quandl)
-library(reshape2)
-library(knitr)
-library(plyr)
-library(dplyr)
-library(rcharts)
+# load in libraries used in script
+library(reshape)
+library(ggplot2)
+library(scales) 
+
+# set working directory and read in data.
+setwd("~/Documents/QMSS/2015spring/DataViz/blogpost_badchart/")
+data <- read.csv("data.csv",header=TRUE)
+
+# reshape the data for plotting
+df1 <- data[,c("year","superstar_proportion","remainder_proportion")]
+DF1 <- melt(df1, id.var="year")
+
+df2 <- data[,c("year","superstar","remainder","total")]
+DF2 <- melt(df2, id.var="year")
 ```
+
+*Charts*
+
+I will be using a stacked bar plot and a time series line plot, and then combine them together on one chart by adding layers using ggplot, here is the code for getting the plot separately. 
+
+* Change colors to make prettier.
+
+* Use "group" to plot multiple time series lines at one time.
+
+```{r}
+# The two plots
+bar <- ggplot (DF1, aes(x = as.character(year), y = value ,fill = variable )) + 
+      geom_bar(stat = "identity") +
+      labs (x = 'year', y = 'Income Proportions(100%)' ) +
+      scale_fill_manual(values = alpha(c("blue", "red"), .3)) +
+      theme_bw()
+
+line <- ggplot (DF2, aes(x = as.character(year), y=value, group=variable,colour = variable)) +
+  geom_line() +
+  labs (x = 'year', y = 'Income (million $)') +
+  scale_fill_hue() 
+```
+Here is the two charts from the program output:
+
+![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/rMapsExample.png)
+
+![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/rMapsExample.png)
+
+*Combined Chart*
+
+The combined version looks like this and was got from these few lines of code.
+
+![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/rMapsExample.png)
+
+```{r}
+ggplot (data=DF1, mapping=aes(x = as.character(year))) + 
+  geom_bar(stat = "identity", mapping=aes(y = value*4 ,fill = variable )) +
+  geom_text(aes(y=abs(4-value*4)+0.5, ymax=value, label=paste(round(value*100, 2), "%", sep = ""))) +  
+  geom_line (data=DF2, aes(y=value, group=variable,colour = variable)) +
+  labs (title = 'Music Income & Share', x = 'year', y = 'Income (million $)') +
+  theme(legend.title=element_blank(),axis.text.y = element_text(hjust = 0)) +
+  scale_fill_manual(values = alpha(c("blue", "red"), .3)) 
+```
+
 
 * Bad choice of stacked column chart
 
 Trying to make it fancy to use stacked column chart but end up messy. (Nice try)
 
-
-
-```{r}
-#Install rMaps
-require(devtools)
-install_github('ramnathv/rCharts@dev')
-install_github('ramnathv/rMaps')
-#libraries to load
-library(rMaps)
-library(Quandl)
-library(reshape2)
-library(knitr)
-library(plyr)
-library(dplyr)
-library(rcharts)
-```
-
-## rMaps and Leaflet Presentation
-[![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/rMapsExample.png)](http://rpubs.com/mbisaha/63535)
-
-
-## rMaps and Leaflet links to get you started
-[![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/rMaps_logo.png)](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/rMaps.png)
-
-* [*rMaps*](http://rmaps.github.io)
-
-[![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/Leaflet_logo.png)](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/Leaflet_logo.png)
-
-* [*Leaflet*](http://leafletjs.com)
-* [*Leaflet for R*](http://rstudio.github.io/leaflet/)
 
