@@ -53,6 +53,7 @@ Now that I have the raw data imported in R, I started experimenting with various
 - Reformat percentage and dollars so they print nicely in the chart
 - Get percentage values to print inside of each individual stacked bar category
 - Experiment with text sizes, legend size, and other themes to get the chart to look as clean as possible
+- Change the color palette of the charts using RColorBrewer so they do not look like the standard rainbow
 - Get the chart as a whole to take up the width of the markdown file
 
 The code for all of the above bullets and the chart itself are below:
@@ -89,12 +90,13 @@ plot1 <- ggplot(datm, aes(x = factor(variable), y = value, fill = Category)) +
   coord_flip() +
   xlab('Year') + 
   ylab('Average annual expenditure') +
+  scale_fill_brewer(palette="Spectral") +
   theme(axis.text=element_text(size=20), axis.title=element_text(size=20), legend.text=element_text(size=20), legend.title=element_text(size=20), legend.key.size=unit(1.5,"cm"))
 
 plot1
 ```
 
-![](https://raw.githubusercontent.com/jmrosen155/edav/gh-pages/assets/Blogpost_files/figure-html/unnamed-chunk-2-1.png)
+![](https://raw.githubusercontent.com/jmrosen155/edav/gh-pages/assets/jordan-blogpost-files/Blogpost_files/figure-html/unnamed-chunk-2-1.png)
 
 In the above chart, it is pretty easy to tell that the percentage breakdown of consumer expenditures by category has been largely consistent over the last 3 years. For the most part, absolute expenditures in each category are just scaled up or down based on the total expenditure amount. It would have been very difficult to come to this conclusion just from looking at the original 'junk' chart.
 
@@ -129,12 +131,13 @@ plot2 <- ggplot(expinc, aes(x = factor(variable), y = value, fill = Category)) +
   coord_flip() +
   xlab('Year') + 
   ylab('Amount') +
+  scale_fill_brewer(palette="Spectral") +
   theme(axis.text=element_text(size=20), axis.title=element_text(size=20), legend.text=element_text(size=20), legend.title=element_text(size=20), legend.key.size=unit(1.5,"cm"))
 
 plot2
 ```
 
-![](https://raw.githubusercontent.com/jmrosen155/edav/gh-pages/assets/Blogpost_files/figure-html/unnamed-chunk-3-1.png)
+![](https://raw.githubusercontent.com/jmrosen155/edav/gh-pages/assets/jordan-blogpost-files/Blogpost_files/figure-html/unnamed-chunk-3-1.png)
 
 Over the 3 years from 2011 to 2013, there really isn't much more to add to the story other than changes in income seem to be the driver of changes in expenditures, with total expenditures consistently being about 80% of total income before taxes. Categorical expenditures have tracked total expenditures (confirmed in the first chart above) and total expenditures have tracked total income (confirmed in the second chart above).
 
