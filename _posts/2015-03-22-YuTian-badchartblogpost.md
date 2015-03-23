@@ -57,6 +57,7 @@ The chart needs to be fixed so that it doesn't have any basic construction issue
 
 Here is a table with information got directly from the chart and calculations I made accordingly.
 
+
 |year	|superstar	|remainder	|total	    |superstar_proportion	|remainder_proportion|
 |-----|-----------|-----------|-----------|---------------------|--------------------|
 |2000	|2.72	      |1.11	      |3.83	      |0.710182768	        |0.289817232         |
@@ -73,6 +74,8 @@ Here is a table with information got directly from the chart and calculations I 
 |2011	|2.1	      |0.64	      |2.74	      |0.766423358	        |0.233576642         |
 |2012	|2.12	      |0.65	      |2.77	      |0.76534296	          |0.23465704          |
 |2013	|2.17	      |0.66	      |2.83	      |0.766784452	        |0.233215548         |
+
+
 
 * Bad choice of stacked column chart
 
