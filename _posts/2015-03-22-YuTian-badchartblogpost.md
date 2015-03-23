@@ -231,15 +231,15 @@ line <- ggplot (DF2, aes(x = as.character(year), y=value, group=variable,colour 
 ```
 Here is the two charts from the program output:
 
-![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/rMapsExample.png)
+![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/bar.png)
 
-![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/rMapsExample.png)
+![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/line.png)
 
 *Combined Chart*
 
 The combined version looks like this and was got from these few lines of code.
 
-![](https://raw.githubusercontent.com/sguleff/edav/gh-pages/_posts/sguleff/rMapsExample.png)
+![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/mychart.png)
 
 ```{r}
 ggplot (data=DF1, mapping=aes(x = as.character(year))) + 
@@ -251,9 +251,80 @@ ggplot (data=DF1, mapping=aes(x = as.character(year))) +
   scale_fill_manual(values = alpha(c("blue", "red"), .3)) 
 ```
 
+### IV. Dual Axis Chart in R
 
-* Bad choice of stacked column chart
+If you're layering two charts with very different scale, you might want to have two vertical axes with one on the left side and the other on the right. Here are some good sources I found online that may be helpful.
 
-Trying to make it fancy to use stacked column chart but end up messy. (Nice try)
+#### *Dual axis using "plot"*
 
+```{r}
+## set up test data
+time <- seq(0,72,12)
+betagal.abs <- c(0.05,0.18,0.25,0.31,0.32,0.34,0.35)
+cell.density <- c(0,1000,2000,3000,4000,5000,6000)
+
+## add extra space to right margin of plot within frame
+par(mar=c(5, 4, 4, 6) + 0.1)
+
+## Plot first set of data and draw its axis
+plot(time, betagal.abs, pch=16, axes=FALSE, ylim=c(0,1), xlab="", ylab="", 
+   type="b",col="black", main="Mike's test data")
+axis(2, ylim=c(0,1),col="black",las=1)  ## las=1 makes horizontal labels
+mtext("Beta Gal Absorbance",side=2,line=2.5)
+box()
+
+## Allow a second plot on the same graph
+par(new=TRUE)
+
+## Plot the second plot and put axis scale on right
+plot(time, cell.density, pch=15,  xlab="", ylab="", ylim=c(0,7000), 
+    axes=FALSE, type="b", col="red")
+## a little farther out (line=4) to make room for labels
+mtext("Cell Density",side=4,col="red",line=4) 
+axis(4, ylim=c(0,7000), col="red",col.axis="red",las=1)
+
+## Draw the time axis
+axis(1,pretty(range(time),10))
+mtext("Time (Hours)",side=1,col="black",line=2.5)  
+
+## Add Legend
+legend("topleft",legend=c("Beta Gal","Cell Density"),
+  text.col=c("black","red"),pch=c(16,15),col=c("black","red"))
+```
+
+#### *Dual axis in ggplot*
+
+```{r}
+library(ggplot2)
+library(gtable)
+library(grid)
+
+# two plots
+p1 <- ggplot(mtcars, aes(mpg, disp)) + geom_line(colour = "blue") + theme_bw()
+p2 <- ggplot(mtcars, aes(mpg, drat)) + geom_line(colour = "red") + theme_bw() %+replace% 
+  theme(panel.background = element_rect(fill = NA))
+
+# extract gtable
+g1 <- ggplot_gtable(ggplot_build(p1))
+g2 <- ggplot_gtable(ggplot_build(p2))
+
+# overlap the panel of 2nd plot on that of 1st plot
+pp <- c(subset(g1$layout, name == "panel", se = t:r))
+g <- gtable_add_grob(g1, g2$grobs[[which(g2$layout$name == "panel")]], pp$t, 
+                     pp$l, pp$b, pp$l)
+
+# axis tweaks
+ia <- which(g2$layout$name == "axis-l")
+ga <- g2$grobs[[ia]]
+ax <- ga$children[[2]]
+ax$widths <- rev(ax$widths)
+ax$grobs <- rev(ax$grobs)
+ax$grobs[[1]]$x <- ax$grobs[[1]]$x - unit(1, "npc") + unit(0.15, "cm")
+g <- gtable_add_cols(g, g2$widths[g2$layout[ia, ]$l], length(g$widths) - 1)
+g <- gtable_add_grob(g, ax, pp$t, length(g$widths) - 1, pp$b)
+
+# draw it
+grid.newpage()
+grid.draw(g)
+```
 
