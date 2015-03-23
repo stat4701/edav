@@ -293,6 +293,8 @@ legend("topleft",legend=c("Beta Gal","Cell Density"),
   text.col=c("black","red"),pch=c(16,15),col=c("black","red"))
 ```
 
+![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/example1.png)
+
 #### *Dual axis in ggplot*
 
 ```{r}
@@ -328,4 +330,6 @@ g <- gtable_add_grob(g, ax, pp$t, length(g$widths) - 1, pp$b)
 grid.newpage()
 grid.draw(g)
 ```
+
+![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/example2.png)
 
