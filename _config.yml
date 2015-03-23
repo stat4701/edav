@@ -6,7 +6,7 @@ exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 highlighter: pygments
 markdown: redcarpet
 excerpt_separator: ""
-baseurl: http://stat4701.github.io/edav
+baseurl: http://fullmogra.github.io/edav
 
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
@@ -14,10 +14,9 @@ baseurl: http://stat4701.github.io/edav
 title : EDAV
 tagline: Exploratory Data Analysis and Visualization
 author :
-  name : Michael Malecki
-  email : malecki@gmail.com
-  github : malecki
-  twitter : mike_malecki
+  name : Fullmogra
+  email : fullmogra@gmail.com
+  github : fullmogra
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
@@ -27,7 +26,7 @@ author :
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://stat4701.github.io/edav
+production_url : http://fullmogra.github.io/edav
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
@@ -56,7 +55,7 @@ JB :
   #   - Only the following values are falsy: ["", null, false]
   #   - When setting BASE_PATH it must be a valid url.
   #     This means always setting the protocol (http|https) or prefixing with "/"
-  BASE_PATH : http://stat4701.github.io/edav
+  BASE_PATH : http://fullmogra.github.io/edav
 
   # By default, the asset_path is automatically defined relative to BASE_PATH plus the enabled theme.
   # ex: [BASE_PATH]/assets/themes/[THEME-NAME]
