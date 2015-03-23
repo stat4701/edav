@@ -53,6 +53,7 @@ Now that I have the raw data imported in R, I started experimenting with various
 - Reformat percentage and dollars so they print nicely in the chart
 - Get percentage values to print inside of each individual stacked bar category
 - Experiment with text sizes, legend size, and other themes to get the chart to look as clean as possible
+- Change the color palette of the charts using RColorBrewer so they do not look like the standard rainbow
 - Get the chart as a whole to take up the width of the markdown file
 
 The code for all of the above bullets and the chart itself are below:
@@ -89,6 +90,7 @@ plot1 <- ggplot(datm, aes(x = factor(variable), y = value, fill = Category)) +
   coord_flip() +
   xlab('Year') + 
   ylab('Average annual expenditure') +
+  scale_fill_brewer(palette="Spectral") +
   theme(axis.text=element_text(size=20), axis.title=element_text(size=20), legend.text=element_text(size=20), legend.title=element_text(size=20), legend.key.size=unit(1.5,"cm"))
 
 plot1
@@ -129,6 +131,7 @@ plot2 <- ggplot(expinc, aes(x = factor(variable), y = value, fill = Category)) +
   coord_flip() +
   xlab('Year') + 
   ylab('Amount') +
+  scale_fill_brewer(palette="Spectral") +
   theme(axis.text=element_text(size=20), axis.title=element_text(size=20), legend.text=element_text(size=20), legend.title=element_text(size=20), legend.key.size=unit(1.5,"cm"))
 
 plot2
