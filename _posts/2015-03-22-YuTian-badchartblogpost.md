@@ -190,6 +190,7 @@ Here is a table with information got directly from the chart and calculations I 
 I used the following code in R to get my improved version of the chart.
 
 *Get Set Up*
+
 ```{r}
 # load in libraries used in script
 library(reshape)
