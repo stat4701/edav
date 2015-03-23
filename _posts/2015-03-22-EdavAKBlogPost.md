@@ -7,11 +7,12 @@ date: "Sunday, March 22, 2015"
 
 This post is created using R markdown.
 
-[View the markdown used to create this post](../../posts/2015-03-22-EdavAKBlogPost.rmd).
+[View the markdown used to create this post]().
 
-A link to my previous chart project with Cathy getting NYPD Vehicla Crash data where we used RMartdown with R embedded code using ggplo2 has output [Getting data into browser using R ](../2015-02-24-rMarkdown_ggplot_knitr.html). 
+Here is a link that shows HTML page created using RMarkdown, KnitR and ggplot2 packages:
+[Getting data into browser using R ](http://stat4701.github.io/edav/2015/02/24/rMarkdown_ggplot_knitr/). 
 
-An image, located where we had used R package rCharts and converted the same data into an interactive charts.
+Following image shows how same data is converted to display data with an interactive charts using rChart package.
 
 ![an image alt text]({{ site.baseurl }}/assets/rChart1.jpg) "Interactive Chart example"
 
