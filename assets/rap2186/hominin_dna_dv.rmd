@@ -1,0 +1,30 @@
+library(ggplot2)
+makeCircle <- function(center = c(0,0),area = 100, npoints = 100){
+	r <- sqrt(area/pi)
+    tt <- seq(0,2*pi,length.out = npoints)
+    xx <- center[1] + r * cos(tt)
+    yy <- center[2] + r * sin(tt)
+    return(data.frame(x = xx, y = yy))
+}
+
+neanderthalPct = 1.9
+denisovanPct = 3.6
+
+totalDNA <- makeCircle()
+neanderthalDNA <- makeCircle(c(3,0),neanderthalPct)
+denisovanDNA <- makeCircle(c(-3,0),denisovanPct)
+avgNeanderthalDNA <- makeCircle(c(3,0),2.1)
+avgDenisovanDNA <- makeCircle(c(-3,0),2.1)
+
+thePlot = ggplot(totalDNA,aes(x,y)) + geom_polygon(fill="white") 
+thePlot = thePlot + geom_polygon(aes(x=neanderthalDNA$x, y=neanderthalDNA$y,color="Your Neanderthal %"), fill="light blue") 
+thePlot = thePlot + geom_polygon(aes(x=denisovanDNA$x, y=denisovanDNA$y, color="Your Denisovan %"), fill="light green")
+thePlot = thePlot + geom_path(aes(x=avgNeanderthalDNA$x, y=avgNeanderthalDNA$y, color="Avg Observed Neanderthal (2.1%)"),linetype=3) 
+thePlot = thePlot + geom_path(aes(x=avgDenisovanDNA$x, y=avgDenisovanDNA$y, color="Avg Observed Denisovan (2.1%)"),linetype=3)
+thePlot = thePlot + scale_color_manual(name='', values=c("Your Denisovan %"="light green", "Your Neanderthal %"="light blue","Avg Observed Denisovan (2.1%)"="dark green", "Avg Observed Neanderthal (2.1%)"="dark blue" ), guide="legend")
+thePlot = thePlot + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),axis.ticks = element_blank(), axis.text = element_blank())
+thePlot = thePlot + labs(title = "Your Hominin Ancestry", x="",y="", axis.text="")
+thePlot = thePlot + annotate("text", x = 3, y = 0, label = paste(neanderthalPct,"%"))
+thePlot = thePlot + annotate("text", x = -3, y = 0, label = paste(denisovanPct,"%"))
+thePlot = thePlot + guides(color = guide_legend(override.aes = list(linetype=c(3,3,0,0), fill=c("white", "white", "light green", "light blue"))))
+thePlot
