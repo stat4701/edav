@@ -139,7 +139,7 @@ plot2 <- ggplot(expinc, aes(x = factor(variable), y = value, fill = Category)) +
 plot2
 ```
 
-![](https://raw.githubusercontent.com/jmrosen155/edav/gh-pages/assets/jordan-blogpost-files/Blogpost_files/figure-html/figure2.png)
+<img src="https://raw.githubusercontent.com/jmrosen155/edav/gh-pages/assets/jordan-blogpost-files/Blogpost_files/figure-html/unnamed-chunk-3-1.png" alt="Drawing" style="width: 700px;"/>
 
 Over the 3 years from 2011 to 2013, there really isn't much more to add to the story other than changes in income seem to be the driver of changes in expenditures, with total expenditures consistently being about 80% of total income before taxes. Categorical expenditures have tracked total expenditures (confirmed in the first chart above) and total expenditures have tracked total income (confirmed in the second chart above).
 
