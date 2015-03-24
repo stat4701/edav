@@ -7,12 +7,6 @@ description: EDAV bad graph critique and improvement blogpost
 tags: assignments
 ---
 
-.center-image
-{
-    margin: 0 auto;
-    display: block;
-}
-
 ## All about my junk chart
 
 I found charts which outline the breakdown of consumer expenditures going back to 2011 from a website called CreditLoan. The original infographics can be found at the link below:
@@ -104,7 +98,7 @@ plot1 <- ggplot(datm, aes(x = factor(variable), y = value, fill = Category)) +
 plot1
 ```
 
-![](https://raw.githubusercontent.com/jmrosen155/edav/gh-pages/assets/jordan-blogpost-files/Blogpost_files/figure-html/figure1.png){: .center-image }
+![](https://raw.githubusercontent.com/jmrosen155/edav/gh-pages/assets/jordan-blogpost-files/Blogpost_files/figure-html/figure1.png)
 
 In the above chart, it is pretty easy to tell that the percentage breakdown of consumer expenditures by category has been largely consistent over the last 3 years. For the most part, absolute expenditures in each category are just scaled up or down based on the total expenditure amount. It would have been very difficult to come to this conclusion just from looking at the original 'junk' chart.
 
