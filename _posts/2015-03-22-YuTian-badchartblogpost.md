@@ -13,6 +13,8 @@ Here is a chart from the [*report*](http://musically.com/2014/03/04/how-digital-
 
 ![](http://musically.com/wp-content/uploads/2014/03/superstar-music.jpg)
 
+<section>
+
 ### I. Basic Construction Issues
 Let alone how poorly is the chart related to the information it's trying to show, it is junky because of these following construction issues:
 
@@ -23,6 +25,8 @@ The vertical axis on the left is repeated, which should be halved instead, there
 * Data lables are redundant but pointless
 
 With the vertical axis fixed, readers can easily read the number each bar represents, so that the labels on the bars seem to be excessive. The chart will look more neat without them as well.
+
+</section>
 
 ### II. Message Misalignment
 
@@ -44,7 +48,7 @@ The stacked column bar does give us an idea about how superstar income and remai
 
 One of the key findings of this article is that while artists’ share of total recorded-music income has grown from 14% in 2000 to 17% in 2013, the top 1% of musical works are now accounting for 77% of all those artist revenues thanks in part to a “tyranny of choice” on digital services. One background knowledge is that digital music services were expected to balance the share of income between superstars and the remainder artists as a result of "long tail effect", but it ended up fuelling a "superstar aritist economy" because only a small portion (1%) of the digital catelogue was streamed or purchased seriously. 
 
-From the context, it would be nicer to deliver the message in the chart that the top 1% (superstar) artists continue to earn about 75 percent of total income and this distribution has not changed noticeably despite the Long Tail phenonmenon. Therefore, it would be more appropriate to emphasize the proportions instead of the absolute amounts in the *stacked column chart^{1}*. I would be more interested in how the proportions changed over time, thus I will consider using a *100% stacked column chart^{2}* to show the evolvement in proportions and use a line chart layered on top to show the trends in absolute amounts. 
+From the context, it would be nicer to deliver the message in the chart that the top 1% (superstar) artists continue to earn about 75 percent of total income and this distribution has not changed noticeably despite the Long Tail phenonmenon. Therefore, it would be more appropriate to emphasize the proportions instead of the absolute amounts in the *stacked column chart_1*. I would be more interested in how the proportions changed over time, thus I will consider using a *100% stacked column chart_2* to show the evolvement in proportions and use a line chart layered on top to show the trends in absolute amounts. 
 
 Note 1: *Stacked column charts* show the relationship of individual items to the whole, comparing the contribution of each value to a total across categories. 
 
