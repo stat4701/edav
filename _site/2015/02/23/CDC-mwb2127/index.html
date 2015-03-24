@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>CDC Disease Cases - ggplot, ggvis, and choropleth maps</title>
+	<meta name="author" content="Michael Malecki">
+	<link href='/assets/themes/the-minimum/css/style.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="CDC Disease Cases - ggplot, ggvis, and choropleth maps" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<p class="logo"><a href="/">EDAV</a></p>
+				<nav class="nav-global">
+					<ul>
+						<li class="blog"><a href='archive.html'>blog &amp; slides</a></li>
+						<li class="agenda"><a href='http://github.com/stat4701/edav/blob/gh-pages/agenda.md'>agenda</a></li>
+						<li class="category"><a href='categories.html'>categories</a></li>
+						<li class="tag"><a href='tags.html'>tags</a></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">CDC Disease Cases - ggplot, ggvis, and choropleth maps</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					<h1>CDC Disease Incidence Data Exploration</h1>
+
+<h4>Overview</h4>
+
+<p>I started by pulling a sample dataset (Mumps) from the Tycho Project site to investigate disease rates over time. Starting from scratch, I needed to clean the data, aggregate the weekly data points into years, and then aggregate further into a regional view of Mumps cases. After building some exploratory plots in ggplot and ggvis, I also wanted to map individual state data into a choropleth style map to view relative frequency of disease in within a given year.</p>
+
+<h3>Full R Code:</h3>
+<div class="highlight"><pre><code class="language-text" data-lang="text">## Load necessary libraries
+library(&quot;reshape&quot;)
+library(&quot;maps&quot;)
+library(&quot;ggplot2&quot;)
+library(&quot;ggvis&quot;)
+library(&quot;dplyr&quot;)
+
+## Read in csv file, skipping first 2 rows of header data, forcing column classes to integer, and converting &quot;-&quot; into N/As
+Mumps &lt;- read.csv(path.expand(&quot;~/Desktop/MUMPS_DataViz.csv&quot;), header=TRUE, skip=2, sep=&quot;,&quot;, colClasses = &quot;integer&quot;, stringsAsFactors=F, na.strings = &quot;-&quot;)
+
+## Replace all NAs with 0 values
+Mumps[is.na(Mumps)] = 0
+
+## Assign region groups by Federal region designations
+RegionI &lt;- data.frame(State= c(&quot;CONNECTICUT&quot;, &quot;MAINE&quot;, &quot;MASSACHUSETTS&quot;, &quot;NEW.HAMPSHIRE&quot;, &quot;RHODE.ISLAND&quot;, &quot;VERMONT&quot;), Region=&quot;RegionI&quot;)
+RegionII &lt;- data.frame(State= c(&quot;NEW.JERSEY&quot;, &quot;NEW.YORK&quot;), Region=&quot;RegionII&quot;)
+RegionIII &lt;- data.frame(State= c(&quot;DELAWARE&quot;, &quot;DISTRICT.OF.COLUMBIA&quot;, &quot;MARYLAND&quot;, &quot;PENNSYLVANIA&quot;, &quot;VIRGINIA&quot;, &quot;WEST.VIRGINIA&quot;), Region=&quot;RegionIII&quot;)
+RegionIV &lt;- data.frame(State= c(&quot;ALABAMA&quot;, &quot;FLORIDA&quot;, &quot;GEORGIA&quot;, &quot;KENTUCKY&quot;, &quot;MISSISSIPPI&quot;, &quot;NORTH.CAROLINA&quot;, &quot;SOUTH.CAROLINA&quot;, &quot;TENNESSEE&quot;), Region=&quot;RegionIV&quot;)
+RegionV &lt;- data.frame(State= c(&quot;ILLINOIS&quot;, &quot;INDIANA&quot;, &quot;MICHIGAN&quot;, &quot;MINNESOTA&quot;, &quot;OHIO&quot;, &quot;WISCONSIN&quot;), Region=&quot;RegionV&quot;)
+RegionVI &lt;- data.frame(State= c(&quot;ARKANSAS&quot;, &quot;LOUISIANA&quot;, &quot;NEW.MEXICO&quot;, &quot;OKLAHOMA&quot;, &quot;TEXAS&quot;), Region=&quot;RegionVI&quot;)
+RegionVII &lt;- data.frame(State= c(&quot;IOWA&quot;, &quot;KANSAS&quot;, &quot;MISSOURI&quot;, &quot;NEBRASKA&quot;), Region=&quot;RegionVII&quot;)
+RegionVIII &lt;- data.frame(State= c(&quot;COLORADO&quot;, &quot;MONTANA&quot;, &quot;NORTH.DAKOTA&quot;, &quot;SOUTH.DAKOTA&quot;, &quot;UTAH&quot;, &quot;WYOMING&quot;), Region=&quot;RegionVIII&quot;)
+RegionIX &lt;- data.frame(State= c(&quot;ARIZONA&quot;, &quot;California&quot;, &quot;HAWAII&quot;, &quot;NEVADA&quot;), Region=&quot;RegionIX&quot;)
+RegionX &lt;- data.frame(State= c(&quot;ALASKA&quot;, &quot;IDAHO&quot;, &quot;OREGON&quot;, &quot;WASHINGTON&quot;), Region=&quot;RegionX&quot;)
+
+## Bind regions into single dataframe
+Regions &lt;- rbind(RegionI, RegionII, RegionIII, RegionIV, RegionV, RegionVI, RegionVII, RegionVIII, RegionIX, RegionX)
+
+## Aggregate data by week into data by Year
+MumpsbyYear &lt;- aggregate(Mumps, by = list(Mumps$YEAR), FUN=sum)
+MumpsbyYear &lt;- MumpsbyYear[-c(2,3)]
+colnames(MumpsbyYear)[1] &lt;- &quot;Year&quot;
+
+## Transpose dataframe to make columns by Year
+MumpsbyYearT &lt;- t(MumpsbyYear)
+colnames(MumpsbyYearT) &lt;- MumpsbyYearT[1,]
+MumpsbyYearT &lt;- MumpsbyYearT[-c(1),]
+
+## merge state names with Region definitions
+MumpsbyYearTRegion &lt;- merge(MumpsbyYearT, Regions, by.x=&quot;row.names&quot;, by.y=&quot;State&quot;)
+MumpsbyYearTRegion$Region = as.character(MumpsbyYearTRegion$Region)
+
+## Aggregate state data into Regional data
+MumpsbyRegion &lt;- aggregate(MumpsbyYearTRegion[2:37],by = list(MumpsbyYearTRegion$Region), sum)
+colnames(MumpsbyRegion)[1] &lt;- &quot;Region&quot;
+
+## Use &quot;reshape&quot; package to melt data into long form (With Year as variable rather than a column header)
+melt_MumpsbyRegion &lt;- melt(MumpsbyRegion, id=&quot;Region&quot;)
+colnames(melt_MumpsbyRegion)[2] &lt;- &quot;Year&quot;
+colnames(melt_MumpsbyRegion)[3] &lt;- &quot;Cases&quot;
+
+# Line plot of mumps cases over time, by region
+ggplot(data = melt_MumpsbyRegion, aes(x = Year, y = Cases, group=Region, colour=Region)) + geom_line() + geom_point() + scale_x_discrete(breaks=c(&quot;1968&quot;, &quot;1973&quot;, &quot;1978&quot;, &quot;1983&quot;, &quot;1988&quot;,  &quot;1993&quot;,&quot;1998&quot;, &quot;2003&quot;))
+
+
+## ggvis explorations
+regionIDs &lt;- as.vector(unique(melt_MumpsbyRegion$Region))
+Years &lt;- as.vector(unique(melt_MumpsbyRegion$Year))
+melt_MumpsbyRegion$Year &lt;- as.character(melt_MumpsbyRegion$Year)
+
+## bar chart w/selectable Years
+RegionBars &lt;- melt_MumpsbyRegion %&gt;% ggvis(x = ~Region, y = ~Cases) %&gt;% filter(Year == eval(input_radiobuttons(choices = Years, label = &quot;Years&quot;))) %&gt;% layer_bars()
+RegionBars
+
+## chart annual delta by region to see outbreak years
+MbR1 &lt;- MbR2 &lt;- MumpsbyRegion
+MbR1$Region &lt;- NULL
+MbR2$Region &lt;- NULL
+MbR2$&quot;1968&quot; &lt;- NULL
+MbR2 &lt;- mutate(MbR2, 0)
+
+rawYoY &lt;- cbind((MbR2-MbR1),regionIDs)
+rawYoY$&quot;0&quot; &lt;- NULL
+melt_rawYoY &lt;- melt(rawYoY, id = &quot;regionIDs&quot;)
+colnames(melt_rawYoY)[2] &lt;- &quot;Year&quot;
+colnames(melt_rawYoY)[3] &lt;- &quot;YoY&quot;
+
+rawYoYLines &lt;- melt_rawYoY %&gt;% ggvis(x = ~Year, y = ~YoY) %&gt;% filter(regionIDs == eval(input_select(choices = regionIDs, label = &quot;Region&quot;))) %&gt;% layer_lines() $&gt;$ add_axis(&quot;x&quot;, value = c(&quot;1968&quot;, &quot;1973&quot;, &quot;1978&quot;, &quot;1983&quot;, &quot;1988&quot;,  &quot;1993&quot;,&quot;1998&quot;, &quot;2003&quot;))
+rawYoYLines
+
+## Choropleth mapping explorations
+## format state names to match &quot;maps&quot; library spellings
+rownames(MumpsbyYearT) &lt;- tolower(rownames(MumpsbyYearT))
+rownames(MumpsbyYearT) &lt;- gsub(&quot;\\.&quot;, &quot; &quot;, rownames(MumpsbyYearT))
+
+## Weird hack - qplot won&#39;t read &quot;fill&quot; correctly if colnames begin/end with numerals...
+colnames(MumpsbyYearT) &lt;- paste(&quot;Y&quot;, colnames(MumpsbyYearT), &quot;Y&quot;, sep = &quot;&quot;)
+
+## Import states data from &quot;maps&quot; library, and merge with Mumps data
+states &lt;- map_data(&quot;state&quot;)
+choro &lt;- merge(states, MumpsbyYearT, by.x = &quot;region&quot;, by.y=&quot;row.names&quot;)
+choro &lt;- choro[order(choro$order), ]
+
+## Choropleth map of Mumps cases by state - 1968
+qplot(long, lat, data = choro, group = group, fill = Y1968Y, geom=&quot;polygon&quot;)
+
+## Choropleth map of Mumps cases by state - 1978
+qplot(long, lat, data = choro, group = group, fill = Y1978Y, geom=&quot;polygon&quot;)
+
+## Choropleth map of Mumps cases by state - 1988
+qplot(long, lat, data = choro, group = group, fill = Y1988Y, geom=&quot;polygon&quot;)
+
+## Choropleth map of Mumps cases by state - 1998
+qplot(long, lat, data = choro, group = group, fill = Y1998Y, geom=&quot;polygon&quot;)
+</code></pre></div>
+<h3>Results:</h3>
+
+<p>After aggregating weekly data by Year and US federal regions, I wanted to get a broad overview of Mumps trends over time using ggplot.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">ggplot(data = melt_MumpsbyRegion, aes(x = Year, y = Cases, group=Region, colour=Region)) + geom_line() + geom_point() + scale_x_discrete(breaks=c(&quot;1968&quot;, &quot;1973&quot;, &quot;1978&quot;, &quot;1983&quot;, &quot;1988&quot;,  &quot;1993&quot;,&quot;1998&quot;, &quot;2003&quot;))
+</code></pre></div>
+<p><img src="https://raw.githubusercontent.com/mbisaha/edav/gh-pages/assets/mwb2127/CDC%20Data/MumpsbyRegion.png" alt=""></p>
+
+<p>It&#39;s a bit hard to make out the finer details with multiple overlapping plots here. So I moved on to an interactive ggvis plot to view regional trends for individual years.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">RegionBars &lt;- melt_MumpsbyRegion %&gt;% ggvis(x = ~Region, y = ~Cases) %&gt;% filter(Year == eval(input_radiobuttons(choices = Years, label = &quot;Years&quot;))) %&gt;% layer_bars()
+RegionBars
+</code></pre></div>
+<p><img src="https://raw.githubusercontent.com/mbisaha/edav/gh-pages/assets/mwb2127/CDC%20Data/MumpsRegion_ggvis.png" alt=""></p>
+
+<p>I also wanted to spot outbreak years by Region, so plotted the year-on-year delta in Mumps cases for each region. Oddly, ggvis bar charts don&#39;t allow negative values, so a line chart is used instead.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">rawYoYLines &lt;- melt_rawYoY %&gt;% ggvis(x = ~Year, y = ~YoY) %&gt;% filter(regionIDs == eval(input_select(choices = regionIDs, label = &quot;Region&quot;))) %&gt;% layer_lines() $&gt;$ add_axis(&quot;x&quot;, value = c(&quot;1968&quot;, &quot;1973&quot;, &quot;1978&quot;, &quot;1983&quot;, &quot;1988&quot;,  &quot;1993&quot;,&quot;1998&quot;, &quot;2003&quot;))
+rawYoYLines
+</code></pre></div>
+<p><img src="https://raw.githubusercontent.com/mbisaha/edav/gh-pages/assets/mwb2127/CDC%20Data/MumpsDelta_ggvis.png" alt=""></p>
+
+<p>Lastly, I wanted to map out state-by-state data over time. Using the choropleth graph in ggplot, I looked at disease levels across the country every 10 years.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">qplot(long, lat, data = choro, group = group, fill = Y1968Y, geom=&quot;polygon&quot;)
+</code></pre></div>
+<p><img src="https://raw.githubusercontent.com/mbisaha/edav/gh-pages/assets/mwb2127/CDC%20Data/Mumps1968.png" alt="">
+<img src="https://raw.githubusercontent.com/mbisaha/edav/gh-pages/assets/mwb2127/CDC%20Data/Mumps1978.png" alt="">
+<img src="https://raw.githubusercontent.com/mbisaha/edav/gh-pages/assets/mwb2127/CDC%20Data/Mumps1988.png" alt="">
+<img src="https://raw.githubusercontent.com/mbisaha/edav/gh-pages/assets/mwb2127/CDC%20Data/Mumps1998.png" alt=""></p>
+
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2015-02-23T00:00:00-05:00" datetime="2015-02-23T00:00:00-05:00" pubdate>
+							<span class="month"><abbr>February</abbr></span>
+							<span class="day">23</span>
+							<span class="year">2015</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="mike_malecki" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/mike_malecki" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li>
+						</ul>
+					</div>
+					
+					
+				</div><!-- misc-content -->
+				
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/2015/02/21/hafiz-nyc-vehicle-collision-analysis-1" title="View Hafiz's Hack - NYC vehicle collision data exploration">&laquo; Hafiz's Hack - NYC vehicle collision data exploration</a></li>
+							
+							
+							<li class="pipe"> | </li>
+							
+							
+							<li class="next"><a class="internal" rel="next"  href="/2015/02/24/rMarkdown_ggplot_knitr" title="View Rmarkdown_ggplot_knitr">Rmarkdown_ggplot_knitr &raquo;</a></li>
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n">Michael Malecki</span> - <span class="fn email">malecki@gmail.com</span></address></li>
+						<li class="github"><a href="http://github.com/malecki/" rel="me">github.com/malecki</a></li>
+						<li class="twitter"><a href="http://twitter.com/mike_malecki/" rel="me">twitter.com/mike_malecki</a></li>
+						<li class="rss"><a href="http://feeds.feedburner.com/">Subscribe to RSS Feed</a></li>
+					</ul>
+				</div><!-- misc -->
+				<p class="licence">
+					Theme: <a href="http://layouts-the.me">the_minimum</a> based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+	(function(d, s) {
+		var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.src = url; js.id = id;
+		fjs.parentNode.insertBefore(js, fjs);
+		};
+	load('//platform.twitter.com/widgets.js', 'tweetjs');
+	// load('https://apis.google.com/js/plusone.js', 'gplus1js'); // Checkout http://j.mp/ApDgMr for usage html for this is <div class="g-plusone" data-size="medium"></div>
+	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/2015/02/23/CDC-mwb2127" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
+	}(document, 'script'));
+</script>
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+
+  
+</body>
+</html>
+
