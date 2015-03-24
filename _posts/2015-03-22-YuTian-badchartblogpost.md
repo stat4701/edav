@@ -51,9 +51,9 @@ tags: Bad Charts, Presentation, Music
 
   From the context, it would be nicer to deliver the message in the chart that the top 1% (superstar) artists continue to earn about 75 percent of total income and this distribution has not changed noticeably despite the Long Tail phenonmenon. Therefore, it would be more appropriate to emphasize the proportions instead of the absolute amounts in the *stacked column chart_1*. I would be more interested in how the proportions changed over time, thus I will consider using a *100% stacked column chart_2* to show the evolvement in proportions and use a line chart layered on top to show the trends in absolute amounts. 
 
-    Note 1: *Stacked column charts* show the relationship of individual items to the whole, comparing the contribution of each     value to a total across categories. 
+  Note 1: *Stacked column charts* show the relationship of individual items to the whole, comparing the contribution of each     value to a total across categories. 
 
-    Note 2: Maybe should use *100% stacked column chart* compares the percentage that each value contributes to a total across     categories.
+  Note 2: Maybe should use *100% stacked column chart* compares the percentage that each value contributes to a total across     categories.
 
 
 
