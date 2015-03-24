@@ -11,7 +11,7 @@ tags: assignments
 
 I found charts which outline the breakdown of consumer expenditures going back to 2011 from a website called CreditLoan. The original infographics can be found at the link below:
 
-http://www.creditloan.com/blog/how-the-average-us-consumer-spends-their-paycheck/
+{{http://www.creditloan.com/blog/how-the-average-us-consumer-spends-their-paycheck/}}
 
 One example from 2011 is below:
 
