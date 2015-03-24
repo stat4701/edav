@@ -2,6 +2,7 @@
 title: "Jordan's Blogpost: Breaking down consumer expenditures"
 author: "Jordan Rosenblum"
 output: html_document
+layout: post
 description: EDAV bad graph critique and improvement blogpost
 tags: assignments
 ---
