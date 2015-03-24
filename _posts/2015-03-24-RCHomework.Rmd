@@ -1,0 +1,146 @@
+---
+title: "Blog Post"
+author: "Richie Castellanes"
+date: "March 22, 2015"
+output: html_document
+published: false
+---
+
+This past December, Bloomberg.com released charts that detail how the Russian economy was in a [“world of pain”](http://www.bloomberg.com/politics/articles/2014-12-02/6-charts-that-illustrate-vladimir-putins-world-of-pain). While the six charts and their statements depict a failing Russian economy, they could be improved to deliver a more compelling story.
+
+I’ll focus on one chart, which encompasses recurring problems on how data are being presented and the caption that supports it. The chart below displays the GDP of Russia:
+
+![alt text](/Users/radixold/Desktop/gdp.jpg)
+Bloomberg
+
+“The Russian GDP is at its lowest level in years and is expected to plunge further.”
+
+The author pulls the charts directly from a Bloomberg terminal used heavily by finance professionals. While the terminal users are used to the graphs presented, the charts are not optimal for the appropriate context – the web audience. The following features of the chart can be modified to better depict the story of a drop in GDP.
+
+1.	**Color.** The black background drowns out the chart text, which is in dark red and the overall chart. Furthermore, the red line and the blue area underneath defocus the data. 
+
+2.	__Scaling and Grid.__ The chart includes dates when Russia’s GDP slumped to a low in 2009 and becomes the focus of the chart, instead of the low in recent times that the caption is depicting. The grid lines and GDP scales only take focus away from the chart and the use of yearly quarters portray a difficult story.
+
+3.	**Chart Type.** A line chart expresses financial instrument prices fairly well with an area chart helping in portray volume; for a GDP chart, however, other charts can better depict the late slump in Russian GDP.
+ 
+To this, I have made some modifications to the charts that better depict the state of Russia’s economy. I was able to pull the appropriate market data from the Bloomberg terminal, which came in a csv format. Here are the charts and the titles that I have made accordingly.
+
+____________________________
+
+
+__Oil prices sank starting in December__, with its lowest level in over a decade. This became the first blow to the Russian economy.
+
+```{r fig.width=12, fig.height=4,echo=FALSE}
+library("ggplot2")
+library("knitr")
+library("scales")
+library("grid")
+library("gridExtra")
+
+oilprices <- read.csv("~/Desktop/oilprices.csv")
+oilprices$Date <- as.Date(oilprices$Date, origin = "1904-01-01")
+ggplot(oilprices, aes(x=Date, y=Last.Price)) + 
+  geom_line(aes(group=1), colour="#999999", size = 0.5) +
+  scale_x_date(labels = date_format("%m/%y"), breaks = "3 month") +
+  ylab("Oil Price (USD)") +
+  expand_limits(y=c(0,120)) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(fill = 'white', colour = 'black')) 
+```
+
+The Russian Central Bank is seeing __foreign exchange reserves fade away with levels even lower than the 2009 economic crisis.__ 
+```{r fig.width=12, fig.height=4,echo=FALSE}
+forexreserves <- read.csv("~/Desktop/forexreserves.csv")
+forexreserves$Date <- as.Date(forexreserves$Date, origin = "1904-01-01")
+ggplot(forexreserves, aes(x = Date, y = Last.Price)) +
+  geom_line(aes(group=1), colour="#E69F00", size = 1.5) + 
+  scale_x_date(labels = date_format("%m/%y"), breaks = "6 month") +  geom_point(size=0) +
+  ylab("Russia Forex and Gold Reserves Index") +
+  expand_limits(y=300) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(fill = 'white', colour = 'black')) 
+```
+
+__Russian inflation is at its highest peak__ in the past half-decade indicating turmoil.
+
+```{r fig.width=12, fig.height=4,echo=FALSE}
+inflation <- read.csv("~/Desktop/inflation.csv")
+inflation$Date <- as.Date(inflation$Date, origin = "1904-01-01")
+ggplot(inflation, aes(x=Date, y=Last.Price)) +
+  ylab("Inflation %YoY") + geom_bar(stat="identity", position="identity", fill = "#0072B2") +
+  expand_limits(y=c(0,16)) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(fill = 'white', colour = 'black'))
+```
+
+A currency crisis was imminent. **The ruble fell to its lowest value** against the US dollar in more than a decade.
+
+```{r fig.width=12, fig.height=4,echo=FALSE}
+library("ggplot2")
+library("knitr")
+library("scales")
+
+rubusd <- read.csv("~/Desktop/rubusd.csv")
+rubusd$Date <- as.Date(rubusd$Date, origin = "1904-01-01")
+ggplot(rubusd, aes(x=Date, y=Last.Price)) + 
+  geom_line(aes(group=1), colour="#CC79A7", size = 0.5) +
+  scale_x_date(labels = date_format("%m/%y"), breaks = "3 month") +
+  ylab("Russian Ruble in USD") +
+  expand_limits(y=c(0.01,0.05)) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(fill = 'white', colour = 'black')) 
+```
+
+Russia's main index MICEX seems to be flat; __however, it is down when priced in US dollars.__
+
+```{r fig.width=12, fig.height=4,echo=FALSE}
+micex <- read.csv("~/Desktop/micex.csv")
+g.mid <- ggplot(micex,aes(x=1,y=Date))+geom_text(aes(label=Date))+
+  geom_segment(aes(x=0.94,xend=0.96,yend=Date))+
+  geom_segment(aes(x=1.04,xend=1.065,yend=Date))+
+  ggtitle("")+
+  ylab(NULL)+
+  scale_x_continuous(expand=c(0,0),limits=c(0.94,1.065)) +
+  theme(axis.title=element_blank(),
+        panel.grid=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        panel.background=element_blank(),
+        axis.text.x=element_text(color=NA),
+        axis.ticks.x=element_line(color=NA),
+        plot.margin = unit(c(1,-1,1,-1), "mm"))
+
+g1 <- ggplot(data = micex, aes(x = Date, y = Last.Price)) +
+  geom_bar(stat = "identity", position = "identity", fill ="#F0E442") + ggtitle("MICEX (Ruble)") +
+  theme(axis.title.x = element_blank(), 
+        axis.title.y = element_blank(), 
+        axis.text.y = element_blank(), 
+        axis.ticks.y = element_blank(), 
+        plot.margin = unit(c(1,-1,1,0), "mm"),panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(fill = 'white', colour = 'black')) +
+  scale_y_reverse() + coord_flip()
+
+g2 <- ggplot(data = micex, aes(x = Date, y = USD)) +xlab(NULL)+
+  geom_bar(stat = "identity", position = "identity", fill="#F0E442") +
+    ggtitle("MICEX (USD)") +
+    theme(axis.title.x = element_blank(), axis.title.y =element_blank(), axis.text.y = element_blank(), axis.ticks.y = element_blank(), plot.margin = unit(c(1,0,1,-1), "mm"),panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(fill = 'white', colour = 'black')) +
+  coord_flip()
+
+gg1 <- ggplot_gtable(ggplot_build(g1))
+gg2 <- ggplot_gtable(ggplot_build(g2))
+gg.mid <- ggplot_gtable(ggplot_build(g.mid))
+
+grid.arrange(gg1,gg.mid,gg2,ncol=3,widths=c(4/9,1/9,4/9))  
+  
+```
+
+The overall economic impact: **a fall in the Russian GDP**.
+
+```{r fig.width=12, fig.height=4,echo=FALSE}
+gdp <- read.csv("~/Desktop/gdp.csv")
+gdp$BreakDate <- gdp$Date
+gdp$Date <- as.Date(gdp$Date, origin = "1904-01-01")
+gdp$sign = ifelse(gdp$Mid.Price >= 0, "positive", "negative")
+ggplot(gdp, aes(x=Date, y=Mid.Price, fill=sign)) +
+  ylab("GDP % YoY") +
+  geom_bar(stat="identity", position="identity") +
+  scale_x_date(labels = date_format("%Y"), breaks = "year") +
+  scale_fill_manual(values = c("positive" = "#009E73", "negative" = "#D55E00")) +
+  expand_limits(y=c(-15,15)) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_rect(fill = 'white', colour = 'black'), legend.position="none")
+```
