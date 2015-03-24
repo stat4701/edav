@@ -10,7 +10,6 @@ tags: assignments
 ## Bad graph critique and improvement blogpost
 
 Jordan Rosenblum
-
 March 24, 2014
 
 ## All about my junk chart
