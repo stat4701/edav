@@ -23,11 +23,11 @@ I found it to be quite difficult to immediately gain any insight from looking at
 
 Turns out, the data is released by the Bureau of Labor Statistics and is published on their website annually:
 
-http://www.bls.gov/cex/
+<http://www.bls.gov/cex/>
 
 or
 
-http://www.bls.gov/news.release/pdf/cesan.pdf
+<http://www.bls.gov/news.release/pdf/cesan.pdf>
 
 Getting the data in an easy to use format in R was not trivial but also not terribly difficult. The BLS does release large data tables in .xlsx format, but the data contained in these tables was much more than I needed and the format would not have been easy to use in R (it was designed for use in Excel). Instead, I decided to paste the text data from the pdf file into a tab separated plain-text file. I then had to do a small amount of reformatting before importing the data into R (e.g. removing commas and dollar signs in the numbers so they would not be read in as factors in R and making sure each column was separated by a tab). I then imported the data with column headers and row names. I also had to do a small amount of post processing to convert absolute percentage columns to actual percentages that R can understand (e.g. 3.0% -> 0.03). Lastly, I changed the ordering within the dataframes so that the larger expenditures appear first. This small amount of code for reading in and processing the data is below:
 
