@@ -1,6 +1,10 @@
 ### Want to suggest a change to a presentation topic?
 > Submit a pull request updating the line on this page!
 
+### Videos from class
+For Columbia people registered, use your uni to log in and find them at the [CVN site](https://video.cvn.columbia.edu/channel/STAT_W4701_S15/26924701)
+
+
 ## 2015-01-20 intro, some critiques, questionnaire
 ## 2015-01-22 analyze the [questionnaire](https://docs.google.com/spreadsheets/d/19a0O6C14zButypjcnWictvKWeyPjPjQdrps-UXzPDf8/), set up your repo
              
@@ -56,8 +60,8 @@ Read and run http://ggvis.rstudio.com/ and optionally http://bokeh.pydata.org; r
 
 For this week, read Murray, [Interactive Data Visualization for the Web](http://chimera.labs.oreilly.com/books/1230000000345/)
 
-> - Presentation: 
-> - Presentation: 
+> - Presentation: html output with knitr and rcharts
+> - Presentation: moving toward the browser
 
 ## 2015-02-26 d3 introbook; making a gist and a plunk
 
@@ -76,49 +80,62 @@ Read the [introduction](http://bost.ocks.org/mike/map/) to geospatial data by Bo
 > - Presentation: Rmaps and/or leafletR / leaflet-shiny
 > - Presentation: Bostock Let's make a map redux (acquire, transform, plot)
              
-## 2015-03-10 blogposts presentations
-## 2015-03-12 blogposts presentations
+## 2015-03-10 More git+jekyll workshop
+
+## 2015-03-12 Color
+
+Please choose two or three of these and come prepared with reactions and questions.
+
+- [Semantically resonant colors](http://idl.cs.washington.edu/papers/semantically-resonant-colors)
+- [Color naming](http://idl.cs.washington.edu/papers/color-naming-models)
+- [HCL in R](http://cran.r-project.org/web/packages/colorspace/vignettes/hcl-colors.pdf)
+- [I want Hue (theory)](http://tools.medialab.sciences-po.fr/iwanthue/theory.php)
+- [Motley](http://onlinelibrary.wiley.com/doi/10.1002/col.20559/abstract)
+- [How to avoid equidistant HSV colors](http://vis4.net/blog/posts/avoid-equidistant-hsv-colors/)
+- [Mastering Multi-hued Color Scales with Chroma.js](https://vis4.net/blog/posts/mastering-multi-hued-color-scales/)
+
              
 ## 2015-03-17 **Spring break** 
 ## 2015-03-19 **Spring break**
+
+## 2015-03-24 blogposts (due) presentations
+
+## 2015-03-26 blogposts presentations
+
              
-## 2015-03-24 web services/python
+## 2015-03-31 web services/python
 
 > - Presentation: scraping something with beautifulsoup
 > - Presentation: using twitter or yelp with python
 
-## 2015-03-26 web services/r
+## 2015-04-02 web services/r
 
 > - Presentation: twitteR and Rfacebook
 > - Presentation: scraping with rvest
              
-## 2015-03-31 ipnb, beaker
+## 2015-03-07 ipnb, beaker
 
 > - Presentation: working with data across tools with beaker
 > - Presentation: making and sharing iPython notebooks
 
-## 2015-04-02 shiny and rjsonio
+## 2015-04-09 shiny and rjsonio
 
 Read: [Research directions in data wrangling](http://idl.cs.washington.edu/papers/data-wrangling) and the [Shiny tutorial](http://shiny.rstudio.com).
 
 > - Presentation: shiny app
 > - Presentation: shiny app
              
-## 2015-04-07 linked displays and brushing; parallel coordinates
+## 2015-04-14 linked displays and brushing; parallel coordinates
 
 Read [Heer et al, animated transitions](http://idl.cs.washington.edu/papers/animated-transitions/).
 
-> - Presentation: fancy linked d3 parallel coordinates for another dataset
+> - Presentation: database modeling
 > - Presentation: another linked display (slider or brush)
 
-## 2015-04-09 crossfilter, crosslet
+## 2015-04-16 crossfilter, crosslet
 
 > - Presentation: using crossfilter on some other data (acs? bls?)
 > - Presentation: crosslet for citibike data?
-
-## 2015-04-14 TBD
-
-## 2015-04-16 TBD
 
 ## 2015-04-21 demo days teams 1-3
 ## 2015-04-23 demo days teams 4-6
