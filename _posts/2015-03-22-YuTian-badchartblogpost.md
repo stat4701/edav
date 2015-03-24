@@ -9,7 +9,6 @@ tags: Bad Charts, Presentation, Music
 
 ## A Report About "Superstar Effect", A Chart About Nothing...
 
-<<<<<<< HEAD
 Here is a chart from the [*report*](http://musically.com/2014/03/04/how-digital-music-services-may-be-fuelling-a-superstar-artist-economy/?curator=MediaREDEF) called "How digital music services may be fuelling a ‘superstar artist economy’", by Stuart Dredge.
 
 ![](http://musically.com/wp-content/uploads/2014/03/superstar-music.jpg)
@@ -50,68 +49,13 @@ From the context, it would be nicer to deliver the message in the chart that the
 Note 1: *Stacked column charts* show the relationship of individual items to the whole, comparing the contribution of each value to a total across categories. 
 
 Note 2: Maybe should use *100% stacked column chart* compares the percentage that each value contributes to a total across categories.
-=======
-  Here is a chart from the [*report*](http://musically.com/2014/03/04/how-digital-music-services-may-be-fuelling-a-superstar-artist-economy/?curator=MediaREDEF) called "How digital music services may be fuelling a ‘superstar artist economy’", by Stuart Dredge.
-
-![](http://musically.com/wp-content/uploads/2014/03/superstar-music.jpg)
-
-
-### I. Basic Construction Issues
-  Let alone how poorly is the chart related to the information it's trying to show, it is junky because of these following construction issues:
-
-  * Confusing vertical axis
-
-  The vertical axis on the left is repeated, which should be halved instead, therefore makes it hard to read. "$0, $0.5, $1, $1.5, $2, $2.5,..." is the correct version of the vertical axis.
-
-  * Data lables are redundant but pointless
-
-  With the vertical axis fixed, readers can easily read the number each bar represents, so that the labels on the bars seem to be excessive. The chart will look more neat without them as well.
-
-
-
-### II. Message Misalignment
-
-  However, the biggest problem of this chart is not telling the story. If you read the article, you'll doubt the that the chart and the article aren't about the same thing at all.
-
-
-#### *What do we get from the chart?*
-
-  * A decreasing trend.
-
-  Since the chart is organized in annual order, a very straightforward message is that the total income in music industry and the proportion made by the remainder artists are decreasing from 2000 to 2013. If we read it more carefully, we can see a drop in the amount made by superstar artists as well.
-
-  * Proportion for the most recent year.
-
-  The stacked column bar does give us an idea about how superstar income and remainder income compared against each other during the years, however, the exact proportiona are hard to read from the absolute amounts except for the most recent year 2013.
-
-
-#### *What's the idea of the article?*
-
-  * Superstar Aritist Economy
-
-  One of the key findings of this article is that while artists’ share of total recorded-music income has grown from 14% in 2000 to 17% in 2013, the top 1% of musical works are now accounting for 77% of all those artist revenues thanks in part to a “tyranny of choice” on digital services. One background knowledge is that digital music services were expected to balance the share of income between superstars and the remainder artists as a result of "long tail effect", but it ended up fuelling a "superstar aritist economy" because only a small portion (1%) of the digital catelogue was streamed or purchased seriously. 
-
-  From the context, it would be nicer to deliver the message in the chart that the top 1% (superstar) artists continue to earn about 75 percent of total income and this distribution has not changed noticeably despite the Long Tail phenonmenon. Therefore, it would be more appropriate to emphasize the proportions instead of the absolute amounts in the *stacked column chart_1*. I would be more interested in how the proportions changed over time, thus I will consider using a *100% stacked column chart_2* to show the evolvement in proportions and use a line chart layered on top to show the trends in absolute amounts. 
-
-  Note 1: *Stacked column charts* show the relationship of individual items to the whole, comparing the contribution of each     value to a total across categories. 
-
-  Note 2: Maybe should use *100% stacked column chart* compares the percentage that each value contributes to a total across     categories.
-
->>>>>>> b9eb2e9c24e73a118cadb1455550b680bf327edb
 
 
 ### III. How to improve
 
-<<<<<<< HEAD
 The chart needs to be fixed so that it doesn't have any basic construction issues and more is consistent with the report context.
 
 Here is a table with information got directly from the chart and calculations I made accordingly.
-=======
-  The chart needs to be fixed so that it doesn't have any basic construction issues and more is consistent with the report context.
-
-  Here is a table with information got directly from the chart and calculations I made accordingly.
-
->>>>>>> b9eb2e9c24e73a118cadb1455550b680bf327edb
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
@@ -242,13 +186,7 @@ Here is a table with information got directly from the chart and calculations I 
 </table>
 
 
-<<<<<<< HEAD
 #### R code
-=======
-
-### VI. R code
-
->>>>>>> b9eb2e9c24e73a118cadb1455550b680bf327edb
 I used the following code in R to get my improved version of the chart.
 
 *Get Set Up*
@@ -294,22 +232,10 @@ line <- ggplot (DF2, aes(x = as.character(year), y=value, group=variable,colour 
 ```
 Here is the two charts from the program output:
 
-<<<<<<< HEAD
 ![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/bar.png)
 
 ![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/line.png)
 
-=======
-The bar chart:
-
-![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/bar.png)
-
-The line chart:
-
-![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/line.png)
-
-
->>>>>>> b9eb2e9c24e73a118cadb1455550b680bf327edb
 *Combined Chart*
 
 The combined version looks like this and was got from these few lines of code.
@@ -326,15 +252,9 @@ ggplot (data=DF1, mapping=aes(x = as.character(year))) +
   scale_fill_manual(values = alpha(c("blue", "red"), .3)) 
 ```
 
-<<<<<<< HEAD
 ### IV. Dual Axis Chart in R
 
 If you're layering two charts with very different scale, you might want to have two vertical axes with one on the left side and the other on the right. Here are some good sources I found online that may be helpful.
-=======
-### VI. Dual Axis Chart in R
-
-  If you're layering two charts with very different scale, you might want to have two vertical axes with one on the left side and the other on the right. Here are some good sources I found online that may be helpful.
->>>>>>> b9eb2e9c24e73a118cadb1455550b680bf327edb
 
 #### *Dual axis using "plot"*
 
@@ -373,11 +293,6 @@ legend("topleft",legend=c("Beta Gal","Cell Density"),
   text.col=c("black","red"),pch=c(16,15),col=c("black","red"))
 ```
 
-<<<<<<< HEAD
-=======
-Output:
-
->>>>>>> b9eb2e9c24e73a118cadb1455550b680bf327edb
 ![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/example1.png)
 
 #### *Dual axis in ggplot*
@@ -416,10 +331,5 @@ grid.newpage()
 grid.draw(g)
 ```
 
-<<<<<<< HEAD
-=======
-Output:
-
->>>>>>> b9eb2e9c24e73a118cadb1455550b680bf327edb
 ![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/example2.png)
 
