@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Graphics and Plots in Science 
-description: 
-tags: 
+description: A look into common problems with academic graphics found in science journals.
+tags: visualization science
 ---
 
 Graphics and visualizations are used for promotion, advertisement to promote a product or idea. In science, graphics tend to fall into one of two categories: for use in education or a science journal.  For information on what makes a good educational graphic, or a teaching tool, I've written a piece on my personal blog [here](http://eringrand.github.io/educationgraphics/). 
