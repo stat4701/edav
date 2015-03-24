@@ -1,6 +1,8 @@
 ---
+title: "Monetary Value of Education: Bad graph critique and improvement blog post"
 layout: post
-
+description: EDAV bad graph critique and improvement blogpost
+tags: assignments
 ---
 
 
