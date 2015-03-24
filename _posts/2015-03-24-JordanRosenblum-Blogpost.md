@@ -10,7 +10,7 @@ tags: assignments
 Jordan Rosenblum
 
 March 24, 2014
-___________________
+
 
 ## All about my junk chart
 
