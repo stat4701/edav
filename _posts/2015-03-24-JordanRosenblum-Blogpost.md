@@ -7,9 +7,9 @@ description: EDAV bad graph critique and improvement blogpost
 tags: assignments
 ---
 
-Jordan Rosenblum
+*Jordan Rosenblum*
 
-March 24, 2015
+*March 24, 2015*
 
 
 ## All about my junk chart
