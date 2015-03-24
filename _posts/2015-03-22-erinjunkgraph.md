@@ -51,7 +51,7 @@ For example, to make everything expect your points or lines disappear you'd use:
         panel.border=element_blank(),
         panel.grid.major=element_blank(),
         panel.grid.minor=element_blank(),
-        plot.background=element_blank()) + 
+        plot.background=element_blank()) 
 ```
 Each of these could also be modified to make the text larger or smaller, change the font, rotate the labels...etc.
  
