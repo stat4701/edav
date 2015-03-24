@@ -270,7 +270,7 @@ ggplot (data=DF1, mapping=aes(x = as.character(year))) +
 
   If you're layering two charts with very different scale, you might want to have two vertical axes with one on the left side and the other on the right. Here are some good sources I found online that may be helpful.
 
-  #### *Dual axis using "plot"*
+#### *Dual axis using "plot"*
 
 ```{r}
 ## set up test data
@@ -311,7 +311,7 @@ Output:
 
 ![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/example1.png)
 
-  #### *Dual axis in ggplot*
+#### *Dual axis in ggplot*
 
 ```{r}
 library(ggplot2)
