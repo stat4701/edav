@@ -6,15 +6,15 @@ tags:
 ---
 
 Graphics and visualizations are used for promotion, advertisement to promote a product or idea. In science, graphics tend to fall into one of two categories: for use in education or a science journal.  For information on what makes a good educational graphic, or a teaching tool, I've written a piece on my personal blog [here](http://eringrand.github.io/educationgraphics/). 
+In the academic articles, graphics hold a special role in telling a compelling story of the data and results, however, the editing emphasis is often placed much more on text than making interesting and understable science graphics.  
 
 *DISCLAIMER: I am coming from an astronomy and physics background, and am going to discuss problems found within these contexts.*
 
 
-
-###Academic Paper Graphics
+###Academic Article Graphics
 
 We think of academics and especially science as being told through plots and graphs. In fact, Tufte explains that the history graphics begins with time series plots of the planets and the sun in the night sky. 
-Now a days, science papers use graphics to tell a story. We let the data speak for itself
+Now a days, science articles use graphics to tell a story. We let the data speak for itself
 by representing it in a reproducible graphic. 
 
 In my time in academia (in physics and astronomy) I've come across several common problems such as: 
@@ -55,13 +55,12 @@ For example, to make everything expect your points or lines disappear you'd use:
 ```
 Each of these could also be modified to make the text larger or smaller, change the font, rotate the labels...etc.
  
- To change the direction and size of the tick labels you'd use something like:
- ```
- theme(axis.text.x  = element_text(angle=90, vjust=0.5, size=16)
-    ```
+To change the direction and size of the tick labels you'd use something like:
+```
+theme(axis.text.x  = element_text(angle=90, vjust=0.5, size=16)
+```
            
 * You can reduce clutter on the graph by using fewer (labeled) tick marks. 
-
 
 * Always remember to label your axes! 
 This is done in python with:
@@ -110,8 +109,8 @@ facet_wrap(~pillar)
 
 Most importantly, don't display empty plots like <a href="https://www.biostat.wisc.edu/~kbroman/topten_worstgraphs/wittke_thompson_fig1CD.jpg">this infamous plot </a> from Wittke-Thompson JK and Pluzhnikov A, Cox NJ (2005). 
 
-* Sometimes, to save room or otherwise, it's best to display the information in a table format instead of bar graphs. For example, this plot from a paper titled <a href="http://arxiv.org/abs/1403.3091">"Studying Gender in Conference Talks -- data from the 223rd meeting of the American Astronomical Society"</a> shows the large difference in number questions asked by males vs number asked by females, given a male or female chair. 
-This plot displays the most significant finding from the analysis: a strong dependence on session chair gender. Still, this information could have easily been shown in a table instead of a graph.  This would be a useful plot for a presentation on the subject, but not needed in the paper.  
+* Sometimes, to save room or otherwise, it's best to display the information in a table format instead of bar graphs. For example, this plot from a science article titled <a href="http://arxiv.org/abs/1403.3091">"Studying Gender in Conference Talks -- data from the 223rd meeting of the American Astronomical Society"</a> shows the large difference in number questions asked by males vs number asked by females, given a male or female chair. 
+This plot displays the most significant finding from the analysis: a strong dependence on session chair gender. Still, this information could have easily been shown in a table instead of a graph.  This would be a useful plot for a presentation on the subject, but not needed in the article.  
 
 ![]({{ site.url }}/assets/erinsimages/chairs_questions.png)
 
@@ -120,7 +119,7 @@ This plot displays the most significant finding from the analysis: a strong depe
 
 ###Color in academic graphics:
 
-Color can be a huge issue in scientific papers. This is largely because most journals charge more for printing in color, but will present colored versions of plots in the online versions on the papers. This means that authors need to make sure that they have plots that work well in color and in black and white, which gives way to some graphics which are very hard to read. 
+Color can be a huge issue in scientific articles. This is largely because most journals charge more for printing in color, but will present colored versions of plots in the online versions on the articles. This means that authors need to make sure that they have plots that work well in color and in black and white, which gives way to some graphics which are very hard to read. 
 
 ####Common color problems. 
 
@@ -140,7 +139,7 @@ Color in astronomy maps often tags along with Colour-coded image of the molecula
 
 ![]({{ site.url }}/assets/erinsimages/bad.png)
 
-The image from a paper titled "MOLECULAR CLOUDS IN THE NORTH AMERICAN AND PELICAN NEBULAE: STRUCTURES" by Shaobo Zhang, Ye Xu and Ji Yang,
+The image from an article titled "MOLECULAR CLOUDS IN THE NORTH AMERICAN AND PELICAN NEBULAE: STRUCTURES" by Shaobo Zhang, Ye Xu and Ji Yang,
 displays the locations of clumps, as well as their velocity and size. From the image caption "The circles indicate the clump positions on the integrated intensity map of 13 CO. The colors of the circles represent the velocities the clumps, while the circles are scaled according to the sizes of clumps." 
 
 This is a perfect example of trying to show too much in one plot such that it's no longer understandable. A different color scheme would help the eye more easily see the trends in velocity. I would also like to see the circles filled in, and the background map a bit darker. Also, The graph extends too far up so that the color legend is clear, but leaves too much empty space in the graph. The axes and tick marks could also be smaller. 
