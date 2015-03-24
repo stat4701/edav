@@ -1,9 +1,3 @@
----
-title: "Monetary Value of Education: Bad graph critique and improvement blog post"
-layout: post
-output: html_document
-description: EDAV bad graph critique and improvement blogpost
----
 
 # What is the worth of your education?
 Tony Paek  
