@@ -7,6 +7,12 @@ description: EDAV bad graph critique and improvement blogpost
 tags: assignments
 ---
 
+.center-image
+{
+    margin: 0 auto;
+    display: block;
+}
+
 ## All about my junk chart
 
 I found charts which outline the breakdown of consumer expenditures going back to 2011 from a website called CreditLoan. The original infographics can be found at the link below:
