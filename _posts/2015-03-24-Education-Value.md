@@ -1,3 +1,8 @@
+---
+layout: post
+
+---
+
 
 # What is the worth of your education?
 Tony Paek  
