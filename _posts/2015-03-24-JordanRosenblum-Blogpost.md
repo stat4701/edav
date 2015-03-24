@@ -1,11 +1,16 @@
 ---
-title: "Jordan's Blogpost: Breaking down consumer expenditures"
+title: "Breaking down consumer expenditures"
 author: "Jordan Rosenblum"
 output: html_document
 layout: post
 description: EDAV bad graph critique and improvement blogpost
 tags: assignments
 ---
+
+## Bad graph critique and improvement blogpost
+
+Jordan Rosenblum
+March 24, 2014
 
 ## All about my junk chart
 
