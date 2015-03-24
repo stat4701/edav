@@ -1,0 +1,90 @@
+---
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<head>
+<style>
+  p.solid {border-style: solid;}
+  <title>Getting Data Into Browser using R </title>
+</style>
+</head>
+
+ 
+<div id="header"  class="solid" >
+<h2><center> Getting Data Into Browser using R   </center> </h1>
+</div>
+
+</div>
+
+<div id="section1"  <center>>
+<p >
+Output format: HTML.  
+Data Source : NYPD vehicle collision data.    
+Data Transformation: Year 2014: Summary of persons injured by borough.    
+Chart: Column chart comparing injuries by borough.   
+</p>
+
+
+```{r setup, echo = T, cache = F, message = F}
+require(knitr)
+nypdvcrashSummary <-read.csv("c:/Aarti/Columbia Data Sciences/EDAV/RProject/data/NYPDSummary_Byborough.csv",header=T,sep=",")
+require("ggplot2")
+
+#BAR PLOTS
+library(MASS)
+library(plyr)
+
+(bp1 <- ggplot(data=nypdvcrashSummary, 
+        aes(x=BOROUGH,y=Frequency,
+        fill=factor(Type))) 
+     +  geom_bar(stat="identity", position=position_dodge()) 
+     +  ggtitle("summary - Persons Injured By Boroughs")
+     +  geom_text(aes(label=Frequency), vjust=-1, size=3)
+     +  theme(plot.title=element_text(size=rel(1), face="bold"))
+     +  theme(axis.title=element_text(size=15)))
+```
+</center>
+</div>
+
+<div id="sectionw" <center>>
+<p>
+Data Source : NYPD vehicle collision data.   
+Data Transformation: Year 2014: Summary of persons injured by borough and vehicle type in accident.      
+Chart: Column chart comparing injuries by borough by vehicle types.
+</p>
+</p>
+
+
+``` {r echo = T , cache = F, message = F}
+
+
+nypdvcrashSummary2 <-read.csv("c:/Aarti/Columbia Data Sciences/EDAV/RProject/data/NYPDSummary_ByVehicleType.csv",header=T,sep=",")
+require("ggplot2")
+
+#BAR PLOTS
+library(MASS)
+library(plyr)
+
+(bp1 <- ggplot(data=nypdvcrashSummary2, 
+               aes(x=BOROUGH,y=Frequency,fill=factor(Type))) + 
+               geom_bar(stat="identity", position=position_dodge()) + 
+   ggtitle("Person injuries in 2014 by Vehicle Type ")
+   + geom_text(aes(label=Frequency), vjust=0, size=3)
+   + theme(plot.title=element_text(size=rel(1), face="bold"))
+   + theme(axis.title=element_text(size=15)))
+
+
+
+```
+
+</center>
+</div>
+
+<div id="footer">
+Footer:  Copyright columbia.edu
+
+</div>
+</body>
+</html>
