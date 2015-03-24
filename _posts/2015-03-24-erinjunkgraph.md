@@ -83,14 +83,14 @@ In other cases, it's best to separate out the information into a table of plots.
 
 For example, below is the orignal plot from my research showing the intensity of different molecules across velocities. The plot places all four molecules on the same graph with a key indicating which is which. In color, this graphic might make more sense, but it is still hard to make out the individual curves. Plus, the key is small and referring back to it is time consuming and annoying.
 
-{% include {{ site.url }}/image.html url="/assets/erinsimages/spectrapel.png" description="Velocity spectra for the Pelican Pillar." %}
+{% include {{ site.baseurl }}/image.html url="/assets/erinsimages/spectrapel.png" description="Velocity spectra for the Pelican Pillar." %}
 
 In fixing the graphic, while also including more information from my other sources,
 I separated out the each of the molecules and sources into a table of spectra. 
 This un-clutters the plot and allows you to more easily visualize trends in the sources. 
 (Notice how the plots is missing axes labels - shame on me!) 
 
-{% include {{ site.url }}/image.html url="/assets/erinsimages/spectra2.png" description="Velocity spectra for the pillars show brightness temperature against velocity in km/s. The spectra were taken in the heads of the pillars at the peak brightness and averaged over a beam size." %}
+{% include {{ site.baseurl }}/image.html url="/assets/erinsimages/spectra2.png" description="Velocity spectra for the pillars show brightness temperature against velocity in km/s. The spectra were taken in the heads of the pillars at the peak brightness and averaged over a beam size." %}
 
 The code for this plot was done in IDL - a language mostly used only by astronomers (after looking at the code, you'll see why no one else joined in the fun...)
 If you're interested, you can check it out [here](https://github.com/eringrand/idlcodes/blob/master/plotspectra.pro).
@@ -112,7 +112,7 @@ Most importantly, don't display empty plots like <a href="https://www.biostat.wi
 * Sometimes, to save room or otherwise, it's best to display the information in a table format instead of bar graphs. For example, this plot from a science article titled <a href="http://arxiv.org/abs/1403.3091">"Studying Gender in Conference Talks -- data from the 223rd meeting of the American Astronomical Society"</a> shows the large difference in number questions asked by males vs number asked by females, given a male or female chair. 
 This plot displays the most significant finding from the analysis: a strong dependence on session chair gender. Still, this information could have easily been shown in a table instead of a graph.  This would be a useful plot for a presentation on the subject, but not needed in the article.  
 
-![]({{ site.url }}/assets/erinsimages/chairs_questions.png)
+![]({{ site.baseurl }}/assets/erinsimages/chairs_questions.png)
 
 
 ---
@@ -137,7 +137,7 @@ Color in astronomy maps often tags along with Colour-coded image of the molecula
 ###Graph Critique and Fix
 
 
-![]({{ site.url }}/assets/erinsimages/bad.png)
+![]({{ site.baseurl }}/assets/erinsimages/bad.png)
 
 The image from an article titled "MOLECULAR CLOUDS IN THE NORTH AMERICAN AND PELICAN NEBULAE: STRUCTURES" by Shaobo Zhang, Ye Xu and Ji Yang,
 displays the locations of clumps, as well as their velocity and size. From the image caption "The circles indicate the clump positions on the integrated intensity map of 13 CO. The colors of the circles represent the velocities the clumps, while the circles are scaled according to the sizes of clumps." 
@@ -145,7 +145,7 @@ displays the locations of clumps, as well as their velocity and size. From the i
 This is a perfect example of trying to show too much in one plot such that it's no longer understandable. A different color scheme would help the eye more easily see the trends in velocity. I would also like to see the circles filled in, and the background map a bit darker. Also, The graph extends too far up so that the color legend is clear, but leaves too much empty space in the graph. The axes and tick marks could also be smaller. 
 
 I didn't have their data, but I remade a similar type of plot pulling points, velocities and sizes from normal distributions (see code below). 
-![]({{ site.url }}/assets/erinsimages/Rplot.png)
+![]({{ site.baseurl }}/assets/erinsimages/Rplot.png)
 
 This image fixes some of the problem by using GGPLOT default color scheme, which keeps the hue in blue and changes the brightness. I've filled in the circle in make the difference in sizes more clear, and I made sure that the circles are scaled by area, as to not conflate radius and area. 
 
