@@ -24,5 +24,10 @@ Source:
 
 http://www.shareable.net/blog/where-do-americans-share-transportation
 
-![Fixed Image](https://github.com/lfawaz/edav/blob/gh-pages/Right%20Graph.JPG?raw=true)
 
+```{r, echo=TRUE}
+require(rCharts)
+require(rNVD3)
+
+
+```
