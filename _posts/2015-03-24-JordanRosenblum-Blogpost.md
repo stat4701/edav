@@ -18,7 +18,7 @@ I found charts which outline the breakdown of consumer expenditures going back t
 
 <http://www.creditloan.com/blog/how-the-average-us-consumer-spends-their-paycheck/>
 
-One example from 2011 is below:
+One example from 2009 is below:
 
 ![](https://raw.githubusercontent.com/jmrosen155/edav/gh-pages/assets/jordan-blogpost-files/Blogpost_files/figure-html/infographic_example.png)
 
