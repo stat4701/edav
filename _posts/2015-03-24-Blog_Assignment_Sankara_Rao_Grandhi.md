@@ -13,7 +13,7 @@ World Bank manages Open Data Source, which incorporates various indicator values
 http://databank.worldbank.org/data/views/reports/chart.aspx
 
 
-![]({{ an image of junk chart }}/assets/World_GDP_junk_chart.png)
+![]({{ site.baseurl }}/assets/World_GDP_junk_chart.png)
 
 
 GDP Growth Chart Plot Using rworldmap package
@@ -41,22 +41,22 @@ mapCountryData(spdf, mapTitle='YR2000', nameColumnToPlot="value", catMethod="fix
 ```
 Year 2000 GDP Growth Chart
 ============================
-![]({{ an image YR2000 }}/assets/YR2000.png)
+![]({{ site.baseurl  }}/assets/YR2000.png)
 
 Year 2001 GDP Growth Chart
 ============================
-![]({{ an image YR2001 }}/assets/YR2001.png)
+![]({{ site.baseurl  }}/assets/YR2001.png)
 
 Year 2002 GDP Growth Chart
 ===============================
-![]({{ an image YR2002 }}/assets/YR2002.png)
+![]({{ site.baseurl  }}/assets/YR2002.png)
 
 Year 2011 GDP Growth Chart
 ===================================
-![]({{ an image YR2011 }}/assets/YR2011.png)
+![]({{ site.baseurl  }}/assets/YR2011.png)
 
 Year 2012 GDP Growth Chart
 ============================
-![]({{ an image YR2012 }}/assets/YR2012.png)
+![]({{ site.baseurl  }}/assets/YR2012.png)
 
 
