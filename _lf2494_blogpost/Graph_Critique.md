@@ -27,3 +27,8 @@ http://www.shareable.net/blog/where-do-americans-share-transportation
 Graph in python using matplotlib and numpy
 
 ![Fixed Graph](https://github.com/lfawaz/edav/blob/gh-pages/_lf2494_blogpost/right_graph.png?raw=true)
+
+
+Here is the Link to the code
+
+https://github.com/lfawaz/edav/blob/gh-pages/_lf2494_blogpost/stacked_bar_chart.py
