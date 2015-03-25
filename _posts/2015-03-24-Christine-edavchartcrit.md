@@ -1,10 +1,7 @@
 ---
 layout: post
 title:  "EDAV Spring 2015: Chart critique blog post"
-date:   2015-03-24
-categories: jekyll/updates 
 output: html_document
-description:  
 ---
 
 EDAV fun...
