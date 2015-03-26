@@ -3,6 +3,7 @@ title: "Data Visualization Blog on World GDP Growth"
 author: "Sankara Rao Grandhi"
 date: "Sunday, March 22, 2015"
 output: html_document
+published: false
 ---
 
 World Bank's GDP Growth Chart
