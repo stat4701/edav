@@ -10,7 +10,7 @@ description: blog
 
 ### Intro
 
-Weather data is everywhere. Weather is broadcast over Radio and TV. It is part of the news. It is pulled in and displayed on the our PCs and laptops in toolbars and widgets. It comes via apps bundled with smartphones. From dedicated websites. From dedicated TV channels. Even from car navigation systems. It might well be the most fequently used (and predicted) time-series data. 
+Weather data is everywhere. Weather is broadcast over Radio and TV. It is part of the news. It is pulled in and displayed on the our PCs and laptops in widgets and status bars. It comes via apps bundled with smartphones. From dedicated websites. From dedicated TV channels. Even from car navigation systems. It might well be the most frequently used (and predicted) time-series data. 
 
 My original intent for the blog was to survey how weather data is presented in mobile apps, find the best-in-class viz and to investigate if we can improve some aspects. I was going to focus only on apps and I needed to know what apps people use. So, I put together a short online survey to understand what people like/dislike about the apps they use and sent it to the class.
 
@@ -25,9 +25,9 @@ With this new data I expanded my blog scope to include major web sites. In fact,
 
 There is a balance that needs to be struck in a weather website. Things that are at play are:
 
-* Audience goal (e.g. know today's forecast, see storm/radar map, plan for the weekend, plan a trip)
-* Audience skill level for interpreting data (e.g. how well they can read a graph)
-* Audience expectations (e.g. do the expect same information as TV/Radio) 
+* Audience goal (know today's forecast, see storm/radar map, plan for the weekend, plan a trip)
+* Audience skill level for interpreting data (how well they can read a graph)
+* Audience expectations (do the expect same information as TV/Radio) 
 * Ad dollars
 
 #### Weather.com
@@ -76,7 +76,7 @@ Here is the 45-day forecast. It reuses the same boxy format.
   <img src="{{site.baseurl}}/assets/aha2140/weather/sites/accuweather/extended.png" width="50%">
 </a>
 
-The site does have a history/forcast timeseries plot at the bottom of one page. It actually shows the averages and both history and forecast for 30 days. Unfortunately, it looks like an afterthought.
+The site does have a history/forecast timeseries plot at the bottom of one page. It shows the averages and both history and forecast for 30 days. Unfortunately, it looks like an afterthought.
 <a href="{{site.baseurl}}/assets/aha2140/weather/sites/accuweather/trend-forecast.png">
   <img src="{{site.baseurl}}/assets/aha2140/weather/sites/accuweather/trend-forecast.png" width="50%">
 </a>
@@ -104,7 +104,7 @@ These are wonderful line charts for temperature and precipitation forecast. The 
 
 ### Google
 
-Someone pointed this out on the survey (thanks!). Searching for weather in Google gives you a very nice weather graph.  It uses SVG/HTML5. Notice that the Y axis does not start at zero. It is probably a necessary tradeoff to accomodate the relative ups and downs which are not that extreme. However, there are some semantic resonance issues. The chart is shaded in yellowish-orange and that corresponds to sunlight. Unfortunately periods of rain and cloud under are also shaded orange. Also notice that it shortens an entire day to an icon. It can rain late in the day but it will still be the same icon. 
+Someone pointed this out on the survey (thanks!). Searching for weather in Google gives you a very nice weather graph.  It uses SVG/HTML5. Notice that the Y axis does not start at zero. It is probably a necessary trade-off to accommodate the relative ups and downs which are not that extreme. However, there are some semantic resonance issues. The chart is shaded in yellowish-orange and that corresponds to sunlight. Unfortunately periods of rain and cloud under are also shaded orange. Also notice that it shortens an entire day to an icon. It can rain late in the day but it will still be the same icon. 
 <a href="{{site.baseurl}}/assets/aha2140/weather/sites/google/search.png">
   <img src="{{site.baseurl}}/assets/aha2140/weather/sites/google/search.png" width="70%">
 </a>
@@ -169,27 +169,26 @@ Thanks to Justin I have some Windows phone screenshots of the stock weather app.
 ### Recap
 
 Many weather websites have confusing navigation and suffers from graphics overload. Two standout/interesting sites from  visualization point are:
-   * Google search weathe. 
-   * Forecast.io 
+* Google search weather
+* Forecast.io 
 
-Apps are a wild bunch. They generall suffer from color and text overload. Very few apps attempt timeseries plots. Maybe people are conditioned to seeing weather in that way and maybe that's also the best way, I am not sure. Standouts
-   * Weather Underground
-   * Dark Sky 
+Apps are a wild bunch. They generall suffer from color and text overload. Very few apps attempt timeseries plots. Maybe people are conditioned to seeing weather in that way and maybe that's also the best way, I am not sure. Standouts are:
+* Weather Underground
+* Dark Sky 
 
 ### An experiment
 
-Here is an attempt to create a weather time series that blends a data-centric view and qualitative information. It's a static image mock up. I started from a Weather Underground chart and gradually added and removed elements. I am not sure if I can make the whole thing an R charting package. So, image mock up seemed like a good idea.  
+Here is an attempt to create a weather time series that blends a data-centric view and qualitative information. It's a static image mock up. I started from a Weather Underground chart and gradually added and removed elements. I didn't want to spend a lot of time on figuring out a charting package and instead wanted to focus on the visualization. So, image mock up with paint/gimp seemed like a good idea.  
 
-Key ideas:
+Here is how it was built:
 
-* Time-series plot for data-friendly audience
-* Shows explicity values for highs and lows
-* Night and day shades
-* Midnight lines
-* A strip at the botton that shows night, cloud cover and rain and sun with semantic correctness 
-* Descriptive text at the bottom that maches the strip.
-* A "bottom" line in case you are in a hurry.
+* Started with Weather Underground time series plot: Temperature line, night and day shades, Midnight line
+* Added explicitly values for highs and lows
+* Removed lines to make the plot lighter. I think more lines and shaeds can be removed.
+* Added a "weather strip" that shows cloud cover and rain and sun. I used the real probabilities from the Weather Underground cloud and precipitation forecasts and rounded them up to remove visual noise. I also tried to be semantically consistent with colors. The weather strip can accommodate weather events like snow or storms using colors and textures. 
+* Added descriptive text at the bottom. It is consistent with the forecast strip and provides a quick radio/TV weatherman style narrative.
+* Added a one sentence summary. It could as well go to the top.
+
 <img src="{{site.baseurl}}/assets/aha2140/weather/exp1.png">
 
-Please send me feedback! And if you have an idea on what R package and JS library would be best to implement it with please let me know!
-
+As for implementing this, I looked around and I couldn't find a library/package that would be an automatic fit. The line plot is easy with many of them but few of them support the area shading to show the nights. The "weather strip" is even harder. I considered using a bar chart with one hour wide bars and same height where colors are set by weather type. It didn't look good so I stopped pursuing it. Please let me know if you can think of an easy way to implement it.
