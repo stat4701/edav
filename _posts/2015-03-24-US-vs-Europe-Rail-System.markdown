@@ -36,3 +36,5 @@ and alternative visualizations:
 
 <a href='https://github.com/EHDEV/ehdev.github.io/blob/master/assets/alt_bar.png'><img src="https://github.com/EHDEV/ehdev.github.io/blob/master/assets/alt_bar.png" width="50" height="50"/></a>
 <a href='https://github.com/EHDEV/ehdev.github.io/blob/master/assets/alt_line.png'><img src="https://github.com/EHDEV/ehdev.github.io/blob/master/assets/alt_line.png" width="50" height="50"/></a>
+
+Here is the <a href="https://gist.github.com/EHDEV/c250eb4b860966572899"> R source code for the plots </a>.
