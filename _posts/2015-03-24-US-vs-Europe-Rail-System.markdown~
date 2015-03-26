@@ -19,7 +19,7 @@ Although the chart seems to passably carry the intended message, it still requir
 
 Here is an example of a slightly better chart with the data for all the countries in one plot:
 
-<a href="/assets/grouped_all.png"><img src="https://github.com/EHDEV/ehdev.github.io/blob/master/assets/grouped_all.png" width="685" height="450" /> </a>
+<a href="/assets/grouped_all.png"><img src="/assets/grouped_all.png" width="685" height="450" /> </a>
 
 But this still runs into the problem of too much information in one plot that may distract the reader.
 
