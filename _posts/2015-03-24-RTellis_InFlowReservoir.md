@@ -1,12 +1,12 @@
 ---
 title: 'Blog post: Flow into reservoir system'
 author: "R Tellis"
-date: "Sunday, March 15, 2015"
 output: html_document
-published: no
+published: true
+layout: post
 ---
 
-![Original chart](figure/OriginalBlogChart.jpg)
+![Original chart]({{ site.baseurl }}/assets/rtellis/OriginalBlogChart.jpg)
 
 **Figure 1** (*From source article*)
 
@@ -19,7 +19,7 @@ My suggestions on improving the visualization:
 
 - A bubble chart can visualize such missing correlations across the in-flow and rainfall over a period as shown below in Figure 2.
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png) 
+![plot of chunk unnamed-chunk-1]({{ site.baseurl }}/assets/rtellis/unnamed-chunk-1-1.png) 
 
 **Figure 2** (*My suggestion #1*)
 
@@ -28,7 +28,7 @@ The bubble size in *Figure 2* represents the amount of precipitation (rainfall+s
 - Another chart that can facilitate in understanding the in-flow patterns is to plot in-flow changes over a period of time.
 A multi-line graph of in-flow data across the years is shown below in *Figure 3*. 
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
+![plot of chunk unnamed-chunk-2]({{ site.baseurl }}/assets/rtellis/unnamed-chunk-2-1.png) 
 
 **Figure 3** (*My suggestion #2*)
 
@@ -55,6 +55,7 @@ The data sources that were used to create Figures 2 & 3.
 R scripts for the charts:
 
 For *Figure 2*:
+
 ```
 require(ggplot2)
 dfFlowPrec2013 = read.csv(file="FlowPrecipitation_2013.csv")
