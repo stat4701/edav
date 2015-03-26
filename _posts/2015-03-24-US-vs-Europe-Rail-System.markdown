@@ -9,7 +9,7 @@ date:   2015-03-24
 The author  states in the blog, 
  <blockquote>   "A good measure of safety is passenger miles traveled per reported passenger injury (defined here to include fatalities). A higher number is better: It means that a passenger can travel more miles before expecting to face an injury." </blockquote>
 
-![Here is the chart I am critiquing](/assets/source_chart.jpg)
+![Here is the chart I am critiquing](../../assets/source_chart.jpg)
 
 In the blog, the author attempts to show the bad condition of the US passenger train system by comparing passenger miles traveled per reported passenger injury with the worst rated rail systems of European countries. This is done using a time-series line graph that presents miles traveled for the US and the 6 European countries with the worst rated rail systems. </p>
 
