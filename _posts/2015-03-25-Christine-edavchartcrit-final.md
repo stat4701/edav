@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "EDAV Spring 2015: Chart critique blog post"
-date:   2015-03-24
+date:   2015-03-25
 categories: jekyll/updates 
 output: html_document
-description:  
+  
 ---
 
 EDAV fun...
@@ -17,22 +17,22 @@ The chart in question
 
 The following graphic is published on GreenTech Media's U.S. Solar Market Insight Research site, found in this [link][GTM]. GreenTech Media is a market research organization that produces research and industry statistics on the Solar Energy industry. 
 
-The chart we wish to focus on for this post is the second figure in the link, titled '2014 Photovoltaic (PV) Installations by State.' 
+The chart we wish to focus on for this post is the second figure in the link, titled *'2014 Photovoltaic (PV) Installations by State.'* 
 
-![alt text](2014pvmap.png)
+
 ![alt text](https://raw.githubusercontent.com/Xtines/edav/gh-pages/_posts/assets/2014pvmap.png)
 
 
 #### Critiques of above chart
-The challenges for this particular chart involve conveying a number of data variables (state, capacity installed, installations by market segment) on a geographical map with space and positional constraints.  
+The challenges for this particular chart involve conveying a number of data variables (solar capacity installed, installations by market segment -- by state) on a geographical map with space and positional constraints.  
  
 
 Here are the weaknesses I find with this chart -
 
-1. **Proportions within pie charts are unclear, especially with doughnut pie charts** - Pie charts generally make it hard to estimate proportions of segments. In this case, this particular pie chart weakness is made worse by these doughnut pie charts since the reader cannot rely on the angles of the segments to estimate their proportion.  
+1. **Proportions within pie charts are unclear, especially with doughnut pie charts** - Pie charts generally make it hard for viewers to accurately estimate the proportions of its segments. In this case, such a weakness is made worse by doughnut pie charts since the reader cannot rely on the angles of the segments to estimate their proportion/percentage out of the whole.  
 
 
-2. **Size of pie charts are misleading the true scale of the data** - for instance, the pie chart representing CA's amount of installations on the upper left is not reflecting its real scale, which is supposed to be almost 10 times as large as that of the pie chart on the bottom right. 
+2. **Sizes of pie charts are misleading the true scale of the data** - for instance, the pie chart representing CA's amount of installations on the upper left is not reflecting its real scale, which is supposed to be almost 10 times as large as that of the pie chart on the bottom right. 
 
 3. **Color scheme does not carry enough contrast** - The various shades of blue used here makes it hard for the eye to distinguish between the darkest blues. 
 
@@ -40,11 +40,11 @@ Here are the weaknesses I find with this chart -
 
 
 
-**Suggestions**: 
+#### Suggestions: 
 
-* A stacked bar graph could convey the same information more effectively and would address issues no. 1. and 2. 
+* A stacked bar graph could convey the same information more effectively and would eliminate problems no. 1. and 2. 
 
-* Pick a more differentiated color scheme to allow for easier distinction between segments rendered in the fill. 
+* Pick a color palette with a more differentiated color scheme to allow for easier distinction between segments rendered in the fill. 
 
 
 
@@ -62,12 +62,13 @@ We also reference [JunkChart's][junkchartscheckup] Trifecta Checkup framework to
 With the above framework, we conclude although this chart is addressing its question - how does the amount of and segment proportions of solar installations compare across states? -- with the relevant data, the weaknesses in the visual representation confuse the message delivery and make it hard for the reader to correctly compare the data across states. 
 
 
+****
 
-##Notes on preparing the data set
+###Notes on preparing the data set
 
 
 #### Our data source on solar PV data
-The following offers a glance at our data set on U.S. solar PV installations which can be downloaded from [The Open PV Project][OpenPV] -
+The following offers a glance at our data set on U.S. solar PV installations which can be downloaded from the online database of [The Open PV Project][OpenPV] -
 
 
 	  zipcode state size_kW   cost date_installed year latitude  longitude
@@ -85,10 +86,10 @@ The following offers a glance at our data set on U.S. solar PV installations whi
 
 
 #### Getting the data in shape in R
-Here are some steps needed to prepare our data in R before we made our visualizations:
+Here are some steps needed to prepare our data in R before we create our visualizations, they include:
 
 
-Adding a variable that categorizes solar installations by market segment  or project size (residential, commercial, utility-scale)-
+Adding a variable that categorizes solar installations by market segment/ project size (residential, commercial, utility-scale)-
 
 
 	data <- rawdata %>%
@@ -107,28 +108,30 @@ Grouping data by state and year; Adding a variable that sums up statistics by st
     		capacity_bystate =sum(size_kW),   
     		mean_costperwatt =mean(costperwatt,na.rm = TRUE)) 
 
+****
 
 
-#### Attempts to convey 2014 data in original chart, as well as multi-year data
+##Attempts to convey 2014 data in original chart, as well as multi-year data
 
-We try to create a few plots and lay out the goals of these charts.  
+We try to create a few different plots and state the goals of these charts.  
 
 
-#####Attempt 1: 
+###Attempt 1: Stacked bar chart
 *   Convey amount of solar installations by all states in 2014
 
-![alt text](Chart1-2014installs.png)
 ![alt text](https://raw.githubusercontent.com/Xtines/edav/gh-pages/_posts/assets/Chart1-2014installs.png)
 
 *   Convey amount of solar installations by all states in 2014 broken down by project segment represented with the fill (in color)
-![alt text](Chart1-2014bysegment.png)
+
 ![alt text](https://raw.githubusercontent.com/Xtines/edav/gh-pages/_posts/assets/Chart1-2014bysegment.png)
 
 
-#####Attempt 2: Facet grid by year
-I thought it would be even more informative to compare the same set of data for different years from 2010-2015 YTD. 
-* Convey amount of solar installations by states over all years, broken down by project segment represented with the fill (in color)
+###Attempt 2: Facet grid by year
 
+* Convey amount of and segment proportions of solar installations by states over all years, faceted by year 
+
+I thought it would be even more informative to compare the same types of data spanning different years from 2010-2015 YTD. Presenting the stacked bar chart above with facets by year allows the viewer to compare the amount and segment types of solar installations for all states and such data's respective change over the period 2010-2015. 
+ 
 
 	allyearssegm <- data %>%
  		arrange(state, segment)
@@ -141,47 +144,44 @@ I thought it would be even more informative to compare the same set of data for 
 	coord_flip() +
 	facet_grid( ~ year) +
 	theme(axis.text.x=element_text(size=8, angle=60, vjust=.3, hjust=0.3))+
-	theme(axis.text.y=element_text(size=9))'''
+	theme(axis.text.y=element_text(size=9))
 
 
-![alt text](Chart2-Barplot_faceted_byyear.png)
 ![alt text](https://raw.githubusercontent.com/Xtines/edav/gh-pages/_posts/assets/Chart2-Barplot_faceted_byyear.png)
 
 
 
 
+###Attempt 3: Small multiples plotting with ggplot2 in R
 
-
-#####Attempt 3: 
-*   Convey solar installations by states over all years, broken down by project segment represented with the fill (in color)
 
 
 **Benefits of small multiples plotting**
 
-By lining up multiple visualizations, small multiples effectively allow for direct comparisons to be made with little effort.
+By lining up multiple visualizations, small multiples effectively allow for direct comparisons to be made across states with little effort.
 
-[Flowing Data's][flowingdata] post on small multiples sums up the benefits of this plotting method -  
+[Flowing Data's post on small multiples][flowingdata] sums up the benefits of this plotting method -  
 
-<The key idea is to slice up your data and use a separate plot to 
-<visualize each slice. The <end result is a grid of charts that all 
-<follow the same visual format, but show different <pieces of the data. <Essentially, a chorus of little stories to help tell a bigger one.
+>The key idea is to slice up your data and use a separate plot to 
+>visualize each slice. The end result is a grid of charts that all 
+>follow the same visual format, but show different pieces of the data. Essentially, a chorus of little stories to help tell a bigger one.
 
-<While the concept is simple, the benefits can be significant. Compared 
-<to a single larger <chart, small multiples can help with over-plotting 
-<— when data is obscured or occluded <because there are too many plotted <items.
+>While the concept is simple, the benefits can be significant. Compared 
+>to a single larger chart, small multiples can help with over-plotting 
+>— when data is obscured or occluded <because there are too many plotted >items.
 
-<Compared to animation, small multiples present all of the data at once <making it easier for <viewers to naturally compare each facet with 
-<others, instead of trying to flip back and <forth between views.
+>Compared to animation, small multiples present all of the data at once making it easier for viewers to naturally compare each facet with 
+>others, instead of trying to flip back and forth between views.
 
+*   Convey solar installations & project segments by states over all years, faceted by state
 
-![alt text](Chart3-Facetwrap_bystate.png)
 ![alt text](https://raw.githubusercontent.com/Xtines/edav/gh-pages/_posts/assets/Chart3-Facetwrap_bystate.png)
 
 
 The problem with the above chart is that the y scale is fixed across states which makes it hard to see the y variables for some states where the values are small. 
 
-We can change the scale to a free y-scale to allow for a better viewing of trends over the years within each state. 
-The drawback here is the small multiple plots across states are not comparable in scale anymore. 
+We can change the scale to a free y-scale to allow for a better viewing of trends over the years for each state. 
+The drawback here is the small multiple plots across states are no longer comparable in scale in terms of the magnitudes of capacity installed. 
 
 	ggplot(data=allyearssegm, aes(x=year, y=size_kW)) +
 	geom_bar(aes(fill=segment), stat="identity")+
@@ -191,23 +191,25 @@ The drawback here is the small multiple plots across states are not comparable i
 	theme(axis.text.x=element_text(size=8, angle=60, vjust=.2, hjust=0.2))
 	
 
-![alt text](Chart3b-Facetwrap_bystate_freescale.png)
+
 ![alt text](https://raw.githubusercontent.com/Xtines/edav/gh-pages/_posts/assets/Chart3b-Facetwrap_bystate_freescale.png)
 
 
+****
 
 ### Challenges that remain for small multiples charts
 
-While the above charts may do a better job than the original chart in terms of allowing comparisons of installation amounts and installation segments across states, there remain weaknesses. 
+While the above charts may do a better job than the original chart in terms of allowing comparisons of installation amounts and installation segments across states, weaknesses remain. 
 
-However, the small plot area in small multiples can be limiting as it can be difficult to cram in additional data details/scale labels given the limited plot sizes. 
+**Axis scale comparison for free y-scale:** If small multiples were applied to a data set whose facets see roughly similar ranges in their y-values, then small multiples plots using a fixed, consistent y-scale can be applied and comparison across facets would be effective. However, in this particular case, due to the varying y ranges for our facets/states, applying the free y-scale adjustment prevents us from accurately comparing the magnitude of the y variables across states.   
+
+**Limited facet plot area:** Meanwhile, the small plot area in small multiples can be limiting as it can be difficult to cram in additional data details or axis labels given the limited plot sizes. 
 
 
-**Next step suggestions:** 
-One way to improve the above small multiple chart would be to add layering interactions to allow for a closer study of the data details upon interaction without cluttering the whole chart with too much information.
+####Next step suggestions: 
+One way to improve the above small multiple chart would be to add or layer interactions to allow for a closer study of the data details upon viewer interaction without cluttering the whole chart with too much information.
  
-An example might be allowing some parts of the graph to be highlighted as the mouse hovers to bring a visual element to the forefront for comparison, or connect the small plots in some way.
-
+An example might be allowing some parts of the graph to be highlighted with additional data provided as the mouse hovers, or to provide highlighting of a particular year's data across all states so as to present a visual, all-at-once highlight of all states' data for a particular year. 
 
 
 
