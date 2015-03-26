@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Graphics and Plots in Science 
-description: A look into common problems with academic graphics found in science journals.
+title: "Graphics and Plots in Science "
+description: "A look into common problems with academic graphics found in science journals."
 tags: visualization science ggplot python R
 ---
 
@@ -31,7 +31,8 @@ Some of these problems come from trying to show off too much of the data. You wa
 In the remainder of the blog, I will try to address each of these points and introduce a fast and easy way to correct them. 
 
 ####Corrections to common problem with academic graphics:
-* Log-log plots with missing or symmetric error bars can be fixed by forcing asymmetric error bars. When there are small errors, the log can show as a negative error, which often means that plot won't do anything. In Matplotlib the default (for the y axis) is to map all negative values a very small positive one. The code for that is: ```
+* Log-log plots with missing or symmetric error bars can be fixed by forcing asymmetric error bars. When there are small errors, the log can show as a negative error, which often means that plot won't do anything. In Matplotlib the default (for the y axis) is to map all negative values a very small positive one. The code for that is: 
+```
 plt.yscale('log', nonposx='clip')
 ```
 
@@ -53,6 +54,7 @@ For example, to make everything expect your points or lines disappear you'd use:
         panel.grid.minor=element_blank(),
         plot.background=element_blank()) 
 ```
+
 Each of these could also be modified to make the text larger or smaller, change the font, rotate the labels...etc.
  
 To change the direction and size of the tick labels you'd use something like:
@@ -70,6 +72,7 @@ import matplotlib.pyplot as plt
 plt.xlabel('X Label')
 plt.ylabel('Y Label')
 ```
+
 or in ggplot2 in R using:
 
 ```
@@ -83,14 +86,14 @@ In other cases, it's best to separate out the information into a table of plots.
 
 For example, below is the orignal plot from my research showing the intensity of different molecules across velocities. The plot places all four molecules on the same graph with a key indicating which is which. In color, this graphic might make more sense, but it is still hard to make out the individual curves. Plus, the key is small and referring back to it is time consuming and annoying.
 
-{% include {{ site.baseurl }}/image.html url="/assets/erinsimages/spectrapel.png" description="Velocity spectra for the Pelican Pillar." %}
+{% include image.html url="/assets/erinsimages/spectrapel.png" description="Velocity spectra for the Pelican Pillar." %}
 
 In fixing the graphic, while also including more information from my other sources,
 I separated out the each of the molecules and sources into a table of spectra. 
 This un-clutters the plot and allows you to more easily visualize trends in the sources. 
 (Notice how the plots is missing axes labels - shame on me!) 
 
-{% include {{ site.baseurl }}/image.html url="/assets/erinsimages/spectra2.png" description="Velocity spectra for the pillars show brightness temperature against velocity in km/s. The spectra were taken in the heads of the pillars at the peak brightness and averaged over a beam size." %}
+{% include image.html url="/assets/erinsimages/spectra2.png" description="Velocity spectra for the pillars show brightness temperature against velocity in km/s. The spectra were taken in the heads of the pillars at the peak brightness and averaged over a beam size." %}
 
 The code for this plot was done in IDL - a language mostly used only by astronomers (after looking at the code, you'll see why no one else joined in the fun...)
 If you're interested, you can check it out [here](https://github.com/eringrand/idlcodes/blob/master/plotspectra.pro).
