@@ -3,7 +3,7 @@ Bad Graph Critique and Improvement
 
 I found a graph of CPI in US [here](http://data.bls.gov/pdq/SurveyOutputServlet?request_action=wh&graph_name=CU_cpibrief).
 
-![alt text](pic.png)
+![alt text]({{ site.baseurl }}/assets/shenjunfei/pic.png)
 
 ### Some criticism of the graph
 This graph represents the monthly change over the previous 10 years, but is confusing and misleading (as I have seen several times elsewhere).
@@ -66,7 +66,7 @@ p2 <- ggplot(change, aes(date, change, colour = measure)) + geom_line() + labs(y
 print(p2)
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
+![plot of chunk unnamed-chunk-3]({{ site.baseurl }}/assets/shenjunfei/unnamed-chunk-3-1.png) 
 
 In fact the monthly change of CPI should be more volatile than the yearly change, but the above graph did not show the greater volatility of monthly change, because the scale of monthly percent change and yearly scale change are different. If I multiply the monthly change by 12, the difference in volatilitie is clear.
 
@@ -76,7 +76,7 @@ p3 <- ggplot(changes, aes(date, change, colour = measure)) + geom_line() + labs(
 print(p3)
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-4]({{ site.baseurl }}/assets/shenjunfei/unnamed-chunk-4-1.png) 
 
 And if I really want to address the original question, 12-month percent change of the CPI of all items and CPI of all items less food and energy, I will plot it as follows.
 
@@ -99,7 +99,7 @@ p <- ggplot(d, aes(date, cc, colour = type)) + geom_line() + labs(y = "12-month 
 print(p)
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
+![plot of chunk unnamed-chunk-5]({{ site.baseurl }}/assets/shenjunfei/unnamed-chunk-5-1.png) 
 
 This is much more accurate than the original graph
-![alt text](pic1.png)
+![alt text]({{ site.baseurl }}/assets/shenjunfei/pic1.png)
