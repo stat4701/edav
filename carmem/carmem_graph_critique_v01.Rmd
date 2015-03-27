@@ -1,0 +1,43 @@
+---
+title: "Blogpost - Graph Critique"
+author: "Carmem Domingues"
+date: "March 24, 2015"
+output: html_document
+---
+
+
+
+Here is a graph from NewsDay.com on employment in Long Island for june 2014
+(http://www.newsday.com/business/long-island-employment-for-june-2014-1.8501596):
+
+![image of bad chart](https://github.com/carmem/edav_4701/blob/master/bad_graph.png?raw=true)
+
+###The Good:
+- One can read all the different categories of employment
+- There is an attempt at color-coding different categories of types of employment
+- They include amounts
+- There is an attempt at comparing amounts based on the sizes of the rectangles
+
+###The Bad:
+- One cannot easily distinguish between the different sub-categories of Service Jobs
+- The quantities included are had to read and compare
+- There is no indication of trends - whether the number of jobs in each sector has gone up or down, and no basis of comparison (last year, last month?)
+- It is hard to compare the total number of jobs across categories
+- The rectangle areas are hard to compare when they are different shapes and in different parts of the graph
+- The breakdowns are not consistent among categories - some are in 2 levels, some 3, some more
+- There is missing data - rectangles that are blank
+
+###The Ugly:
+- The color coding fails for the sub-categories of Service Jobs, which are broken down on the Legend, but all one single color on the chart
+- The fonts are just ugly as are the lines across the graph
+- It is all just one heavy box - it's bulky
+
+<hr> 
+
+###What I would do differently:
+
+#####I would make this into a bubble chart that showed:
+- On the x-axis the share of total jobs that each category carried
+- On the y-axis the %change year-over-year of the number of jobs in that sub-category
+- The size of the bubble would represent the share of the total jobs in that category that the sub-category represents
+- The color of the bubble will indicate the overall category of the job (Government vs. Services vs. Production of Goods, and we could try to use different shades of each category's color for each of the different sub-categories)
