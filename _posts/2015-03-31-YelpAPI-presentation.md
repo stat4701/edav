@@ -22,8 +22,9 @@ Code samples and data visualization
 <section>
 	<section>
 #### Get started
+<li> <a href="https://www.yelp.com/developers">Click</a> to become a yelp developer</li>
+<li> Get your<a href="https://www.yelp.com/developers/documentation/v2/authentication">API Access</a></li>
 
-[Click](https://www.yelp.com/developers) to become a yelp developer
 
 Get your [API Access](https://www.yelp.com/developers/documentation/v2/authentication)
 
@@ -40,10 +41,11 @@ You're all set!
 #### Yelp Open Source
 
 Awesome Resources!
-  * Yelp's [GitHub](https://github.com/Yelp/yelp-api/)
-  * Check out [code samples](https://github.com/Yelp/yelp-api/tree/master/v2) for languages of your own liking.
+<li> Yelp's <a href="https://github.com/Yelp/yelp-api/">GitHub</a> </li>
+<li> Check out <a href="https://github.com/Yelp/yelp-api/tree/master/v2">code samples</a> for languages of your own liking</li>
 
   ![](https://s3-media3.fl.yelpassets.com/assets/2/www/img/dd862ea85d56/developers/code.png)
+
 </section>
 </section>
  <section>
@@ -51,10 +53,8 @@ Awesome Resources!
 #### API Features
 
 <H5>[Businese API](https://www.yelp.com/developers/documentation/v2/business)</H5>
-  
-  * Input: businese id
-  
-  * Output: businese information
+  <li>Input: businese id</li>
+  <li>Output: businese information</li>
 
   ![](https://s3-media1.fl.yelpassets.com/assets/2/www/img/16147800feff/developers/top_shelf/documentation.png)
 
@@ -63,13 +63,11 @@ Awesome Resources!
 #### API Features
 
 <H5>[Search API](https://www.yelp.com/developers/documentation/v2/search_api)</H5>
-
-  * Input: search keywords (parameters)
-
-  * Output: search result
+  <li>Input: search keywords (parameters)</li>
+  <li>Output: search result</li>
 
   ![](https://s3-media1.fl.yelpassets.com/assets/2/www/img/279dca8060b5/developers/top_shelf/api.png)]
-  
+
 </section>
 </section>
 
@@ -78,11 +76,10 @@ Awesome Resources!
   <section>
 #### DEMO
 
-Get data -- [python]()
+*Get data -- [python]()
+<li> <a href="https://www.yelp.com/academic_dataset">GET</a> Yelp Academic Dataset</li>
 
-*[Yelp Academic Dataset](https://www.yelp.com/academic_dataset)
-
-Visualization -- [R]()
+*Visualization -- [R]()
 
 </section>
 </section>
