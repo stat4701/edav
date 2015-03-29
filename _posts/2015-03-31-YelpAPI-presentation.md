@@ -11,7 +11,7 @@ tags: R, python, Yelp API, ggmap, rMaps, Leaflet, ggplot, presentation
 	<section>
 #### Yelp API in Python
 
-<H5>Code samples and data visualization</H5>
+Code samples and data visualization
 
 ![](https://s3-media1.fl.yelpassets.com/assets/2/www/img/bf6d9619ae01/developers/brand-guidelines.png)
 
@@ -26,6 +26,7 @@ tags: R, python, Yelp API, ggmap, rMaps, Leaflet, ggplot, presentation
 [Click](https://www.yelp.com/developers) to become a yelp developer
 
 Get your [API Access](https://www.yelp.com/developers/documentation/v2/authentication)
+
 <ul>
 Yelp uses OAuth 1.0a for authenticating API requests
   <li>consumer key</li>
@@ -39,9 +40,8 @@ You're all set!
 #### Yelp Open Source
 
 Awesome Resources!
-  Yelp's [GitHub](https://github.com/Yelp/yelp-api/)
-
-  Check out code samples for languages of your own liking [here](https://github.com/Yelp/yelp-api/tree/master/v2)
+  * Yelp's [GitHub](https://github.com/Yelp/yelp-api/)
+  * Check out [code samples](https://github.com/Yelp/yelp-api/tree/master/v2) for languages of your own liking.
 
   ![](https://s3-media3.fl.yelpassets.com/assets/2/www/img/dd862ea85d56/developers/code.png)
 </section>
@@ -49,18 +49,27 @@ Awesome Resources!
  <section>
   <section>
 #### API Features
+
 <H5>[Businese API](https://www.yelp.com/developers/documentation/v2/business)</H5>
+  
   * Input: businese id
+  
   * Output: businese information
 
   ![](https://s3-media1.fl.yelpassets.com/assets/2/www/img/16147800feff/developers/top_shelf/documentation.png)
+
 </section>
  <section>
+#### API Features
+
 <H5>[Search API](https://www.yelp.com/developers/documentation/v2/search_api)</H5>
+
   * Input: search keywords (parameters)
+
   * Output: search result
 
   ![](https://s3-media1.fl.yelpassets.com/assets/2/www/img/279dca8060b5/developers/top_shelf/api.png)]
+  
 </section>
 </section>
 
