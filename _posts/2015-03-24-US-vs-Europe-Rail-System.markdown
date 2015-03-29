@@ -9,7 +9,7 @@ date:   2015-03-24
 The author  states in the blog, 
  <blockquote>   "A good measure of safety is passenger miles traveled per reported passenger injury (defined here to include fatalities). A higher number is better: It means that a passenger can travel more miles before expecting to face an injury." </blockquote>
 
-![Here is the chart I am critiquing](/assets/source_chart.jpg)
+![Here is the chart I am critiquing]({{ site.baseurl }}/assets/source_chart.jpg)
 
 In the blog, the author attempts to show the bad condition of the US passenger train system by comparing passenger miles traveled per reported passenger injury with the worst rated rail systems of European countries. This is done using a time-series line graph that presents miles traveled for the US and the 6 European countries with the worst rated rail systems. </p>
 
@@ -19,7 +19,7 @@ Although the chart seems to passably carry the intended message, it still requir
 
 Here is an example of a slightly better chart with the data for all the countries in one plot:
 
-<a href="/assets/grouped_all.png"><img src="/assets/grouped_all.png" width="685" height="450" /> </a>
+<a href="{{ site.baseurl }}/assets/grouped_all.png"><img src="{{ site.baseurl }}/assets/grouped_all.png" width="685" height="450" /> </a>
 
 But this still runs into the problem of too much information in one plot that may distract the reader.
 
@@ -30,9 +30,9 @@ Lastly, I must object to the choice of colors and dashed lines in the graph. Eve
 Although they take up relatively more space, these six charts are better because we can better compare the US's rail system against each of the countries. The contrast between the US and the other countries is clearer and more dramatic.
 
 
-<a href='/assets/plots.png'><img src="/assets/plots.png" width="685" height="450"/></a>
+<a href='{{ site.baseurl }}/assets/plots.png'><img src="{{ site.baseurl }}/assets/plots.png" width="685" height="450"/></a>
 
 and alternative visualizations:
 
-<a href='/assets/alt_bar.png'><img src="/assets/alt_bar.png" width="50" height="50"/></a>
-<a href='/assets/alt_line.png'><img src="/assets/alt_line.png" width="50" height="50"/></a>
+<a href='{{ site.baseurl }}/assets/alt_bar.png'><img src="{{ site.baseurl }}/assets/alt_bar.png" width="50" height="50"/></a>
+<a href='{{ site.baseurl }}/assets/alt_line.png'><img src="{{ site.baseurl }}/assets/alt_line.png" width="50" height="50"/></a>
