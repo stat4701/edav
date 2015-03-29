@@ -25,9 +25,6 @@ Code samples and data visualization
 <li> <a href="https://www.yelp.com/developers">Click</a> to become a yelp developer</li>
 <li> Get your<a href="https://www.yelp.com/developers/documentation/v2/authentication">API Access</a></li>
 
-
-Get your [API Access](https://www.yelp.com/developers/documentation/v2/authentication)
-
 <ul>
 Yelp uses OAuth 1.0a for authenticating API requests
   <li>consumer key</li>
@@ -51,8 +48,7 @@ Awesome Resources!
  <section>
   <section>
 #### API Features
-
-<H5>[Businese API](https://www.yelp.com/developers/documentation/v2/business)</H5>
+[Businese API](https://www.yelp.com/developers/documentation/v2/business)
   <li>Input: businese id</li>
   <li>Output: businese information</li>
 
@@ -61,8 +57,7 @@ Awesome Resources!
 </section>
  <section>
 #### API Features
-
-<H5>[Search API](https://www.yelp.com/developers/documentation/v2/search_api)</H5>
+[Search API](https://www.yelp.com/developers/documentation/v2/search_api)
   <li>Input: search keywords (parameters)</li>
   <li>Output: search result</li>
 
@@ -76,10 +71,10 @@ Awesome Resources!
   <section>
 #### DEMO
 
-*Get data -- [python]()
+* Get data -- [python]()
 <li> <a href="https://www.yelp.com/academic_dataset">GET</a> Yelp Academic Dataset</li>
 
-*Visualization -- [R]()
+* Visualization -- [R]()
 
 </section>
 </section>
