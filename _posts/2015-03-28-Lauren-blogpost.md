@@ -7,4 +7,4 @@ output: html_document
 author: Lauren McCarthy
 ---
 
-![20 Year Return on Investment For Public and Private Colleges](assets/chart.png)
+![20 Year Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/chart.png)
