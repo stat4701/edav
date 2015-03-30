@@ -7,6 +7,55 @@ description: pair presentaion
 tags: R, python, Yelp API, ggmap, rMaps, Leaflet, ggplot, presentation
 ---
 
+Returned:
+<section>
+<code>{ 
+  u'categories': [ [u'American (New)', u'newamerican'],
+                   [u'Seafood', u'seafood']],
+  u'display_phone': u'+1-917-408-3395',
+  u'id': u'upstate-new-york-2',
+  u'image_url': u'http://s3-media1.fl.yelpassets.com/bphoto/RuzizPitO3wvIUJRyhZ5MA/ms.jpg',
+  u'is_claimed': True,
+  u'is_closed': False,
+  u'location': { u'address': [u'95 1st Ave'],
+                 u'city': u'New York',
+                 u'coordinate': { u'latitude': 40.7263139141197,
+                                  u'longitude': -73.9864901976935},
+                 u'country_code': u'US',
+                 u'display_address': [ u'95 1st Ave',
+                                       u'East Village',
+                                       u'New York, NY 10003'],
+                 u'geo_accuracy': 9.5,
+                 u'neighborhoods': [u'East Village'],
+                 u'postal_code': u'10003',
+                 u'state_code': u'NY'},
+  u'menu_date_updated': 1416597147,
+  u'menu_provider': u'single_platform',
+  u'mobile_url': u'http://m.yelp.com/biz/upstate-new-york-2',
+  u'name': u'Upstate',
+  u'phone': u'9174083395',
+  u'rating': 4.5,
+  u'rating_img_url': u'http://s3-media2.fl.yelpassets.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png',
+  u'rating_img_url_large': u'http://s3-media4.fl.yelpassets.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png',
+  u'rating_img_url_small': u'http://s3-media2.fl.yelpassets.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png',
+  u'review_count': 872,
+  u'reviews': [ { u'excerpt': u"I never give 5 stars. I always think it will look more authentic if I put four. I can't not give this place five stars. It was the most incredible...",
+                  u'id': u'07jS75P1-pviQ_3zPNYqkQ',
+                  u'rating': 5,
+                  u'rating_image_large_url': u'http://s3-media3.fl.yelpassets.com/assets/2/www/img/22affc4e6c38/ico/stars/v1/stars_large_5.png',
+                  u'rating_image_small_url': u'http://s3-media1.fl.yelpassets.com/assets/2/www/img/c7623205d5cd/ico/stars/v1/stars_small_5.png',
+                  u'rating_image_url': u'http://s3-media1.fl.yelpassets.com/assets/2/www/img/f1def11e4e79/ico/stars/v1/stars_5.png',
+                  u'time_created': 1426989529,
+                  u'user': { u'id': u'FA-X9QZ5ATMbpPIKSFefKw',
+                             u'image_url': u'http://s3-media4.fl.yelpassets.com/photo/dlu2wYiYysLbt5sdjiXbbA/ms.jpg',
+                             u'name': u'Alyssa B.'}}],
+  u'snippet_image_url': u'http://s3-media4.fl.yelpassets.com/photo/dlu2wYiYysLbt5sdjiXbbA/ms.jpg',
+  u'snippet_text': u"I never give 5 stars. I always think it will look more authentic if I put four. I can't not give this place five stars. It was the most incredible...",
+  u'url': u'http://www.yelp.com/biz/upstate-new-york-2'}
+</code>
+</section>
+
+
 
 <section>
 ## I. Demo in python - get data
@@ -318,6 +367,8 @@ More Dynamic Maps
   * Chinese Places
 
 [see](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/chinese.html)
+
+file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/chinese.html
 
   * Bars
 
