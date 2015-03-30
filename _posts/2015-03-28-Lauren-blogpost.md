@@ -22,8 +22,14 @@ author: Lauren McCarthy
 + Show the first plot with x-axis and y-axis starting from zero as well as with % of Annual ROI vs Total 4 Year cost
 + Show a histogram of the Total 4 Year cost of all colleges labeling Public vs. Private. 
 
+#My Plots
+![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/figure_1.png)
+
 #Conclusion
 
++ Make sure your graphs are using the correct axis to not exaggerate the results
++ Sometimes more plots but simple plots are better than complicated graphs
++ Sometimes a more general conclusion can be better than a very specific one. For example: In general the return on investment for Private colleges is better than Public vs. The Best return on investment is from this one specific college.
 
 #Code
 
