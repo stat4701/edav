@@ -9,6 +9,8 @@ tags: R, python, Yelp API, ggmap, rMaps, Leaflet, ggplot, presentation
 
 Returned:
 <section>
+
+<pre>
 <code>{ 
   u'categories': [ [u'American (New)', u'newamerican'],
                    [u'Seafood', u'seafood']],
@@ -53,6 +55,7 @@ Returned:
   u'snippet_text': u"I never give 5 stars. I always think it will look more authentic if I put four. I can't not give this place five stars. It was the most incredible...",
   u'url': u'http://www.yelp.com/biz/upstate-new-york-2'}
 </code>
+</pre>
 </section>
 
 
