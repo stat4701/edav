@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Aarti's Blog - EDAV"
+title: "College not Worth Your Time and Money!"
 author: "Aarti Kumthekar"
 date: "Sunday, March 22, 2015"
 ---
@@ -37,6 +37,38 @@ Comparing this to the education expense shows that there is a net positive retur
 
 #### Average lifeime earnings between different education levels.
 ![an image alt text]({{ site.baseurl }}/assets/LifeTimeEarning_2.jpg) 
+
+
+
+
+{% highlight r %}
+Unit <- 1000
+
+#Get DAta File from the source directory
+LifeTimeEarningsData <-read.csv("LifeTimeEarnings2.csv",header=T,sep=",")
+
+require("ggplot2")
+library(MASS)
+library(plyr)
+require(scales)
+
+(bp1 <- ggplot(data=LifeTimeEarningsData, 
+               aes(x=Education,y=Earnings,fill=factor(Education))) + 
+   geom_bar(stat="identity", position=position_dodge()) 
+   + scale_x_discrete(limits=c("Less than HS" ,"HS Diploma", "Bachelor's",
+                                "Masters", "Doctoral", "Prefessional"))
+   + scale_y_continuous(labels=comma)
+   + ggtitle("Life Time Earnings")
+   + geom_text(aes(label=paste("$", format(Earnings, big.mark=",", scientific=FALSE) )), vjust=1, size=3)
+   + theme(plot.title=element_text(size=rel(1), face="bold"))
+   + theme(axis.title=element_text(size=10)))
+{% endhighlight %}
+
+![center](http://fullmogra.github.io/edav/figs/2015-03-22-EdavAKBlogPost.rmd/unnamed-chunk-1-1.png) 
+
+
+
+
 ----
 ****
 #### Resources:
