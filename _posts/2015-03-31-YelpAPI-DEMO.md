@@ -317,8 +317,8 @@ More Dynamic Maps
 
   * Chinese Places
 
+<a href="file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/chinese.html">Link 1</a>
 [see](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/chinese.html)
-
 
   * Bars
 
