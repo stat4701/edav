@@ -301,8 +301,7 @@ A Static Map
 
  * Manhattan Rating Map
 
-![](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/presentation/circle_reviews.html)
-
+![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/manhattan_rating_map.png)
 
 
 ### b. leaflet
@@ -320,19 +319,24 @@ More Dynamic Maps
 
   * Chinese Places
 
-![](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/presentation/circle_reviews.html)
+![](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/presentation/chinese.html)
 
 
   * Bars
 
-![](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/presentation/circle_reviews.html)
+![](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/presentation/bar.html)
 
   * Pizza
 
-![](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/presentation/circle_reviews.html)
+![](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/presentation/pizza.html)
 
   * Morningside
 
-![](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/presentation/circle_reviews.html)
+![](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/presentation/morningside.html)
+
+  * Upper West
+
+![](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/presentation/upper_west.html)
+
 
 </section>
