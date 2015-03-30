@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Yelp API
+title: Yelp API - DEMO
 author: Yu Tian
 date: "March 31, 2015"
 description: pair presentaion
@@ -26,6 +26,7 @@ Call: get _ business('upstate-new-york-2')
 
 Returned:
 <section>
+<ul>
 <div class="island code-sample">
         <pre>{ 
   u'categories': [ [u'American (New)', u'newamerican'],
@@ -73,6 +74,7 @@ Returned:
 </pre>
     </div>
 </section>
+</ul>
 
 3. Feature B: "search" 
 
@@ -82,6 +84,7 @@ Returned:
 Call: search('bar','San Francisco, CA')
 
 Returned:
+<ul>
 <section>
 <div class="island code-sample">
         <pre>
@@ -117,7 +120,7 @@ Returned:
 </pre>
     </div>
 </section>
-
+</ul>
 
 4. Making use of the 3: "query _ api"
 
@@ -126,7 +129,7 @@ Returned:
 Call: query _ api('dinner', 'New York, NY')
 
 Returned: 3 businesses found meet the conditions.
-
+<ul>
 <section>
 <div class="island code-sample">
         <pre>
@@ -213,8 +216,8 @@ Result for business "upstate-new-york-2" found:
     </div>
 </section>
 </section>
+</ul>
 <section>
-
 ### b. use python package
 
 Awesome guy's [github](https://github.com/gfairchild/yelpapi)
@@ -226,7 +229,7 @@ Awesome guy's [github](https://github.com/gfairchild/yelpapi)
 Call: yelp _ api.search _ query(term='ice cream', location='austin, tx', sort=2, limit=5)
 
 Returned:
-
+<ul>
 <section>
 <div>
   <pre>
@@ -282,7 +285,7 @@ Result for business "upstate-new-york-2" found:
 </div>
 </section>
 </section>
-
+</ul>
 <section>
 ## II. Demo in R - visualization
 
