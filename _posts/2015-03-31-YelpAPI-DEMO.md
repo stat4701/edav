@@ -299,6 +299,7 @@ A Dynamic Map
  * Manhattan Reviews Map
 
 [see](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/circle_reviews.html)
+file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/circle_reviews.html
 
 ### c. rMaps
 
@@ -307,27 +308,26 @@ More Dynamic Maps
   * Chinese Places
 
 [see](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/chinese.html)
-
-<a href="file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/chinese.html">Visit the Useful Tips Section</a>
-
 file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/chinese.html
 
   * Bars
 
 [see](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/bar.html)
-
+file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/bar.html
 
   * Pizza
 
 [see](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/pizza.html)
+file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/pizza.html
 
   * Morningside
 
 [see](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/morningside.html)
+file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/morningside.html
 
   * Upper West
 
 [see](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/upper_west.html)
-
+file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/upper_west.html
 
 </section>
