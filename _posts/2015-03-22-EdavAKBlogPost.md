@@ -33,11 +33,10 @@ Author claims that We have lost the ubiquitous positive financial return on educ
 #### Following chart (Source: The U.S. Department of Education) shows lifetime earnings among different education levels.
 Comparing this to the education expense shows that there is a net positive return.
 ### The more the Education the higher the Return.
-![an image alt text]({{ site.baseurl }}/assets/LifeTimeEarning_1.jpg) 
+![an image alt text]({{ site.baseurl }}/assets/RplotLifeTimeEarnings.png) 
 
 #### Average lifeime earnings between different education levels.
 ![an image alt text]({{ site.baseurl }}/assets/LifeTimeEarning_2.jpg) 
-
 
 
 
