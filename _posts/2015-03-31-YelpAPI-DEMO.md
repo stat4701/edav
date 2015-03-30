@@ -7,6 +7,7 @@ description: pair presentaion
 tags: R, python, Yelp API, ggmap, rMaps, Leaflet, ggplot, presentation
 ---
 
+
 <section>
 ## I. Demo in python - get data
 
@@ -26,7 +27,6 @@ Call: get _ business('upstate-new-york-2')
 
 Returned:
 <section>
-<ul>
 <div class="island code-sample">
         <pre>{ 
   u'categories': [ [u'American (New)', u'newamerican'],
@@ -74,7 +74,6 @@ Returned:
 </pre>
     </div>
 </section>
-</ul>
 
 3. Feature B: "search" 
 
@@ -310,8 +309,7 @@ A Dynamic Map
 
  * Manhattan Reviews Map
 
-![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/circle_reviews.html)
-
+[see](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/circle_reviews.html)
 
 ### c. rMaps
 
@@ -319,24 +317,25 @@ More Dynamic Maps
 
   * Chinese Places
 
-![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/chinese.html)
+[see](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/chinese.html)
 
 
   * Bars
 
-![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/bar.html)
+[see](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/bar.html)
+
 
   * Pizza
 
-![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/pizza.html)
+[see](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/pizza.html)
 
   * Morningside
 
-![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/morningside.html)
+[see](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/morningside.html)
 
   * Upper West
 
-![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/upper_west.html)
+[see](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/upper_west.html)
 
 
 </section>
