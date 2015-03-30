@@ -300,7 +300,8 @@ A Dynamic Map
 
 [see](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/circle_reviews.html)
 file:///Users/yutian/Documents/QMSS/2015spring/DataViz/3presentation/circle_reviews.html
-<!DOCTYPE html>
+
+
 <html>
 <head>
 <meta charset="utf-8" />
