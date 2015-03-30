@@ -16,10 +16,10 @@ Feel free to use [Yelp Academic Dataset](https://www.yelp.com/academic_dataset)
 
 See my code [here](https://github.com/YuTian9/edav/blob/gh-pages/_posts/yt_pngs/yelp_functions.py)
 
-1. The very fundamental componet: "request"
+#### 1. The very fundamental componet: "request"
  * Send your request to yelp by passing a url that points to the object.
 
-2. Feature A: "get _ business" </H4>
+#### 2. Feature A: "get _ business" </H4>
  * Tell me the business id, I'll give you the information I allow you to see.
 
 Call: get _ business('upstate-new-york-2')
@@ -72,7 +72,7 @@ Returned:
 </code></pre>
 </section>
 
-3. Feature B: "search" 
+#### 3. Feature B: "search" 
 
 <li>Highly customizable</li>
 <li>Give me any of <a href="https://www.yelp.com/developers/documentation/v2/search_api">these</a> search parameters, I'll give you a summary information about businesses in this region.</li>
@@ -115,7 +115,7 @@ Returned:
 </section>
 
 
-4. Making use of the 3: "query _ api"
+#### 4. Making use of the 3: "query _ api"
 
   * Give me any search parameters, I'll give you up to 20 businesses that meet these conditions.
 
@@ -207,6 +207,7 @@ Result for business "upstate-new-york-2" found:
 
 </code></pre>
 <section>
+
 ### b. use python package
 
 Awesome guy's [github](https://github.com/gfairchild/yelpapi)
@@ -214,7 +215,6 @@ Awesome guy's [github](https://github.com/gfairchild/yelpapi)
 See the code [here](https://github.com/YuTian9/edav/blob/gh-pages/_posts/yt_pngs/yelp_usepackage.py)
 
 * One line to set up
-
 * One line to search by whatever terms you want
 
 Call: yelp _ api.search _ query(term='ice cream', location='austin, tx', sort=2, limit=5)

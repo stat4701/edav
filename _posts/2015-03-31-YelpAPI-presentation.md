@@ -71,10 +71,10 @@ Awesome Resources!
   <section>
 #### DEMO
 
-* Get data -- [python]()
+* Get data -- [python](http://stat4701.github.io/edav/2015/03/31/YelpAPI-DEMO/)
 <li> <a href="https://www.yelp.com/academic_dataset">GET</a> Yelp Academic Dataset</li>
 
-* Visualization -- [R]()
+* Visualization -- R
 
 </section>
 </section>
