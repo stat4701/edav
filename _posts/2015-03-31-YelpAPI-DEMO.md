@@ -310,7 +310,7 @@ A Dynamic Map
 
  * Manhattan Reviews Map
 
-![](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/presentation/circle_reviews.html)
+![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/circle_reviews.html)
 
 
 ### c. rMaps
@@ -319,24 +319,24 @@ More Dynamic Maps
 
   * Chinese Places
 
-![](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/presentation/chinese.html)
+![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/chinese.html)
 
 
   * Bars
 
-![](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/presentation/bar.html)
+![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/bar.html)
 
   * Pizza
 
-![](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/presentation/pizza.html)
+![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/pizza.html)
 
   * Morningside
 
-![](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/presentation/morningside.html)
+![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/morningside.html)
 
   * Upper West
 
-![](file:///Users/yutian/Documents/QMSS/2015spring/DataViz/presentation/upper_west.html)
+![](https://raw.githubusercontent.com/YuTian9/edav/gh-pages/_posts/yt_pngs/upper_west.html)
 
 
 </section>
