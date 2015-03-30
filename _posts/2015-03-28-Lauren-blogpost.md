@@ -11,23 +11,16 @@ author: Lauren McCarthy
 
 #Graph Critique
 
-+ X and Y axis do not start from zero making the seperation of the data exaggerated.
-
++ x and y axis do not start from zero making the seperation of the data exaggerated.
 + Wrong data point: MIT is shown as a public college.
-
 + Does not show all the data.
-
 + Data uses 20 Year Net Return on investment excluding financial aid.
 
 #Improvements
 
 + Use data to inlcude % of Annual ROI including financial aid. The % of Annual ROI is the % of expected ROI recieved every year after graduation.
-
 + Show the first plot with x-axis and y-axis starting from zero as well as with % of Annual ROI vs Total 4 Year cost
-
 + Show a histogram of the Total 4 Year cost of all colleges labeling Public vs. Private. 
-
-+ 
 
 #Conclusion
 
