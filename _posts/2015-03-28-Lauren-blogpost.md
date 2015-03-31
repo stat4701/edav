@@ -39,7 +39,7 @@ author: Lauren McCarthy
 #Analysis
 
 + Scatter Plot: Updated Graph does not show as much of a differentiation between Public vs. Private Colleges.
-+ Histogram: Shows the distribution of the 4 Year Cost of Colleges Private vs. Public
++ Histogram: Shows the distribution of the 4 Year Cost of Colleges Private vs. Public. As we can see Private colleges are much more distributed at the higher prices than public.
 + Density Graphs: I found the density graphs to have the most useful information. While it shows a differentiation between the cost of the Public colleges vs the private colleges. The ROI Density graph shows that they pick generally in the same place showing that there is not much of an advantage to go to a private school in terms on ROI. This could also be due to the fact that in general Private schools give much larger Financial Aid packages therefore, despite the schools being expensive the average ROI will have the Finacial Aid factored in.
 
 #Conclusion
