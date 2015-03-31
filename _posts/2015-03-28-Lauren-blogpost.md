@@ -1,6 +1,3 @@
-#git add .
-#git commit -m "added graph"
-#git push origin gh-pages
 ---
 layout: post
 title:  "EDAV Spring 2015: Chart critique blog post"
