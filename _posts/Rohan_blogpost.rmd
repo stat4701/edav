@@ -1,0 +1,110 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+setwd("~/Documents/STAT4701/blog")
+library(wordcloud)
+library(ggplot2)
+library(ggvis)
+library(plyr)
+library(reshape)
+
+# plot Obama's wordcloud before elections
+
+obama=read.csv('obamaWords.csv',sep=",",header=T, check.names = FALSE)
+obama_dm=data.frame(word=obama[,1],freq=obama[,2])
+wordcloud(obama_dm$word, obama_dm$freq, random.order=FALSE, colors=brewer.pal(8, "Dark2"),main="Obama's word cloud before elections")
+
+
+# plot Romney's wordcloud before elections
+romney=read.csv('romneyWords.csv',sep=",",header=T, check.names = FALSE)
+romney_dm=data.frame(word=romney[,1],freq=romney[,2])
+wordcloud(romney_dm$word,romney_dm$freq, random.order=FALSE, colors=brewer.pal(8, "Dark2"),main="Romney's word cloud before elections",rot.per=.15,scale=c(8,.2),vfont=c("sans serif","plain"))
+
+
+
+
+
+##barplot_obama
+obama_sub=obama[1:100,1:2]
+obama_sub$words=factor(obama_sub$words,levels=obama_sub[order(obama_sub$average_occurrences),"words"])
+p=ggplot(obama_sub,aes(x=words,y=average_occurrences,fill=words))  + geom_bar(stat = "identity") + coord_flip() + theme(legend.position="none") + ylab("Average_occurences_of_top100_words_by_Obama")
+p
+
+##barplot_Romney
+
+romney_sub=romney[1:100,1:2]
+romney_sub$words=factor(romney_sub$words,levels=romney_sub[order(romney_sub$average_occurrences),"words"])
+p=ggplot(romney_sub,aes(x=words,y=average_occurrences,fill=words))  + geom_bar(stat = "identity") + coord_flip() + theme(legend.position="none") + ylab("Average_occurences_of_top100_words_by_Romney")
+p
+
+##merge common words used by Obama and Romney
+
+obama_romney=Reduce(function(x, y) merge(x, y,by = c("words"), all=FALSE),list(obama_sub,romney_sub))
+colnames(obama_romney)=c("words","obama_avg_occurence","romney_average_occurence")
+
+
+##barplot of common words side by side
+
+obama_romney_sub<-melt(obama_romney)
+colnames(obama_romney_sub)=c("words","candidate","frequency_of_commonwords_before_elections")
+ggplot(obama_romney_sub,aes(words,frequency_of_commonwords_before_elections,fill=candidate))+ geom_bar(stat="identity",position="dodge")
+
+#boxplot of common words
+
+bp <- ggplot(data=obama_romney_sub, aes(x=candidate, frequency_of_commonwords_before_elections, fill=candidate)) + geom_boxplot()
+bp
+
+### Line plot of frequency of words used by Obama and Romney
+
+ggplot(obama_romney_sub,aes(x=words,y=frequency_of_commonwords_before_elections,color=candidate,group=candidate))+ geom_point()+geom_line()
+
+
+##### Line plot of word "Vote" used by Obama and Romney during various time periods before elections
+
+obama_timeseries=Reduce(function(x, y) merge(x, y,by = c("words"), all=FALSE),list(obama,obama_romney))
+romney_timeseries=Reduce(function(x, y) merge(x, y,by = c("words"), all=FALSE),list(romney,obama_romney))
+
+obama_timeseries2=obama_timeseries[,c(1,4:67)]
+romney_timeseries2=romney_timeseries[,c(1,4:67)]
+
+obama_timeseries_vote=obama_timeseries2[which(obama_timeseries2$words=='vote'),]
+romney_timeseries_vote=romney_timeseries2[which(romney_timeseries2$words=='vote'),]
+
+  
+obama_timeseries_melt<-melt(obama_timeseries_vote)
+romney_timeseries_melt<-melt(romney_timeseries_vote)
+
+
+
+candidate1=replicate(64, "Obama")
+candidate2=replicate(64, "Romney")
+
+
+candidate1=data.frame(candidate1)
+candidate2=data.frame(candidate2)
+
+obama_timeseries_melt_2=cbind(obama_timeseries_melt,candidate1)
+romney_timeseries_melt_2=cbind(romney_timeseries_melt,candidate2)
+
+colnames(obama_timeseries_melt_2)=c("words","time","count_of_word_vote_used","candidate")
+colnames(romney_timeseries_melt_2)=c("words","time","count_of_word_vote_used","candidate")
+
+comb=rbind(obama_timeseries_melt_2,romney_timeseries_melt_2)
+
+ggplot(comb,aes(x=time,y=count_of_word_vote_used,color=candidate,group=candidate))+ geom_point()+geom_line()
+
+```
+
+
+
+```{r, echo=FALSE}
+
+```
+
