@@ -1,4 +1,6 @@
-# rvest tutorial
+layout: post
+
+## rvest tutorial
 
 *Justin Law and Jordan Rosenblum*
 
