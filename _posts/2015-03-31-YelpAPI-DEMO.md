@@ -307,7 +307,7 @@ nyc
 
 1. A Dynamic Map
 
-<pre><code>
+```
 require(devtools)
 install_github("rstudio/leaflet")
 library(leaflet)
@@ -315,7 +315,7 @@ library(leaflet)
 m <- leaflet() %>% addTiles()
 m <- m %>% setView( -73.990, 40.7407,zoom = 12)
 m %>% addCircles(newdata$longitude, newdata$latitude,radius = 4*sqrt(newdata$review))
-</code></pre>
+```
 
  * Manhattan Reviews Map  [see](http://rpubs.com/YuTian9/review_circle)
 
@@ -324,7 +324,7 @@ m %>% addCircles(newdata$longitude, newdata$latitude,radius = 4*sqrt(newdata$rev
 
 leaflet sample:
 
-<pre><code>
+```
 require(devtools)
 install_github("rstudio/leaflet")
 library(leaflet)
@@ -347,11 +347,11 @@ shapes = list(
 
 m%>% addGeoJSON(shapes)
 
-</code></pre>
+```
 
 rMap sample:
 
-<pre><code>
+````
 require(devtools)
 install_github('ramnathv/rCharts@dev')
 install_github('ramnathv/rMaps')
@@ -361,10 +361,10 @@ map <- Leaflet$new()
 map$setView(c(40.7407,  -73.980), 11)
 map$tileLayer(provider = 'Stamen.Watercolor')
 for (i in 1:length(ncol(data))) {
-  map5$marker( c(data$latitude[i], data$longitude[i]), bindPopup = data$name[i])
+  map$marker( c(data$latitude[i], data$longitude[i]), bindPopup = data$name[i])
 }
-map5
-</code></pre>
+map
+```
 
   * Chinese Places  [see](http://rpubs.com/YuTian9/chinese)
 
