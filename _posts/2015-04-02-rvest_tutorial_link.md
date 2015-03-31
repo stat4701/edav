@@ -1,3 +1,7 @@
+---
+layout: post
+---
+
 # rvest tutorial
 
 Please visit the following link for our tutorial on scraping the web using rvest:
