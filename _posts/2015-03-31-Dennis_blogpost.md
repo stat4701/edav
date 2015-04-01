@@ -13,7 +13,7 @@ The normal temperature for the individual is 98.6 °F. However for the populatio
 
 In many situations we see plotted mean or median (somehow better) of the our data, which doesn’t represent the true data distribution. 
 
-One of the example I have met is the map of median NYC restaurant grading on [IQuantNY blog](http://iquantny.tumblr.com/post/76928412519/think-nyc-restaurant-grading-is-flawed-heres): 
+One of the example I have met is the map of median NYC restaurant grading on [IQuantNY](http://iquantny.tumblr.com/post/76928412519/think-nyc-restaurant-grading-is-flawed-heres) blog: 
 
 ![Median restaurant score]({{ site.baseurl }}/assets/dennis_blogpost/map.jpg)
 
@@ -21,7 +21,7 @@ Here is the problem I have with this map: I don’t really understand what it gi
 
 The average level as an indicator doesn’t allow me to understand what is really going on. 
 
-Let’s apply The Trifecta Checkup framework to analyse this map (http://junkcharts.typepad.com/junk_charts/junk-charts-trifecta-checkup-the-definitive-guide.html). The framework involves three investigations: 
+Let’s apply The Trifecta Checkup framework to analyse [this map](http://junkcharts.typepad.com/junk_charts/junk-charts-trifecta-checkup-the-definitive-guide.html). The framework involves three investigations: 
 
 *	What is the QUESTION? 
 *	What does the DATA say?
