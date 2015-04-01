@@ -48,9 +48,9 @@ Awesome Resources!
  <section>
   <section>
 #### API Features
-[Businese API](https://www.yelp.com/developers/documentation/v2/business)
-  <li>Input: businese id</li>
-  <li>Output: businese information</li>
+[business API](https://www.yelp.com/developers/documentation/v2/business)
+  <li>Input: business id</li>
+  <li>Output: business information</li>
 
   ![](https://s3-media1.fl.yelpassets.com/assets/2/www/img/16147800feff/developers/top_shelf/documentation.png)
 
