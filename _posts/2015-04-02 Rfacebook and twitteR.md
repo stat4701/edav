@@ -13,11 +13,13 @@ tags: R, API, Facebook, Twitter, Leaflet, ggplot, NLP
 
 How can we access Facebook API?
 
+<ul>
 <li>Upgrade FB account to a developer account <a href="https://developers.facebook.com/">here</a></li>
 <li>Create an app, get your App ID and App Secret</li>
 <li>library(Rfacebook) in R</li>
 <li>Set up your token by caliing fbOAuth(), with your app ID and app secret</li>
 <li>Done!</li>
+</ul>
 
 </section>
 </section>
