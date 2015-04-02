@@ -1,8 +1,7 @@
 ---
-layout: presentation
+layout: pres
 title: Rfacebook and twitteR
 author: Junfei Shen
-date: "April 2, 2015"
 description: pair presentaion of STAT W4701
 tags: R, API, Facebook, Twitter, Leaflet, ggplot, NLP
 ---
@@ -124,7 +123,7 @@ Creating your own oauth token
 	<section>
 #### availableTrendLocations()
 
-![](https://github.com/shenjunfei/edav/blob/gh-pages/assets/shenjunfei/r1.png)
+![](https://raw.githubusercontent.com/shenjunfei/edav/gh-pages/assets/shenjunfei/r1.png)
 
 </section>
 </section>
@@ -168,7 +167,7 @@ getTrends(woeid=2459115)
 	<section>
 #### Network of #machinelearning tag
 
-![](https://github.com/shenjunfei/edav/blob/gh-pages/assets/shenjunfei/r2.png)
+![](https://raw.githubusercontent.com/shenjunfei/edav/gh-pages/assets/shenjunfei/r2.png)
 
 </section>
 </section>
