@@ -90,11 +90,9 @@ Rohan Bareja
 	<section>
 #### Getting Started
 
-#####################################
-### CREATING YOUR OWN OAUTH TOKEN ###
-#####################################
-
 <ul>
+CREATING YOUR OWN OAUTH TOKEN
+
 <li>Step 1: go to <a href="apps.twitter.com">apps.twitter.com</a> and sign in</li>
 <li>Step 2: click on "Create New App”</li>
 <li>Step 3: fill name, description, and website (it can be anything, even google.com)</li>
