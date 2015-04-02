@@ -33,7 +33,7 @@ Fork, build, and read the [ggplot2 book](https://github.com/hadley/ggplot2-book)
 Read: [Reproducibility is still a challenge](http://ropensci.org/blog/2014/06/09/reproducibility/) and the [knitr](http://yihui.name/knitr/) documentation and demos. We will also discuss using git branches and making a pull request.
 
 > - Presentation: using knitr with pdf and html; 
-> - Presentation: controlling chunk options (sizes etc)
+> - Presentation: git & github *yet even moar* tutorial! for newbies who don't use version control at all. There is a lot of wacky and unfamiliar terminology.
 
 ## 2015-02-12 lattice and rcharts
 
