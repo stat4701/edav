@@ -71,19 +71,29 @@ img {
 <p>The list below is partially borrowed from Hadley Wickham (the creator of rvest) and we will go through some of them throughout this presentation.</p>
 <ul>
 <li><p>Create an html document from a url, a file on disk or a string containing html with html().</p></li>
-<li><p>Select parts of an html document using css selectors. Learn more about it using vignette(“selectorgadget”) after installing and loading rvest in R.</p></li>
-<li><p>Extract components with html_tag() (the name of the tag), html_text() (all text inside the tag), html_attr() (contents of a single attribute) and html_attrs() (all attributes).</p></li>
+<li><p>Select parts of an html document using css selectors: html_nodes(). Learn more about it using vignette(“selectorgadget”) after installing and loading rvest in R. CSS selectors are used to select elements based on properties such as id, class, type, etc.</p>
+<ul>
+<li><a href="http://selectorgadget.com/">Selector Gadget website</a></li>
+</ul></li>
+<li><p>Extract components with html_tag() (the name of the tag), html_text() (all text inside the tag), html_attr() (contents of a single attribute) and html_attrs() (all attributes). These are done after using html_nodes().</p>
+<ul>
+<li>HTML tags normally come in pairs like <tagname>content</tagname>. In the examples we go through below, the content is usually contained within the
+<body> 
+tag.</li>
+</ul></li>
 <li><p>You can also use rvest with XML files: parse with xml(), then extract components using xml_node(), xml_attr(), xml_attrs(), xml_text() and xml_tag().</p></li>
 <li><p>Parse tables into data frames with html_table().</p></li>
 <li><p>Extract, modify and submit forms with html_form(), set_values() and submit_form().</p></li>
-<li><p>Detect and repair encoding problems with guess_encoding() and repair_encoding().</p></li>
+<li><p>Detect and repair encoding problems with guess_encoding() and repair_encoding(). Then pass the correct encoding into html() as an argument.</p></li>
 <li><p>Navigate around a website as if you’re in a browser with html_session(), jump_to(), follow_link(), back(), forward(), submit_form() and so on. (This is still a work in progress).</p></li>
 <li><p>The package also supports using magrittr for commands.</p></li>
 </ul>
 <p>Also have a look at the three links below for some more information:</p>
-<p><a href="https://github.com/hadley/rvest">https://github.com/hadley/rvest</a></p>
-<p><a href="http://cran.r-project.org/web/packages/rvest/index.html">http://cran.r-project.org/web/packages/rvest/index.html</a></p>
-<p><a href="http://blog.rstudio.org/2014/11/24/rvest-easy-web-scraping-with-r/">http://blog.rstudio.org/2014/11/24/rvest-easy-web-scraping-with-r/</a></p>
+<ul>
+<li><p><a href="https://github.com/hadley/rvest">rvest package on Github</a></p></li>
+<li><p><a href="http://cran.r-project.org/web/packages/rvest/index.html">rvest documentation on CRAN</a></p></li>
+<li><p><a href="http://blog.rstudio.org/2014/11/24/rvest-easy-web-scraping-with-r/">rstudio blog on rvest</a></p></li>
+</ul>
 </div>
 <div id="starting-off-simple-scraping-the-lego-movie-on-imdb" class="section level2">
 <h2>Starting off simple: Scraping The Lego Movie on imdb</h2>
@@ -137,8 +147,28 @@ form &lt;- set_values(form, q = query, l = loc)
 #url &lt;- submit_form(session, indeed)
 
 # Version 1 of our submit_form function
+submit_form2 &lt;- function(session, form){
+  library(XML)
+  url &lt;- XML::getRelativeURL(form$url, session$url)
+  url &lt;- paste(url,'?',sep='')
+  values &lt;- as.vector(rvest:::submit_request(form)$values)
+  att &lt;- names(values)
+  if (tail(att, n=1) == &quot;NULL&quot;){
+    values &lt;- values[1:length(values)-1]
+    att &lt;- att[1:length(att)-1]
+  }
+  q &lt;- paste(att,values,sep='=')
+  q &lt;- paste(q, collapse = '&amp;')
+  q &lt;- gsub(&quot; &quot;, &quot;+&quot;, q)
+  url &lt;- paste(url, q, sep = '')
+  html_session(url)
+}
+
+
+# Version 2 of our submit_form function
 library(httr)
 # Appends element of a list to another without changing variable type of x
+# build_url function uses the httr package and requires a variable of the url class
 appendList &lt;- function (x, val)
 {
   stopifnot(is.list(x), is.list(val))
@@ -168,36 +198,19 @@ submit_geturl &lt;- function (session, form)
   fullpath
 }
 
-# Version 2 of our submit_form function
-submit_form2 &lt;- function(session, form){
-  library(XML)
-  url &lt;- XML::getRelativeURL(form$url, session$url)
-  url &lt;- paste(url,'?',sep='')
-  values &lt;- as.vector(rvest:::submit_request(form)$values)
-  att &lt;- names(values)
-  if (tail(att, n=1) == &quot;NULL&quot;){
-    values &lt;- values[1:length(values)-1]
-    att &lt;- att[1:length(att)-1]
-  }
-  q &lt;- paste(att,values,sep='=')
-  q &lt;- paste(q, collapse = '&amp;')
-  q &lt;- gsub(&quot; &quot;, &quot;+&quot;, q)
-  url &lt;- paste(url, q, sep = '')
-  html_session(url)
-}
 
 # Submit form and get new url
 session1 &lt;- submit_form2(session, form)
 
-# Get reviews of first company using follow_link()
-session2 &lt;- follow_link(session1, css = &quot;#more_0 li:nth-child(3) a&quot;)
+# Get reviews of last company using follow_link()
+session2 &lt;- follow_link(session1, css = &quot;#more_9 li:nth-child(3) a&quot;)
 reviews &lt;- session2 %&gt;% html_nodes(&quot;.description&quot;) %&gt;% html_text()
 reviews</code></pre>
-<pre><code>## [1] &quot;Fair pay, decent people&quot;                   
-## [2] &quot;Fast paced and aggressive&quot;                 
-## [3] &quot;Great officers to work with and other AA's&quot;
-## [4] &quot;good to learn sth&quot;                         
-## [5] &quot;excellent company&quot;</code></pre>
+<pre><code>## [1] &quot;Custody Client Services&quot;                                       
+## [2] &quot;An exciting position on a trading floor&quot;                       
+## [3] &quot;Great work environment&quot;                                        
+## [4] &quot;A company that helps its employees to advance career.&quot;         
+## [5] &quot;Decent Company to work for while you still have the job there.&quot;</code></pre>
 <pre class="r"><code># Get average salary for each job listing based on title and location
 salary_links &lt;- html_nodes(session1, css = &quot;#resultsCol li:nth-child(2) a&quot;) %&gt;% html_attr(&quot;href&quot;)
 salary_links &lt;- paste(session$url, salary_links, sep='')
@@ -231,113 +244,245 @@ description &lt;- data_sci_indeed %&gt;%
 link &lt;- data_sci_indeed %&gt;%
   html_nodes(&quot;[itemprop=title]&quot;) %&gt;%
   html_attr(&quot;href&quot;)
-link &lt;- paste('https://www.indeed.com', link, sep='')
+link &lt;- paste('[Link](https://www.indeed.com', link, sep='')
+link &lt;- paste(link, ')', sep='')
 
 indeed_jobs &lt;- data.frame(job_title,company,location,description,salary,link)
-library(pander)
-pander(indeed_jobs,split.cells = 10, split.tables=Inf)</code></pre>
+
+library(knitr)
+kable(indeed_jobs, format = &quot;html&quot;)</code></pre>
 <table>
-<colgroup>
-<col width="10%"></col>
-<col width="13%"></col>
-<col width="8%"></col>
-<col width="22%"></col>
-<col width="6%"></col>
-<col width="37%"></col>
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">job_title</th>
-<th align="center">company</th>
-<th align="center">location</th>
-<th align="center">description</th>
-<th align="center">salary</th>
-<th align="center">link</th>
-</tr>
-</thead>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> 
+job_title
+</th>
+   <th style="text-align:left;"> 
+company
+</th>
+   <th style="text-align:left;"> 
+location
+</th>
+   <th style="text-align:left;"> 
+description
+</th>
+   <th style="text-align:left;"> 
+salary
+</th>
+   <th style="text-align:left;"> 
+link
+</th>
+  </tr>
+ </thead>
 <tbody>
-<tr class="odd">
-<td align="center">Data Scientist - Intelligent Solutions</td>
-<td align="center">JPMorgan Chase</td>
-<td align="center">New York, NY</td>
-<td align="center">Experience managing and growing a data science team. Data Scientist - Intelligent Solutions. Analyze communications data and Utilize statistical natural…</td>
-<td align="center">$109,000</td>
-<td align="center"><a href="https://www.indeed.com/rc/clk?jk=79b3ac9ca7865c94">https://www.indeed.com/rc/clk?jk=79b3ac9ca7865c94</a></td>
-</tr>
-<tr class="even">
-<td align="center">Research Scientist: Machine Learning and Data Science</td>
-<td align="center">Xerox</td>
-<td align="center">Webster, NY 14580</td>
-<td align="center">Machine Learning and Data Science*. Work with a diverse set of data sources, such as time series data, spatial, graph data, semi-structured and unstructured…</td>
-<td align="center">$60,000</td>
-<td align="center"><a href="https://www.indeed.com/rc/clk?jk=681454be08e38c48">https://www.indeed.com/rc/clk?jk=681454be08e38c48</a></td>
-</tr>
-<tr class="odd">
-<td align="center">Data Scientist &amp; Visualization Engineer</td>
-<td align="center">Enstoa</td>
-<td align="center">New York, NY</td>
-<td align="center">2+ years professional experience analyzing complex data sets, modeling, machine learning, and/or large-scale data mining….</td>
-<td align="center">$210,000</td>
-<td align="center"><a href="https://www.indeed.com/rc/clk?jk=b3afc0c711916836">https://www.indeed.com/rc/clk?jk=b3afc0c711916836</a></td>
-</tr>
-<tr class="even">
-<td align="center">Data Scientist</td>
-<td align="center">The Nielsen Company</td>
-<td align="center">New York, NY</td>
-<td align="center">As a Data Scientist in the Data Integration group, you will be involved in the process of integrating data to enable analyses of patterns and relationships…</td>
-<td align="center">$109,000</td>
-<td align="center"><a href="https://www.indeed.com/rc/clk?jk=8bfb40468f28c10c">https://www.indeed.com/rc/clk?jk=8bfb40468f28c10c</a></td>
-</tr>
-<tr class="odd">
-<td align="center">Managing Consultant, Delivery Innovation Analytics (#4894)</td>
-<td align="center">Navigant Consulting Inc</td>
-<td align="center">New York, NY 10017 (Midtown area)</td>
-<td align="center">Gathers analyzes, and presents data, including document review and quality control of data entry activities. Providers, payers and life sciences companies….</td>
-<td align="center">$119,000</td>
-<td align="center"><a href="https://www.indeed.com/rc/clk?jk=46f5e894d9366775">https://www.indeed.com/rc/clk?jk=46f5e894d9366775</a></td>
-</tr>
-<tr class="even">
-<td align="center">Data Scientist</td>
-<td align="center">Custora</td>
-<td align="center">New York, NY</td>
-<td align="center">2+ years of professional experience in data science and/or a Ph.D in computer science, mathematics, economics, sciences, or other quantitative field….</td>
-<td align="center">$109,000</td>
-<td align="center"><a href="https://www.indeed.com/rc/clk?jk=e527e2f9498dbf6b">https://www.indeed.com/rc/clk?jk=e527e2f9498dbf6b</a></td>
-</tr>
-<tr class="odd">
-<td align="center">Data Science Intern</td>
-<td align="center">SterlingBackcheck</td>
-<td align="center">New York, NY</td>
-<td align="center">Hands on experience working with very large data sets, including statistical analyses, data visualization, data mining, and data cleansing/transformation….</td>
-<td align="center">$44,000</td>
-<td align="center"><a href="https://www.indeed.com/rc/clk?jk=025244e71e61bff5">https://www.indeed.com/rc/clk?jk=025244e71e61bff5</a></td>
-</tr>
-<tr class="even">
-<td align="center">Data Engineer</td>
-<td align="center">Rent the Runway</td>
-<td align="center">New York, NY</td>
-<td align="center">Experience in merging disparate data forms. Extensive practice using SQL for analytics research and data cleansing….</td>
-<td align="center">$122,000</td>
-<td align="center"><a href="https://www.indeed.com/rc/clk?jk=1ea61aae7d1de5d0">https://www.indeed.com/rc/clk?jk=1ea61aae7d1de5d0</a></td>
-</tr>
-<tr class="odd">
-<td align="center">Summer Intern - Network Science and Big Data Analytics</td>
-<td align="center">IBM</td>
-<td align="center">Yorktown Heights, NY</td>
-<td align="center">The Network Science and Big Data Analytics department at the IBM T. Our lab has access to large computing resources and data….</td>
-<td align="center">$36,000</td>
-<td align="center"><a href="https://www.indeed.com/rc/clk?jk=d20c6a677eda7671">https://www.indeed.com/rc/clk?jk=d20c6a677eda7671</a></td>
-</tr>
-<tr class="even">
-<td align="center">Data Science Intern</td>
-<td align="center">Refinery29</td>
-<td align="center">New York, NY</td>
-<td align="center">Refinery29 is looking for a Data Science Intern to join our growing team in the Summer 2015 in our New York City office….</td>
-<td align="center">$44,000</td>
-<td align="center"><a href="https://www.indeed.com/rc/clk?jk=d41c6799f7cccace">https://www.indeed.com/rc/clk?jk=d41c6799f7cccace</a></td>
-</tr>
+  <tr>
+   <td style="text-align:left;"> 
+Data Scientist
+</td>
+   <td style="text-align:left;"> 
+Career Path Group
+</td>
+   <td style="text-align:left;"> 
+New York, NY 10018 (Clinton area)
+</td>
+   <td style="text-align:left;"> 
+Or higher in Computer Science or related field. Design, develop, and optimize our data and analytics system….
+</td>
+   <td style="text-align:left;"> 
+$109,000
+</td>
+   <td style="text-align:left;"> 
+<a href="https://www.indeed.com/rc/clk?jk=a2a76f399d9da571">Link</a>
+</td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 
+Data Scientist or Statistician
+</td>
+   <td style="text-align:left;"> 
+Humana
+</td>
+   <td style="text-align:left;"> 
+New York, NY
+</td>
+   <td style="text-align:left;"> 
+Experience with unstructured data analysis. Humana is seeking an experienced statistician with demonstrated health and wellness data analysis expertise to join…
+</td>
+   <td style="text-align:left;"> 
+$60,000
+</td>
+   <td style="text-align:left;"> 
+<a href="https://www.indeed.com/rc/clk?jk=25cf421c9eeba56d">Link</a>
+</td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 
+Analyst
+</td>
+   <td style="text-align:left;"> 
+1010data
+</td>
+   <td style="text-align:left;"> 
+New York, NY
+</td>
+   <td style="text-align:left;"> 
+Data providers can also use 1010data to share and monetize their data. 1010data is the leading provider of Big Data Discovery and data sharing solutions….
+</td>
+   <td style="text-align:left;"> 
+$81,000
+</td>
+   <td style="text-align:left;"> 
+<a href="https://www.indeed.com/rc/clk?jk=2cea6a727056a108">Link</a>
+</td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 
+Data Scientist &amp; Visualization Engineer
+</td>
+   <td style="text-align:left;"> 
+Enstoa
+</td>
+   <td style="text-align:left;"> 
+New York, NY
+</td>
+   <td style="text-align:left;"> 
+2+ years professional experience analyzing complex data sets, modeling, machine learning, and/or large-scale data mining….
+</td>
+   <td style="text-align:left;"> 
+$210,000
+</td>
+   <td style="text-align:left;"> 
+<a href="https://www.indeed.com/rc/clk?jk=a3f522a4a2d9c317">Link</a>
+</td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 
+Data Scientist - Intelligent Solutions
+</td>
+   <td style="text-align:left;"> 
+JPMorgan Chase
+</td>
+   <td style="text-align:left;"> 
+New York, NY
+</td>
+   <td style="text-align:left;"> 
+Experience managing and growing a data science team. Data Scientist - Intelligent Solutions. Analyze communications data and Utilize statistical natural…
+</td>
+   <td style="text-align:left;"> 
+$109,000
+</td>
+   <td style="text-align:left;"> 
+<a href="https://www.indeed.com/rc/clk?jk=79b3ac9ca7865c94">Link</a>
+</td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 
+Analytics Program Lead
+</td>
+   <td style="text-align:left;"> 
+AIG
+</td>
+   <td style="text-align:left;"> 
+New York, NY
+</td>
+   <td style="text-align:left;"> 
+Lead the analytical team for Data Solutions. Graduate degree from a renowned institution in any advanced quantitative modeling oriented discipline including but…
+</td>
+   <td style="text-align:left;"> 
+$126,000
+</td>
+   <td style="text-align:left;"> 
+<a href="https://www.indeed.com/rc/clk?jk=8baf5b98905c68f6">Link</a>
+</td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 
+Data Engineer
+</td>
+   <td style="text-align:left;"> 
+Standard Analytics
+</td>
+   <td style="text-align:left;"> 
+New York, NY
+</td>
+   <td style="text-align:left;"> 
+Code experience in a production environment (familiar with data structures, parallelism, and concurrency). We aim to organize the world’s scientific information…
+</td>
+   <td style="text-align:left;"> 
+$122,000
+</td>
+   <td style="text-align:left;"> 
+<a href="https://www.indeed.com/rc/clk?jk=af931bd8281d19e7">Link</a>
+</td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 
+Summer Intern - Network Science and Big Data Analytics
+</td>
+   <td style="text-align:left;"> 
+IBM
+</td>
+   <td style="text-align:left;"> 
+Yorktown Heights, NY
+</td>
+   <td style="text-align:left;"> 
+The Network Science and Big Data Analytics department at the IBM T. Our lab has access to large computing resources and data….
+</td>
+   <td style="text-align:left;"> 
+$36,000
+</td>
+   <td style="text-align:left;"> 
+<a href="https://www.indeed.com/rc/clk?jk=d20c6a677eda7671">Link</a>
+</td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 
+Data Scientist
+</td>
+   <td style="text-align:left;"> 
+The Nielsen Company
+</td>
+   <td style="text-align:left;"> 
+New York, NY
+</td>
+   <td style="text-align:left;"> 
+As a Data Scientist in the Data Integration group, you will be involved in the process of integrating data to enable analyses of patterns and relationships…
+</td>
+   <td style="text-align:left;"> 
+$109,000
+</td>
+   <td style="text-align:left;"> 
+<a href="https://www.indeed.com/rc/clk?jk=8bfb40468f28c10c">Link</a>
+</td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 
+Data Analyst, IM Data Science
+</td>
+   <td style="text-align:left;"> 
+BNY Mellon
+</td>
+   <td style="text-align:left;"> 
+New York, NY
+</td>
+   <td style="text-align:left;"> 
+The Data Analyst will support a wide variety of projects and initiatives of the Data Science Group, including the creation of back-end data management tools,…
+</td>
+   <td style="text-align:left;"> 
+$84,000
+</td>
+   <td style="text-align:left;"> 
+<a href="https://www.indeed.com/rc/clk?jk=779dc28f2010c4c6">Link</a>
+</td>
+  </tr>
 </tbody>
 </table>
+
+<p>Some more on CSS and HTML:</p>
+<ul>
+<li><a href="http://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048">Useful CSS Rules</a></li>
+<li><a href="http://www.w3.org/TR/microdata/#names:-the-itemprop-attribute">HTML5 microdata itemprop property</a></li>
+</ul>
 </div>
 <div id="more-examples-with-linkedin" class="section level2">
 <h2>More examples with LinkedIn</h2>
@@ -354,173 +499,170 @@ company &lt;- new_session %&gt;% html_nodes(&quot;.job [itemprop=name]&quot;) %&
 location &lt;- new_session %&gt;% html_nodes(&quot;.job [itemprop=addressLocality]&quot;) %&gt;% html_text
 description &lt;- new_session %&gt;% html_nodes(&quot;.job [itemprop=description]&quot;) %&gt;% html_text
 url &lt;- new_session %&gt;% html_nodes(&quot;.job [itemprop=title]&quot;) %&gt;% html_attr(&quot;href&quot;)
+url &lt;- paste(url, ')', sep='')
+url &lt;- paste('[Link](', url, sep='')
 df &lt;- data.frame(jobtitle, company, location, url)
-pander(df,split.cells = 10, split.tables=Inf)</code></pre>
+
+df %&gt;% kable</code></pre>
 <table>
-<colgroup>
-<col width="11%"></col>
-<col width="19%"></col>
-<col width="9%"></col>
-<col width="60%"></col>
-</colgroup>
 <thead>
 <tr class="header">
-<th align="center">jobtitle</th>
-<th align="center">company</th>
-<th align="center">location</th>
-<th align="center">url</th>
+<th align="left">jobtitle</th>
+<th align="left">company</th>
+<th align="left">location</th>
+<th align="left">url</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">Data Science Lead: Metis</td>
-<td align="center">Kaplan</td>
-<td align="center">New York City, NY, US</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/51429397?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/51429397?trk=jserp_job_details_text</a></td>
+<td align="left">Data Science Lead: Metis</td>
+<td align="left">Kaplan</td>
+<td align="left">New York City, NY, US</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/51429397?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="even">
-<td align="center">Data Science Lead: Metis</td>
-<td align="center">Kaplan Test Prep</td>
-<td align="center">New York, NY</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/38695388?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/38695388?trk=jserp_job_details_text</a></td>
+<td align="left">Data Science Lead: Metis</td>
+<td align="left">Kaplan Test Prep</td>
+<td align="left">New York, NY</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/38695388?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="odd">
-<td align="center">Think Big Senior Data Scientist</td>
-<td align="center">Think Big, A Teradata Company</td>
-<td align="center">US-NY-New York</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/32056808?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/32056808?trk=jserp_job_details_text</a></td>
+<td align="left">Think Big Senior Data Scientist</td>
+<td align="left">Think Big, A Teradata Company</td>
+<td align="left">US-NY-New York</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/32056808?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="even">
-<td align="center">Think Big Principal Data Scientist</td>
-<td align="center">Think Big, A Teradata Company</td>
-<td align="center">US-NY-New York</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/32057641?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/32057641?trk=jserp_job_details_text</a></td>
+<td align="left">Think Big Principal Data Scientist</td>
+<td align="left">Think Big, A Teradata Company</td>
+<td align="left">US-NY-New York</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/32057641?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="odd">
-<td align="center">Data Scientist - Professional Services Consultant (East …</td>
-<td align="center">MapR Technologies</td>
-<td align="center">Greater New York City Area</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/35995187?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/35995187?trk=jserp_job_details_text</a></td>
+<td align="left">Data Scientist - Professional Services Consultant (East …</td>
+<td align="left">MapR Technologies</td>
+<td align="left">Greater New York City Area</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/35995187?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="even">
-<td align="center">Think Big Senior Data Scientist</td>
-<td align="center">Teradata</td>
-<td align="center">New York City, NY, US</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/51068145?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/51068145?trk=jserp_job_details_text</a></td>
+<td align="left">Think Big Senior Data Scientist</td>
+<td align="left">Teradata</td>
+<td align="left">New York City, NY, US</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/51068145?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="odd">
-<td align="center">Think Big Principal Data Scientist</td>
-<td align="center">Teradata</td>
-<td align="center">New York City, NY, US</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/51068162?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/51068162?trk=jserp_job_details_text</a></td>
+<td align="left">Think Big Principal Data Scientist</td>
+<td align="left">Teradata</td>
+<td align="left">New York City, NY, US</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/51068162?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="even">
-<td align="center">Sr. Software Engineer - Data Science - HookLogic</td>
-<td align="center">HookLogic, Inc.</td>
-<td align="center">New York City, NY, US</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/49975389?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/49975389?trk=jserp_job_details_text</a></td>
+<td align="left">Sr. Software Engineer - Data Science - HookLogic</td>
+<td align="left">HookLogic, Inc.</td>
+<td align="left">New York City, NY, US</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/49975389?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="odd">
-<td align="center">Think Big Data Scientist</td>
-<td align="center">Think Big, A Teradata Company</td>
-<td align="center">US-NY-New York</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/32057645?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/32057645?trk=jserp_job_details_text</a></td>
+<td align="left">Think Big Data Scientist</td>
+<td align="left">Think Big, A Teradata Company</td>
+<td align="left">US-NY-New York</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/32057645?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="even">
-<td align="center">Director of Data Science Programs</td>
-<td align="center">DataKind</td>
-<td align="center">New York City, NY, US</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/35605329?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/35605329?trk=jserp_job_details_text</a></td>
+<td align="left">Director of Data Science Programs</td>
+<td align="left">DataKind</td>
+<td align="left">New York City, NY, US</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/35605329?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="odd">
-<td align="center">Lead Data Scientist - VP - Intelligent Solutions</td>
-<td align="center">JPMorgan Chase &amp; Co.</td>
-<td align="center">US-NY-New York</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/40828814?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/40828814?trk=jserp_job_details_text</a></td>
+<td align="left">Lead Data Scientist - VP - Intelligent Solutions</td>
+<td align="left">JPMorgan Chase &amp; Co.</td>
+<td align="left">US-NY-New York</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/40828814?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="even">
-<td align="center">Senior Data Scientist for US Quantitative Fund, NYC</td>
-<td align="center">GQR Global Markets</td>
-<td align="center">Greater New York City Area</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/38602287?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/38602287?trk=jserp_job_details_text</a></td>
+<td align="left">Senior Data Scientist for US Quantitative Fund, NYC</td>
+<td align="left">GQR Global Markets</td>
+<td align="left">Greater New York City Area</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/38602287?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="odd">
-<td align="center">Google Cloud Solutions Practice, Google Data Solution …</td>
-<td align="center">PricewaterhouseCoopers</td>
-<td align="center">New York City, NY, US</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/53729956?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/53729956?trk=jserp_job_details_text</a></td>
+<td align="left">Google Cloud Solutions Practice, Google Data Solution …</td>
+<td align="left">PricewaterhouseCoopers</td>
+<td align="left">New York City, NY, US</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/53729956?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="even">
-<td align="center">Senior Data Scientist</td>
-<td align="center">Dun and Bradstreet</td>
-<td align="center">Short Hills, NJ, US</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/53796892?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/53796892?trk=jserp_job_details_text</a></td>
+<td align="left">Senior Data Scientist</td>
+<td align="left">Dun and Bradstreet</td>
+<td align="left">Short Hills, NJ, US</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/53796892?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="odd">
-<td align="center">Senior data scientist</td>
-<td align="center">Mezzobit</td>
-<td align="center">New York City, NY, US</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/38019145?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/38019145?trk=jserp_job_details_text</a></td>
+<td align="left">Senior data scientist</td>
+<td align="left">Mezzobit</td>
+<td align="left">New York City, NY, US</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/38019145?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="even">
-<td align="center">New Product Development – Data Science and Analytics – …</td>
-<td align="center">JPMorgan Chase</td>
-<td align="center">New York City, NY, US</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/53410566?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/53410566?trk=jserp_job_details_text</a></td>
+<td align="left">Think Big Data Scientist</td>
+<td align="left">Teradata</td>
+<td align="left">New York City, NY, US</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/51066835?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="odd">
-<td align="center">Think Big Data Scientist</td>
-<td align="center">Teradata</td>
-<td align="center">New York City, NY, US</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/51066835?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/51066835?trk=jserp_job_details_text</a></td>
+<td align="left">Data Scientist - Intelligent Solutions</td>
+<td align="left">JPMorgan Chase &amp; Co.</td>
+<td align="left">US-NY-New York</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/40855034?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="even">
-<td align="center">Data Scientist - Intelligent Solutions</td>
-<td align="center">JPMorgan Chase &amp; Co.</td>
-<td align="center">US-NY-New York</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/40855034?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/40855034?trk=jserp_job_details_text</a></td>
+<td align="left">Technical Trainer EMEA</td>
+<td align="left">Datameer</td>
+<td align="left">New York</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/41600114?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="odd">
-<td align="center">Technical Trainer EMEA</td>
-<td align="center">Datameer</td>
-<td align="center">New York</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/41600114?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/41600114?trk=jserp_job_details_text</a></td>
+<td align="left">Elementary School Science Teacher</td>
+<td align="left">Success Academy Charter Schools</td>
+<td align="left">Greater New York City Area</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/38634099?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="even">
-<td align="center">Elementary School Science Teacher</td>
-<td align="center">Success Academy Charter Schools</td>
-<td align="center">Greater New York City Area</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/38634099?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/38634099?trk=jserp_job_details_text</a></td>
+<td align="left">Middle School Science Teacher</td>
+<td align="left">Success Academy Charter Schools</td>
+<td align="left">Greater New York City Area</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/38633208?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="odd">
-<td align="center">Middle School Science Teacher</td>
-<td align="center">Success Academy Charter Schools</td>
-<td align="center">Greater New York City Area</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/38633208?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/38633208?trk=jserp_job_details_text</a></td>
+<td align="left">Data Scientist (various levels)</td>
+<td align="left">Burtch Works</td>
+<td align="left">Greater New York City Area</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/41672840?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="even">
-<td align="center">Sr. Data Scientist – Big Data, Online Advertising, Search</td>
-<td align="center">Magnetic</td>
-<td align="center">New York, NY</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/33977941?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/33977941?trk=jserp_job_details_text</a></td>
+<td align="left">Sr. Data Scientist – Big Data, Online Advertising, Search</td>
+<td align="left">Magnetic</td>
+<td align="left">New York, NY</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/33977941?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="odd">
-<td align="center">Sr. Software Engineer - Data Science</td>
-<td align="center">HookLogic, Inc.</td>
-<td align="center">New York, NY</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/33984252?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/33984252?trk=jserp_job_details_text</a></td>
+<td align="left">Sr. Big Data Engineer FlexGraph</td>
+<td align="left">ADP</td>
+<td align="left">New York, NY</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/18708583?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="even">
-<td align="center">Sr. Big Data Engineer FlexGraph</td>
-<td align="center">ADP</td>
-<td align="center">New York, NY</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/18708583?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/18708583?trk=jserp_job_details_text</a></td>
+<td align="left">Data Science Lead Instructor - Data Science, Teaching</td>
+<td align="left">CyberCoders</td>
+<td align="left">New York City, NY</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/40896475?trk=jserp_job_details_text">Link</a></td>
 </tr>
 <tr class="odd">
-<td align="center">Data Science Lead Instructor - Data Science, Teaching</td>
-<td align="center">CyberCoders</td>
-<td align="center">New York City, NY</td>
-<td align="center"><a href="https://www.linkedin.com/jobs2/view/40896475?trk=jserp_job_details_text">https://www.linkedin.com/jobs2/view/40896475?trk=jserp_job_details_text</a></td>
+<td align="left">Director, Data Consulting</td>
+<td align="left">Havas Media</td>
+<td align="left">Greater New York City Area</td>
+<td align="left"><a href="https://www.linkedin.com/jobs2/view/41671585?trk=jserp_job_details_text">Link</a></td>
 </tr>
 </tbody>
 </table>
@@ -542,7 +684,14 @@ form &lt;- set_values(form, username = &quot;uni&quot;)
 #form2 &lt;- set_values(form2, PositionTypes = 7, Keyword = &quot;Data&quot;)
 #session3 &lt;- submit_form(session2, form2)
 
-# unable to load javascript content in a page, need to use Selenium? according to stackoverflow</code></pre>
+# Unable to scrape because the table containing the job data uses javascript and doesn't load soon enough for rvest to collect information</code></pre>
+<ul>
+<li><a href="http://www.seleniumhq.org/">Selenium, automating web browsers</a></li>
+</ul>
+<p>If you are webscraping with Python chances are that you have already tried urllib, httplib, requests, etc. These are excellent libraries, but some websites don’t like to be webscraped. In these cases you may need to disguise your webscraping bot as a human being. Selenium is just the tool for that. Selenium is a webdriver: it takes control of your browser, which then does all the work. Hence what the website “sees” is Chrome or Firefox or IE; it does not see Python or Selenium. That makes it a lot harder for the website to tell your bot from a human being.</p>
+<ul>
+<li><a href="http://thiagomarzagao.com/2013/11/12/webscraping-with-selenium-part-1/">Selenium tutorial</a></li>
+</ul>
 </div>
 
 
