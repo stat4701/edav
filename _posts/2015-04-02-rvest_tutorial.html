@@ -693,6 +693,7 @@ form &lt;- set_values(form, username = &quot;uni&quot;)
 #session3 &lt;- submit_form(session2, form2)
 
 # Unable to scrape because the table containing the job data uses javascript and doesn't load soon enough for rvest to collect information</code></pre>
+<p>There isn't any equivalent to checking if the document finishes loading before scraping the data. The general recommendation appears to be using something entirely different such as Selenium to scrape web data.</p>
 <ul>
 <li><a href="http://www.seleniumhq.org/">Selenium, automating web browsers</a></li>
 </ul>
