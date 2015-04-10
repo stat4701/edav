@@ -61,7 +61,8 @@ It’s average working hours per week of responders of General Social Survey sin
 As you can see, percentage of people working hard didn’t change so dramatically as average hours, which ones again confirm the thesis that average estimation should be used with a great care.
 
 The best approach that allow us to explore the data and getting answers to all questions proposed by interactive approach of Shiny: you can tune the plot until you show the 
-<https://denniskorablev.shinyapps.io/census-app/>
+
+<iframe style="border: none; width: 1000px; height: 1150px;" src="https://denniskorablev.shinyapps.io/census-app/" width="1600" height="1000"></iframe>
 
 I believe this approach should be used in as many cases as possible when we are trying to make an exploratory data analysis.
 
