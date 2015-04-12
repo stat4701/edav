@@ -21,7 +21,7 @@ This data has been downloaded from as of 02/15/2015, [NYC Open Data](https://dat
 Strong seasonality is observed, with injuries peaking around beginning of summer, when more people are out on street.
 
 
-```{r, echo=FALSE, message=FALSE}
+```{r, echo=FALSE, message=FALSE, cache=TRUE}
 nycmvc_data <- read.csv("/Users/kedarpatil/edav/data/NYPD_Motor_Vehicle_Collisions.csv")
 
 #FIXING DATES
@@ -70,6 +70,8 @@ Motor vehicle injuries form the biggest share of injuries, followed by pedestria
 
 ```{r, echo=FALSE, message=FALSE}
 #PLOT 2013-2014 INJURIES ONLY - DEEPER DIVE
+library(plyr)
+library(ggplot2)
 mth_frq_deep <- ddply(nycmvc_data, c(year_grp="strftime(nycmvc_data$DATE, format='%Y')",
                                     mnth_grp="strftime(nycmvc_data$DATE, format='%m')"), 
                      summarise,                 
