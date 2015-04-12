@@ -1,0 +1,16 @@
+base
+methods
+datasets
+utils
+grDevices
+graphics
+stats
+plyr
+ggplot2
+knitr
+dplyr
+scales
+reshape2
+ggmap
+maps
+mapproj
