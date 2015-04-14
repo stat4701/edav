@@ -38,7 +38,7 @@ The visual says the average of the score, which doesn’t allow me to detect if 
 
 As alternative, I propose to work with quintiles of the data. Particularly, to plot not the mean/median but the share of the most disturbing quartiles. In this case it’s a grade C for the restaurants. 
 
-![Percentage of C restaurant score]({{ site.baseurl }}/assets/dennis_blogpost/dennis_map.png=1000x)
+![Percentage of C restaurant score]({{ site.baseurl }}/assets/dennis_blogpost/dennis_map.png)
 
 This map highlight with red color zip codes with the highest probability to find the C-grades restaurant. The zones somehow different (it is clear if you see at Staten Island) and in my opinion more representative. 
 
@@ -46,7 +46,7 @@ Let’s find some more example of “don’t use blindly the mean or median” t
 
 Here is the plot from the [Washington Post](http://www.washingtonpost.com/local/making-time-for-kids-study-says-quality-trumps-quantity/2015/03/28/10813192-d378-11e4-8fce-3941fc548f1c_story.html) article describing that people spending more time with kids: 
 
-![Time with kids]({{ site.baseurl }}/assets/dennis_blogpost/wp.png =800x)
+![Time with kids]({{ site.baseurl }}/assets/dennis_blogpost/wp.png)
 
 It’s seems like people tent to spend much more time with kids now than in 1975. Especially men. But can we blindly trust this data? How can we interpreter it? 
 
