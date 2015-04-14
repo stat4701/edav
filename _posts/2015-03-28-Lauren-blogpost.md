@@ -31,7 +31,7 @@ author: Lauren McCarthy
 
 ![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Collages_Histogram_Cost.png)
 
-![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Collages_Histogram_ROI.png)
+![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Colleges_Histogram_ROI.png)
 
 ![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Denisty_Cost.png)
 
@@ -39,11 +39,11 @@ author: Lauren McCarthy
 
 ![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Top_25_Cost_bar.png)
 
-![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Top_25_Cost_Label.png)
+![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Top_25_Cost_label.png)
 
 ![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Top_25_ROI_bar.png)
 
-![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Top_25_ROI_Label.png)
+![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Top_25_ROI_label.png)
 
 #Analysis
 
