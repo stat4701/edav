@@ -24,26 +24,37 @@ author: Lauren McCarthy
 + Show the average ROI and average 4 Year Cost of Private vs. Public Colleges.
 
 #My Plots
-##In all plots Blue represents a Private School and Red represents a Public School
-![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/figure_1.png)
+![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Colleges_Scatter.png)
 
-![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/figure_2.png)
+![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Collages_Histogram_Cost.png)
 
-![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/figure_3.png)
+![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Colleges_Histogram_ROI.png)
 
-![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/figure_4.png)
+![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Denisty_Cost.png)
+
+![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Density_ROI.png)
+
+![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Top_25_Cost_bar.png)
+
+![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Top_25_ROI_bar.png)
+
+![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Top_25_Cost_label.png)
+
+![Return on Investment For Public and Private Colleges](https://raw.githubusercontent.com/lm2221/edav/gh-pages/_posts/assets/Lauren/Top_25_ROI_label.png)
 
 #Analysis
 
 + Scatter Plot: Updated Graph does not show as much of a differentiation between Public vs. Private Colleges.
-+ Histogram: Shows the distribution of the 4 Year Cost of Colleges Private vs. Public. As we can see Private colleges are much more distributed at the higher prices than public.
-+ Density Graphs: I found the density graphs to have the most useful information. While it shows a differentiation between the cost of the Public colleges vs the private colleges. The ROI Density graph shows that they pick generally in the same place showing that there is not much of an advantage to go to a private school in terms on ROI. This could also be due to the fact that in general Private schools give much larger Financial Aid packages therefore, despite the schools being expensive the average ROI will have the Finacial Aid factored in.
++ Histogram: (1) Shows the distribution of the 4 Year Cost of Colleges Private vs. Public. As we can see Private colleges are much more distributed at the higher prices than public. (2) Shows the distribution of the ROI of Colleges Private vs. Public. As we can see the highest ROIs are actually from Public colleges.
++ Density Graphs: I found the density graphs to have the most useful information. While it shows a differentiation between the cost of the Public colleges vs the private colleges. The ROI Density graph shows that they pick generally in the same place showing that there is not much of an advantage to go to a private school in terms on ROI. This could also be due to the fact that in general Private schools give much larger Financial Aid packages therefore, despite the schools being expensive the average ROI will have the Financial Aid factored in.
++Last I tried to make different plots just showing the top 25 highest ranking in Total 4 Year Cost and ROI. With less data, it seems to confirm what our other plots are saying without an overwhelming amount of data.
++The label posts are not the most pretty graphs, however, I like that they provide a little more information and still show the distribution of Private vs Public pretty well.
 
 #Conclusion
 
 + Make sure your graphs are using the correct axis to not exaggerate the results
 + Sometimes more plots but simple plots are better than complicated graphs
-+ Sometimes a more general conclusion can be better than a very specific one. For example: In general the return on investment for Private colleges is better than Public vs. The Best return on investment is from this one specific college.
++ Sometimes a more general conclusion can be better than a very specific one. For example: In general the return on investment for Public vs Private colleges is not much different; where a very specific conclusion is the the best return on investment is from the University of Virginia, a Public College.
 
 #Code
 
@@ -78,17 +89,39 @@ with open('data_percents.csv', 'w') as f:
 + Code to plot graphs using python and ggplot. This is a work in progress. I was not able to get the legends to show up on the plot. It seems that these should show up automatically. I will continue to work on this. I would also like to use a more sophisticated packing so that when scrolling over the data the feature will automatically appear. To be continued...
 
 ```
+#This file reads in the csv manually cleaned up data and plots using ggplot
 from ggplot import * 
 import pandas as pd 
 import numpy as np
 import matplotlib.pyplot as plt
 
-df=pd.read_csv('data_percents_2.csv',sep=',', header=None, names=['College','Private','ROI','Cost'])
+df=pd.read_csv('data_percents_fixed.csv',sep=',', header=None, names=['College','Type','ROI','Cost'])
 
-p_1=ggplot(df, aes(x='Cost',y='ROI', color='Private')) + geom_point() + labs("Total 4 Year Cost","% "+"Annual Return on investment") + ggtitle("Private vs. Public Colleges Cost vs ROI")+ xlim(25000,250000)
-p_2=ggplot(df, aes(x='Cost',fill='Private'))+ geom_histogram() + labs("Total 4 Year Cost")+ggtitle("Private vs Public Collages 4 Year Cost")
-p_3=ggplot(df, aes(x='Cost',color='Private')) + geom_density() +labs("Total 4 Year cost", "Denisty")+ggtitle("Density Graph for Private vs. Public")
-p_4=ggplot(df, aes(x='ROI',color='Private')) + geom_density() +labs("ROI","Density")+ggtitle("Density Graph for ROI Private vs Public")
+#plots simple (ALL DATA)
+p_1=ggplot(df, aes(x='Cost',y='ROI', color='Type')) + geom_point() + labs('Total 4 Year Cost','% '+'Annual Return on investment') + ggtitle('Private vs. Public Colleges: ROI vs Cost')
+p_2=ggplot(df, aes(x='Cost',fill='Type'))+ geom_histogram(alpha=0.75) + labs('Total 4 Year Cost')+ggtitle('Private vs Public Collages: 4 Year Cost')
+p_3=ggplot(df, aes(x='ROI',fill='Type'))+ geom_histogram(alpha=0.75) + labs('ROI')+ggtitle('Private vs Public Collages: ROI')
+p_4=ggplot(df, aes(x='Cost',fill='Type')) + geom_density(alpha=0.75) +labs('Total 4 Year Cost', 'Denisty')+ggtitle('Density Graph for Cost: Private vs. Public')
+p_5=ggplot(df, aes(x='ROI',fill='Type')) + geom_density(alpha=0.75) +labs('ROI','Density')+ggtitle('Density Graph for ROI: Private vs Public')
+
+
+#plots top 25
+#top ten ROI
+sort_ROI=df.sort_index(ascending=[False], by = ['ROI'])
+top_25_ROI=sort_ROI.head(25)
+
+#top ten 4 Year Total
+sort_4Year=df.sort_index(ascending=[False], by = ['Cost'])
+top_25_4Year=sort_4Year.head(25)
+
+
+#plot top 25 with names
+p_6=ggplot(top_25_ROI, aes(x='Cost', y='ROI', label='College', color='Type')) +geom_text(angle=25,size=7.5) + labs('Total 4 Year Cost','% '+'Annual Return on investment') + ggtitle('Top 25 ROI: Private vs. Public')+ylim(13.5,18.7)+xlim(25000,250000)
+p_7=ggplot(top_25_4Year, aes(x='Cost', y='ROI', label='College', color='Type')) +geom_text(angle=25,size=7.5) + labs('Total 4 Year Cost','% '+'Annual Return on investment') + ggtitle('Top 25 Cost: Private vs. Public')
+
+p_8=ggplot(aes(x='Cost', fill='Type'), data=top_25_4Year) + geom_bar() +labs('Total 4 Year Cost','Count')+ggtitle('Top 25 Cost: Private vs Public Collages')
+p_9=ggplot(aes(x='ROI', fill='Type'), data=top_25_ROI) + geom_bar() + labs('ROI','Count')+ggtitle('Top 25 ROI: Private vs Public Collages')
+
 
 ```
 
