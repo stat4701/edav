@@ -1,0 +1,56 @@
+state_code	state_name
+00	All United States	
+01	Alabama	
+02	Alaska	
+04	Arizona	
+05	Arkansas	
+06	California	
+08	Colorado	
+09	Connecticut	
+10	Delaware	
+11	District of Columbia
+12	Florida	
+13	Georgia	
+15	Hawaii	
+17	Illinois	
+18	Indiana	
+19	Iowa	
+20	Kansas	
+21	Kentucky	
+22	Louisiana	
+23	Maine	
+24	Maryland	
+25	Massachusetts	
+26	Michigan	
+27	Minnesota	
+28	Mississippi	
+29	Missouri	
+30	Montana	
+31	Nebraska	
+32	Nevada	
+33	New Hampshire	
+34	New Jersey	
+36	New York	
+37	North Carolina	
+38	North Dakota	
+39	Ohio	
+40	Oklahoma	
+41	Oregon	
+42	Pennsylvania	
+44	Rhode Island	
+45	South Carolina	
+47	Tennessee	
+48	Texas	
+51	Virginia	
+53	Washington	
+54	West Virginia	
+55	Wisconsin	
+71	New England Census D
+72	Middle Atlantic Cens
+73	East South Central C
+74	South Atlantic Censu
+75	East North Central C
+76	West North Central C
+77	West South Central C
+78	Mountain Census Divi
+79	Pacific Census Divis
