@@ -7,14 +7,14 @@ description: Crossfilter / Dimensional Charting Demo
 tags: assignments
 ---
 
- <a href="../../../../assets/rap125/blscrossfiltermap.html">The Charts</a>
+ <a href="../../../../assets/rap2186/blscrossfiltermap.html">The Charts</a>
  
  
  <a href="http://www.bls.gov">BLS</a>:
  
 The HTML/Javascript Code:
 
-<pre><code>
+{% highlight html %}
 <meta http-equiv="content-type" content="text/html; charset=UTF8"> 
 
 <script type="text/javascript" src="https://cdn.rawgit.com/square/crossfilter/master/crossfilter.js"></script>
@@ -152,4 +152,4 @@ dc.renderAll();
 });
 });
 </script>
-</code></pre>
+{% endhighlight %}
