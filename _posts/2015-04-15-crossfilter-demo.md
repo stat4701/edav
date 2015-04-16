@@ -15,7 +15,7 @@ The website of the <a href="http://www.bls.gov">Bureau of Labor and Statistics (
 of the economic data they collect and publish and their comprehensive tab-delimited datasets are particularly good candidates for showcasing Crossfilter and DC's
 ability to visually interact with a dimensionable dataset.
 
-<h2> <a href="../../../../assets/rap2186/blscrossfiltermap.html">Linked here</a> is a set of cross-linked interactive charts based on National Compensation Survey data.</h2>
+<h4> <a href="../../../../assets/rap2186/blscrossfiltermap.html">Click here to view an example set of cross-linked interactive charts based on National Compensation Survey data.</a></h4>
 
 The code is written exclusively in HTML and Javascript, using <a href="https://rawgit.com">RawGit</a> to directly fetch the crossfilter.js, dc.js and d3.js javascript libraries directly from GitHub.
 It is referencing 3 source files:
