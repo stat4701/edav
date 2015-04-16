@@ -13,22 +13,7 @@
 
 <div float=left align=center id="chart-ring-state"><h2>Proportion By State</h2></div>
 <script>
-/*
 
-National Compensation Survey
-<div id="dc-table-graph"></div>
-http://www.bls.gov/help/hlpforma.htm#EC
-	Series ID   NCU5306633300003
-	Positions       Value           Field Name
-	1-2             NC              Prefix
-	3               U               Seasonal Adjustment Code 
-	4-5             53              State Code
-	6-9             0663            Area Code
-	10-14           33000           Occupation Code
-	15-16           03              Level Code
-*/
-
-//http://eric.clst.org/wupl/Stuff/gz_2010_us_040_00_500k.json
 d3.json("./gz_2010_us_040_00_500k.json", function(error, statesJson){
 d3.tsv("./nc.state", function(stateData) {
 d3.tsv("./nc.data.1.AllData", function(data) {
@@ -39,6 +24,8 @@ d3.tsv("./nc.data.1.AllData", function(data) {
 	var facts = crossfilter(data);
 	var parseDate = d3.time.format("%Y").parse;
 
+  // Parse the series id field into its respective dimensions, 
+  // and assign a state name dim using the mapped state code value
 	data.forEach(function(d) {
 		d.seasonal_ac= d.series_id.substr(2,1);
 		d.state_cd= +d.series_id.substr(3,2);
