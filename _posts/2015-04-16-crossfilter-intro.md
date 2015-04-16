@@ -19,8 +19,10 @@ As a JavaScript library, it requires no additional plug-ins, and provides browse
 <h4>
 It is able to slice and dice data on multiple dimensions with extremely efficient levels of speed, and can be readily tied into a number of different charting and graphing libraries.
 </h4>
-<br>
-We will first present an example of its use against a large dataset representing half-hourly 4G network performance data from 1600 cell towers b/t July and December 2014) 
+<p>
+We will first present an example of its use against a large dataset representing half-hourly 4G network performance data from 1600 cell towers between July and December 2014 
 and illustrate its advantages over the crossfilter function in Tableau Server,currently used by Verizon Wireless.
-<br>
+</p>
+<p>
 We will then present a <a href="http://../15/crossfilter-demo/">visual exploration</a> of BLS data using the JavaScript charting library Dimensional Charting in concert with Crossfilter.
+</p>
