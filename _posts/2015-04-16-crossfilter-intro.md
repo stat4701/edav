@@ -25,5 +25,5 @@ and illustrate its advantages over the crossfilter function in Tableau Server,cu
 </p>
 <br>
 <p>
-We will then present a <a href="http://../15/crossfilter-demo/">visual exploration</a> of BLS data using the JavaScript charting library Dimensional Charting in concert with Crossfilter.
+We will then present a <a href="../15/crossfilter-demo/">visual exploration</a> of BLS data using the JavaScript charting library Dimensional Charting in concert with Crossfilter.
 </p>
