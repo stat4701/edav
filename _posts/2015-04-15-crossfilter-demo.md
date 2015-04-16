@@ -49,24 +49,14 @@ http://www.bls.gov/help/hlpforma.htm#EC
 d3.json("./gz_2010_us_040_00_500k.json", function(error, statesJson){
 d3.tsv("./nc.state", function(stateData) {
 d3.tsv("./nc.data.1.AllData", function(data) {
-function print_filter(filter){
-	var f=eval(filter);
-	if (typeof(f.length) != "undefined") {}else{}
-	if (typeof(f.top) != "undefined") {f=f.top(Infinity);}else{}
-	if (typeof(f.dimension) != "undefined") {f=f.dimension(function(d) { return "";}).top(Infinity);}else{}
-	console.log(filter+"("+f.length+") = "+JSON.stringify(f).replace("[","[\n\t").replace(/}\,/g,"},\n\t").replace("]","\n]"));
-} 
 
   // Run the data through crossfilter 
 	var states = crossfilter(stateData);
 	var stCodeDim = states.dimension(function(d) {return d.state_code;});
-	//print_filter("stateData");  
 	var facts = crossfilter(data);
 	var parseDate = d3.time.format("%Y").parse;
 
 	data.forEach(function(d) {
-		//d.prefix= d.series_id.substr(0,2);
-		//d.yearmo = parseDate(d.year + "-" + d.period.substr(1,2));
 		d.seasonal_ac= d.series_id.substr(2,1);
 		d.state_cd= +d.series_id.substr(3,2);
 		stCodeDim.filter(d.series_id.substr(3,2));
@@ -76,13 +66,8 @@ function print_filter(filter){
 		d.occupational_cd= d.series_id.substr(9,5);		
 		d.level_cd= d.series_id.substr(14,2);		
 		d.year= parseDate(d.year);
-		//d.period= +d.period.substr(1,2);
 		d.value= +d.value.trim().substr(1);
 	});
-//print_filter("data"); 
-
- // Create the dc.js chart objects & link to div
-  //var dataTable = dc.dataTable("#dc-table-graph");
 
 	var stateDim  = facts.dimension(function(d) {return d.state_cd;});
 	stateDim.filter(0); 
@@ -97,22 +82,20 @@ function print_filter(filter){
 	facts.remove();
 	sacDim.filterAll();
 
+ // Create  dimensions
 	var stNameDim  = facts.dimension(function(d) {return d.stateName;});
 	var stName_total = stNameDim.group().reduceSum(function(d) {return d.value;});
 	var state_total = stateDim.group().reduceSum(function(d) {return d.value;});
 	var stNameDim2  = facts.dimension(function(d) {return d.stateName;});
 	var stName_total2 = stNameDim2.group().reduceSum(function(d) {return d.value;});
 			  
- // Create  dimension
   	var dateDim = facts.dimension(function (d) {return d.year;});
 	var ymtotal = dateDim.group().reduceSum(function(d) {return d.value;}); 
 	var minDate = dateDim.bottom(1)[0].year;
 	var maxDate = dateDim.top(1)[0].year;
 
-	
  // Setup the charts
 var ymValsChart  = dc.barChart("#chart-bar-ymvals"); 
-
 ymValsChart
 	.width(800).height(300)
 	.dimension(dateDim)
@@ -125,9 +108,6 @@ ymValsChart
 	.renderTitle(false)
 	.yAxisLabel("", 100)
 	.xUnits(function(){return 10;});
-	
-	//.yAxisLabel("Total")  
-	;
 	
 var stateRingChart   = dc.pieChart("#chart-ring-state");
 stateRingChart
@@ -145,8 +125,6 @@ mapChart
 	.overlayGeoJson(statesJson.features, "state", function(d) {
     return d.properties.NAME;});
 
-
-	
 dc.renderAll(); 
 });
 });
