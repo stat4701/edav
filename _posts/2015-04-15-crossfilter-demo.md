@@ -19,9 +19,9 @@ ability to visually interact with a dimensionable dataset.
 
 The code is written exclusively in HTML and Javascript, using <a href="https://rawgit.com">RawGit</a> to directly fetch the crossfilter.js, dc.js and d3.js javascript libraries directly from GitHub.
 It is referencing 3 source files:
- - the <a href="http://download.bls.gov/pub/time.series/nc/nc.data.1.AllData">primary data source file</a>, a 19.2 MB tab delimited file from the BLS containing survey results on compensation by month and by state
- - a <a href="http://download.bls.gov/pub/time.series/nc/nc.state">tab delimited file</a> from the BLS mapping the state numeric codes in the data file to state names (used to tie 
- - a 2.5 MB <a href='http://geojson.org'>GeoJSON</a> file used to power the D3 choropleth map of the U.S.
+ 1) the <a href="http://download.bls.gov/pub/time.series/nc/nc.data.1.AllData">primary data source file</a>, a 19.2 MB tab delimited file from the BLS containing survey results on compensation by month and by state
+ 2) a <a href="http://download.bls.gov/pub/time.series/nc/nc.state">tab delimited file</a> from the BLS mapping the state numeric codes in the data file to state names (used to tie 
+ 3) a 2.5 MB <a href='http://geojson.org'>GeoJSON</a> file used to power the D3 choropleth map of the U.S.
  	- the GeoJson file used, along with data files at the state and county level, and at varying resolutions, were thoughtfully created and shared by <a href="http://eric.clst.org/Stuff/USGeoJSON"> Eric Celeste</a> using cartographic data collected by the U.S. Census Bureau
  
 The first field of the primary source data consists of a series ID which itself encodes multiple data points as follows:
