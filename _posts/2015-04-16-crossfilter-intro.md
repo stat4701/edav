@@ -22,8 +22,6 @@ It is able to slice and dice data on multiple dimensions with extremely efficien
 <p>
 We will first present an example of its use against a large dataset representing half-hourly 4G network performance data from 1600 cell towers between July and December 2014 
 and illustrate its advantages over the crossfilter function in Tableau Server,currently used by Verizon Wireless.
-</p>
 
-<p>
-We will then present a <a href="../15/crossfilter-demo/">visual exploration</a> of BLS data using the JavaScript charting library Dimensional Charting in concert with Crossfilter.
+We will then present a <a href="../../15/crossfilter-demo/">visual exploration</a> of BLS data using the JavaScript charting library Dimensional Charting in concert with Crossfilter.
 </p>
