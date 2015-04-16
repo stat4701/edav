@@ -12,11 +12,11 @@ tags: assignments
 and <a href="http://square.github.io/crossfilter/">Crossfilter's</a> ability to slice and dice data along multiple dimensions.
 
 The website of the <a href="http://www.bls.gov">Bureau of Labor and Statistics (BLS) </a> contains a vast library 
-of the economic data they collect and publish. While the site provides an API to pull targeted subsets of data,
-their comprehensive tab-delimited datasets are particularly good candidates for showcasing Crossfilter and DC's
+of the economic data they collect and publish and their comprehensive tab-delimited datasets are particularly good candidates for showcasing Crossfilter and DC's
 ability to visually interact with a dimensionable dataset.
 
- <a href="../../../../assets/rap2186/blscrossfiltermap.html">Linked here</a> is a set of cross-linked interactive charts based on National Compensation Survey data.
+<h2> <a href="../../../../assets/rap2186/blscrossfiltermap.html">Linked here</a> is a set of cross-linked interactive charts based on National Compensation Survey data.</h2>
+
 The code is written exclusively in HTML and Javascript, using <a href="https://rawgit.com">RawGit</a> to directly fetch the crossfilter.js, dc.js and d3.js javascript libraries directly from GitHub.
 It is referencing 3 source files:
  - the <a href="http://download.bls.gov/pub/time.series/nc/nc.data.1.AllData">primary data source file</a>, a 19.2 MB tab delimited file from the BLS containing survey results on compensation by month and by state
