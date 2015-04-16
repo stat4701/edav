@@ -1,10 +1,7 @@
 ---
 layout: post
 title:  "EDAV Spring 2015: Chart critique blog post"
-date:   2015-03-24
-categories: jekyll/updates 
 output: html_document
-description:  
 ---
 
 EDAV fun...
@@ -111,7 +108,7 @@ Grouping data by state and year; Adding a variable that sums up statistics by st
 
 #### Attempts to convey 2014 data in original chart, as well as multi-year data
 
-We try a few plots and lay out the goals of these charts.  
+We try to create a few plots and lay out the goals of these charts.  
 
 
 #####Attempt 1: 
@@ -126,22 +123,22 @@ We try a few plots and lay out the goals of these charts.
 
 
 #####Attempt 2: Facet grid by year
+I thought it would be even more informative to compare the same set of data for different years from 2010-2015 YTD. 
 * Convey amount of solar installations by states over all years, broken down by project segment represented with the fill (in color)
 
 
-'''allyearssegm <- data %>%
-  arrange(state, segment)
+	allyearssegm <- data %>%
+ 		arrange(state, segment)
 
-ggplot(data=allyearssegm, aes(x=state, y=size_kW, fill=segment)) +
-  geom_bar(stat="identity", binwidth=0.5, position="stack") +
-  #scale_x_discrete(limits = rev(levels(data$state))) +
-  scale_y_continuous(limits = c(0, 40000)) +
-  ylab('Capacity installed - by year 2010-2015 YTD') + xlab('State') +
-  scale_fill_brewer(palette="Set2")+ 
-  coord_flip() +
-  facet_grid( ~ year) +
-  theme(axis.text.x=element_text(size=8, angle=60, vjust=.3, hjust=0.3))+
-  theme(axis.text.y=element_text(size=9))'''
+	ggplot(data=allyearssegm, aes(x=state, y=size_kW, fill=segment)) +
+	geom_bar(stat="identity", binwidth=0.5, position="stack") +
+	scale_y_continuous(limits = c(0, 40000)) +
+	ylab('Capacity installed - by year 2010-2015 YTD') + xlab('State') +
+	scale_fill_brewer(palette="Set2")+ 
+	coord_flip() +
+	facet_grid( ~ year) +
+	theme(axis.text.x=element_text(size=8, angle=60, vjust=.3, hjust=0.3))+
+	theme(axis.text.y=element_text(size=9))'''
 
 
 ![alt text](Chart2-Barplot_faceted_byyear.png)
@@ -162,11 +159,16 @@ By lining up multiple visualizations, small multiples effectively allow for dire
 
 [Flowing Data's][flowingdata] post on small multiples sums up the benefits of this plotting method -  
 
-<The key idea is to slice up your data and use a separate plot to <visualize each slice. The <end result is a grid of charts that all <follow the same visual format, but show different <pieces of the data. <Essentially, a chorus of little stories to help tell a bigger one.
+<The key idea is to slice up your data and use a separate plot to 
+<visualize each slice. The <end result is a grid of charts that all 
+<follow the same visual format, but show different <pieces of the data. <Essentially, a chorus of little stories to help tell a bigger one.
 
-<While the concept is simple, the benefits can be significant. Compared <to a single larger <chart, small multiples can help with over-plotting <— when data is obscured or occluded <because there are too many plotted <items.
+<While the concept is simple, the benefits can be significant. Compared 
+<to a single larger <chart, small multiples can help with over-plotting 
+<— when data is obscured or occluded <because there are too many plotted <items.
 
-<Compared to animation, small multiples present all of the data at once <making it easier for <viewers to naturally compare each facet with <others, instead of trying to flip back and <forth between views.
+<Compared to animation, small multiples present all of the data at once <making it easier for <viewers to naturally compare each facet with 
+<others, instead of trying to flip back and <forth between views.
 
 
 ![alt text](Chart3-Facetwrap_bystate.png)
@@ -195,10 +197,10 @@ The drawback here is the small multiple plots across states are not comparable i
 
 While the above charts may do a better job than the original chart in terms of allowing comparisons of installation amounts and installation segments across states, there remain weaknesses. 
 
-The small plot area in small multiples can be limiting as it can be difficult to cram in additional data details/scale labels given the limited plot sizes. 
+However, the small plot area in small multiples can be limiting as it can be difficult to cram in additional data details/scale labels given the limited plot sizes. 
 
 
-Next step suggestions: 
+**Next step suggestions:** 
 One way to improve the above small multiple chart would be to add layering interactions to allow for a closer study of the data details upon interaction without cluttering the whole chart with too much information.
  
 An example might be allowing some parts of the graph to be highlighted as the mouse hovers to bring a visual element to the forefront for comparison, or connect the small plots in some way.

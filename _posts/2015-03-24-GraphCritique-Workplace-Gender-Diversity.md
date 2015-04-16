@@ -2,7 +2,6 @@
 title: Graph Critique - Workplace Gender Diversity
 layout: post
 output: html_document
-date: "March 24, 2015"
 description: Graph Critique
 ---
 

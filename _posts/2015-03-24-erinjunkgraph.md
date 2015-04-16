@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Graphics and Plots in Science 
-description: A look into common problems with academic graphics found in science journals.
+title: "Graphics and Plots in Science "
+description: "A look into common problems with academic graphics found in science journals."
 tags: visualization science ggplot python R
 ---
 
