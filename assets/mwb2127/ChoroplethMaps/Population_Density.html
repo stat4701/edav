@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Population Density</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<link rel="dat1" type="application/json" href="https://raw.githubusercontent.com/mbisaha/edav/gh-pages/assets/mwb2127/countydata.geojson" />
+	<style type="text/css">
+		body {
+			padding: 0;
+			margin: 0;
+		}
+		html, body, #map {
+			height: 100%;
+		}
+		table, td {
+			border-collapse: collapse;
+			border-style: solid;
+			border-width: 1px;
+			border-color: #e9e9e9;
+			padding: 5px;
+		}
+		.evenrowcol{
+			background-color: #f6f6f6;
+		}
+		.legend {
+			padding: 6px 8px;
+			font: 14px/16px Arial, Helvetica, sans-serif;
+			background: white;
+			background: rgba(255,255,255,0.8);
+			box-shadow: 0 0 15px rgba(0,0,0,0.2);
+			border-radius: 5px;
+			line-height: 18px;
+			color: #555;
+		}
+		.legend i {
+			width: 18px;
+			height: 18px;
+			float: left;
+			margin-right: 8px;
+		}
+		.legend table, .legend td {
+			border: none;
+		}
+		.value {
+			border: none;
+			padding: 0px 0px 0px 8px;
+			text-align: left;
+			vertical-align: middle;
+		}
+		.circle {
+			border: none;
+			padding: 0px;
+			text-align: center;
+			vertical-align: middle;
+		}
+		.shape {
+			padding: 0px;
+			text-align: center;
+			vertical-align: middle;
+		}
+		.ln {
+			stroke: #0033ff;
+			stroke-width: 5;
+			stroke-opacity: 0.5;
+			stroke-linecap: round;
+		}
+		.plgn {
+			fill: #0033ff;
+			fill-opacity: 0.5;
+			stroke: #0033ff;
+			stroke-width: 4;
+			stroke-opacity: 0.5;
+			stroke-linejoin: round;
+		}
+		.legend i {
+			opacity: 0.8;
+		}				
+	</style>
+</head>
+<body>
+	<div id="map"></div>
+	<script type="text/javascript">
+		var map = L.map('map');
+		
+		// scale bar
+		L.control.scale().addTo(map);
+
+		// base layer
+		var baseMaps = {};
+		var baseMap = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {"attribution":"Tiles &copy; <a href=\"http://cartodb.com/attributions\", target=\"_blank\">CartoDB</a>, Map data &copy; <a href=\"http://openstreetmap.org/copyright\", target=\"_blan\">OpenStreetMap contributors</a>"});
+		baseMap.addTo(map);
+		baseMaps["CartoDB Dark matter"] = baseMap;
+
+		// popup
+		function onEachFeature(feature, layer) {
+			if (feature.properties &&  feature.properties["County"] && feature.properties["State"] && feature.properties["PopPerSqMile2010"]) {
+				layer.bindPopup(
+					"<table>" +
+					"<tr class='oddrowcol'><td>County: </td><td>"+feature.properties["County"]+"</td></tr>" +
+					"<tr class='evenrowcol'><td>State: </td><td>"+feature.properties["State"]+"</td></tr>" +
+					"<tr class='oddrowcol'><td>PopPerSqMile2010: </td><td>"+feature.properties["PopPerSqMile2010"]+"</td></tr>" +
+					"</table>"
+				);
+			}
+		}
+
+		// styling
+		function getValue(x) {
+			return x >= 1e+05 ? "#808080" :
+			       x >= 50000 ? "#FFFF00" :
+			       x >= 10000 ? "#E2E200" :
+			       x >= 5000 ? "#C6C600" :
+			       x >= 1000 ? "#AAAA00" :
+			       x >= 500 ? "#8D8D00" :
+			       x >= 100 ? "#717100" :
+			       x >= 50 ? "#555500" :
+			       x >= 10 ? "#383800" :
+			       x >= 5 ? "#1C1C00" :
+			       x >= 0 ? "#000000" :
+			       "#808080";
+		}			
+		function style1(feature) {
+			return {
+				"fillColor": getValue(feature.properties["PopPerSqMile2010"]),
+
+				"color": "#FFFFFF", "weight": 0.2, "fillOpacity": 0.8
+			};
+		}
+
+		// data layers
+        var layers = {};
+        var group = new L.featureGroup;
+		function addDataToMap(data, style, layer) {
+			layers[layer] = L.geoJson(data, {
+				onEachFeature: (typeof onEachFeature == "undefined") ? undefined : onEachFeature,
+				pointToLayer: function (feature, latlng) {return L.circleMarker(latlng);},
+				style: style
+			});
+			layers[layer].addTo(map);	
+        	group.addLayer(layers[layer])
+			map.fitBounds(group.getBounds());
+		};
+		
+		if(typeof style1 == "undefined") style1 = undefined;
+		$.getJSON($("link[rel='dat1']").attr("href"), function(x) {addDataToMap(x, style1, "countydata")});
+
+		// legend
+				var legend = L.control({position: 'bottomright'});
+				legend.onAdd = function(map) {
+					var div = L.DomUtil.create('div', 'legend');
+				    var labels = [];
+				    var grades = [0, 5, 10, 50, 100, 500, 1000, 5000, 10000, 50000, 1e+05];
+
+					div.innerHTML += 'Population per Square Mile<br>'
+					for (var i = 0; i < grades.length-1; i++) { 
+						div.innerHTML +=
+						        '<i style="background:' + getValue(grades[i]) + '"></i> ' +
+						        								grades[i] + '&ndash;' + grades[i + 1] + '<br>';
+					}
+					
+				
+			return div;
+		};
+		legend.addTo(map);
+				
+	</script>
+</body>
+</html>
