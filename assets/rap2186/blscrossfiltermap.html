@@ -1,0 +1,102 @@
+<meta http-equiv="content-type" content="text/html; charset=UTF8"> 
+
+<script type="text/javascript" src="https://cdn.rawgit.com/square/crossfilter/master/crossfilter.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/mbostock/d3/master/d3.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/dc-js/dc.js/master/dc.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dc-js/dc.js/master/dc.css" media="screen" /> 
+
+
+<div align=center id="chart-bar-ymvals"> <h1>Annual National Compensation Survey</h1> </div>
+
+<div align=center id="us-chart"><h2>Totals By State</h2> </div>
+
+<div float=left align=center id="chart-ring-state"><h2>Proportion By State</h2></div>
+<script>
+
+d3.json("./gz_2010_us_040_00_500k.json", function(error, statesJson){
+d3.tsv("./nc.state", function(stateData) {
+d3.tsv("./nc.data.1.AllData", function(data) {
+
+  // Run the data through crossfilter 
+	var states = crossfilter(stateData);
+	var stCodeDim = states.dimension(function(d) {return d.state_code;});
+	var facts = crossfilter(data);
+	var parseDate = d3.time.format("%Y").parse;
+
+  // Parse the series id field into its respective dimensions, 
+  // and assign a state name dim using the mapped state code value
+	data.forEach(function(d) {
+		d.seasonal_ac= d.series_id.substr(2,1);
+		d.state_cd= +d.series_id.substr(3,2);
+		stCodeDim.filter(d.series_id.substr(3,2));
+		d.stateName=stCodeDim.top(1)[0].state_name;
+		stCodeDim.filterAll();
+		d.area_cd= d.series_id.substr(5,4);		
+		d.occupational_cd= d.series_id.substr(9,5);		
+		d.level_cd= d.series_id.substr(14,2);		
+		d.year= parseDate(d.year);
+		d.value= +d.value.trim().substr(1);
+	});
+
+	var stateDim  = facts.dimension(function(d) {return d.state_cd;});
+	stateDim.filter(0); 
+	facts.remove();
+	stateDim.filterAll();
+	stateDim.filter([56,80]);
+	facts.remove();
+	stateDim.filterAll();
+	
+	var sacDim = facts.dimension(function(d) {return d.seasonal_ac;});
+	sacDim.filter("S");
+	facts.remove();
+	sacDim.filterAll();
+
+ // Create  dimensions
+	var stNameDim  = facts.dimension(function(d) {return d.stateName;});
+	var stName_total = stNameDim.group().reduceSum(function(d) {return d.value;});
+	var state_total = stateDim.group().reduceSum(function(d) {return d.value;});
+	var stNameDim2  = facts.dimension(function(d) {return d.stateName;});
+	var stName_total2 = stNameDim2.group().reduceSum(function(d) {return d.value;});
+			  
+  	var dateDim = facts.dimension(function (d) {return d.year;});
+	var ymtotal = dateDim.group().reduceSum(function(d) {return d.value;}); 
+	var minDate = dateDim.bottom(1)[0].year;
+	var maxDate = dateDim.top(1)[0].year;
+
+ // Setup the charts
+var ymValsChart  = dc.barChart("#chart-bar-ymvals"); 
+ymValsChart
+	.width(800).height(300)
+	.dimension(dateDim)
+	.group(ymtotal)
+	.x(d3.time.scale().domain([minDate,maxDate])) 
+	.elasticX(true)
+	.elasticY(true)
+	.centerBar(true)
+	.margins({top: 10, right: 50, bottom: 30, left: 40})
+	.renderTitle(false)
+	.yAxisLabel("", 100)
+	.xUnits(function(){return 10;});
+	
+var stateRingChart   = dc.pieChart("#chart-ring-state");
+stateRingChart
+    .width(250).height(250)
+    .dimension(stNameDim2)
+    .group(stName_total2)
+    .innerRadius(30); 
+
+var mapChart = dc.geoChoroplethChart("#us-chart");
+mapChart
+	.width(1000).height(500)
+    .dimension(stNameDim)
+	.group(stName_total)
+	.colors(d3.scale.linear().domain([0,330000]).range(["pink","red"]))
+	.overlayGeoJson(statesJson.features, "state", function(d) {
+    return d.properties.NAME;});
+
+dc.renderAll(); 
+});
+});
+});
+</script>
