@@ -5,7 +5,7 @@ description: "A look into common problems with academic graphics found in scienc
 tags: visualization science ggplot python R
 ---
 
-Graphics and visualizations are used for promotion, advertisement to promote a product or idea. In science, graphics tend to fall into one of two categories: for use in education or a science journal.  For information on what makes a good educational graphic, or a teaching tool, I've written a piece on my personal blog [here](http://eringrand.github.io/educationgraphics/). (For those interested, this blog is also available on my personal site [here](http://eringrand.github.io/sciencegraphics/.) 
+Graphics and visualizations are used for promotion, advertisement to promote a product or idea. In science, graphics tend to fall into one of two categories: for use in education or a science journal.  For information on what makes a good educational graphic, or a teaching tool, I've written a piece on my personal blog [here](http://eringrand.github.io/educationgraphics/). (For those interested, this blog is also available on my personal site [here](http://eringrand.github.io/sciencegraphics/).) 
 In the academic articles, graphics hold a special role in telling a compelling story of the data and results, however, the editing emphasis is often placed much more on text than making interesting and understable science graphics.  
 
 *DISCLAIMER: I am coming from an astronomy and physics background, and am going to discuss problems found within these contexts.*
@@ -183,7 +183,7 @@ ggplot(data,aes(x=x,y=y), legend=FALSE)+
 * Always remember to think about the story your telling and how your graphic fits in. 
 * Label your plots correctly, but don't clog the plot with text. Keep your labels short, and rotate them if needed to to be read. 
 * If displaying all of your data looks cluttered, think about if you really need to show all of it, and if so if there's a better way to display it. 
-* Watch out for color! We like pretty graphs, but only if we can stil read them. 
+* Watch out for color! We like pretty graphs, but only if we can still read them. 
 
 
 
