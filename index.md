@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Exploratory Data Analysis and Visualization
+date: 2014-01-03 11:31:10
 tagline: Viz is modeling. And modeling is software development.
 ---
 {% include JB/setup %}
