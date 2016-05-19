@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>EDAV</title>
+ <link href="http://stat4701.github.io/edav/" rel="self"/>
+ <link href="http://stat4701.github.io/edav"/>
+ <updated>2015-01-22T22:23:13-05:00</updated>
+ <id>http://stat4701.github.io/edav</id>
+ <author>
+   <name>Michael Malecki</name>
+   <email>malecki@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>Plotting class skills</title>
+   <link href="http://stat4701.github.io/edav/2015/01/22/plotting-class-skills"/>
+   <updated>2015-01-22T00:00:00-05:00</updated>
+   <id>http://stat4701.github.io/edav/2015/01/22/plotting-class-skills</id>
+   <content type="html">&lt;h2&gt;20150122&lt;/h2&gt;
+
+&lt;h2&gt;Creating a Branch, and Generating Graphs with RStudio (ggplot)&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://math.usask.ca/%7Elonghai/software/installrpkg.html&quot;&gt;R install.packages&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.r-bloggers.com/a-tiny-rcurl-headache/&quot;&gt;Google Docs Curl Headache&lt;/a&gt;   &lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;fork&lt;/li&gt;
+&lt;li&gt;clone&lt;/li&gt;
+&lt;li&gt;checkout -b &lt;name&gt;&lt;/li&gt;
+&lt;li&gt;mkdir&lt;/li&gt;
+&lt;li&gt;-&amp;gt; create field&lt;/li&gt;
+&lt;li&gt;add &lt;/li&gt;
+&lt;li&gt;commit&lt;/li&gt;
+&lt;li&gt;push&lt;/li&gt;
+&lt;li&gt;read.csv()&lt;/li&gt;
+&lt;li&gt;merge upstream/gh-pages&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Check out GitExtensions (the app). &lt;/p&gt;
+
+&lt;h2&gt;The Code&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;library(RCurl)
+library(ggplot2)
+con &amp;lt;- getURL(&amp;quot;https://docs.google.com/spreadsheets/d/19a0O6C14zButypjcnWictvKWeyPjPjQdrps-UXzPDf8/export?format=csv&amp;quot;, ssl.verifypeer = FALSE)
+df &amp;lt;- read.csv(textConnection(con), stringsAsFactors=FALSE, check.names=FALSE)
+
+View(df)
+
+str(df)
+
+
+names(df)
+
+removeParentheses &amp;lt;- function(x){
+    gsub(&amp;quot;\\(.*\\)$&amp;quot;, &amp;quot;&amp;quot;, x)
+}
+mrOptions &amp;lt;- strsplit(&amp;quot;Excel, R, Stata, D3, Gephi, ggplot2, lattice, SQL, git / Github, SPSS, shell (terminal / command line), regular expressions (grep), Rstudio, JSON, Python, Sweave/knitr, Processing (language), C/C++, Leaflet, CartoDB, GeoJSON, node/npm, go language, ruby, LaTeX, Heroku, Make, Pandas, Julia, non-git version control, XML, Web: html css js, vagrant/virtualbox, amazon web services, dropbox, google drive (formerly docs), OpenRefine (formerly Google refine), Pair programming&amp;quot;, &amp;quot;, &amp;quot;)[[1]]
+
+mrOptions &amp;lt;- removeParentheses(mrOptions)
+expandSelections &amp;lt;- function(selected, options){
+    selected &amp;lt;- removeParentheses(selected)
+    sapply(options, grepl, x=selected, fixed=TRUE)
+}
+gridLevels &amp;lt;- c(&amp;quot;None&amp;quot;, &amp;quot;A little&amp;quot;, &amp;quot;Confident&amp;quot;, &amp;quot;Expert&amp;quot;)
+makeOrderedFactor &amp;lt;- function(col, levels){
+    return (factor(col, levels=levels, labels=levels, ordered=TRUE))
+}
+mrLogical &amp;lt;- t(sapply(df[[&amp;#39;Baseline experience&amp;#39;]], expandSelections, 
+                      options=mrOptions))
+
+View(mrLogical)
+sum(mrLogical)
+
+colSums(mrLogical)
+
+barplot(colSums(mrLogical))
+
+qplot(colSums(mrLogical))
+
+plotdf &amp;lt;- data.frame(count=colSums(mrLogical), item=factor(colnames(mrLogical)))
+
+plotdf$item &amp;lt;- with(plotdf, reorder(item,count))
+
+ggplot(plotdf, aes(y=count, x=item)) + geom_bar(stat=&amp;quot;identity&amp;quot;) + coord_flip()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Notes: Maybe hunt down the CartoDB error, why it doesn&amp;#39;t show up in chart&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Introduction</title>
+   <link href="http://stat4701.github.io/edav/2015/01/20/intro"/>
+   <updated>2015-01-20T00:00:00-05:00</updated>
+   <id>http://stat4701.github.io/edav/2015/01/20/intro</id>
+   <content type="html">&lt;section&gt;
+    &lt;section&gt;
+# Exploratory Data Analysis and Visualization
+&lt;/section&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;section&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Who are you?&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://bit.ly/edav-t0&quot;&gt;&lt;em&gt;What do you already know how to do?&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://bit.ly/edav-t0&quot;&gt;http://bit.ly/edav-t0&lt;/a&gt;
+&lt;/section&gt;
+&lt;/section&gt;&lt;/p&gt;
+
+&lt;section&gt;
+    &lt;section&gt;
+## Some administrative bits
+- [Course site](http://stat4701.github.io/edav/)
+- [Site source](http://github.com/stat4701/edav/)
+
+&lt;/section&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;section&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Books&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;Tufte,%20VDQI&quot;&gt;&lt;img src=&quot;http://www.edwardtufte.com/tufte/graphics/vdqi_bookcover.gif&quot; alt=&quot;http://www.edwardtufte.com/tufte/graphics/vdqi_bookcover.gif&quot;&gt;&lt;/a&gt;
+&lt;a href=&quot;http://www.amazon.com/Analysis-Regression-Multilevel-Hierarchical-Models/dp/052168689X&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/31ELobreacL._BO2,204,203,200_PIsitb-sticker-arrow-click-small,TopRight,12,-30_AA300_SH20_OU01_.jpg&quot; alt=&quot;ARM&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/section&gt;
+&lt;/section&gt;&lt;/p&gt;
+
+&lt;section&gt;
+    &lt;section&gt;
+## Goals
+
+[![](http://static.squarespace.com/static/5150aec6e4b0e340ec52710a/t/51525c33e4b0b3e0d10f77ab/1364352052403/Data_Science_VD.png?format=750w)](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram)
+
+&lt;/section&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;section&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Goals&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Practical&lt;/em&gt; data visualization&lt;/li&gt;
+&lt;li&gt;working with actual data&lt;/li&gt;
+&lt;li&gt;collaborating with others&lt;/li&gt;
+&lt;li&gt;using modern, rapidly changing tools&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;Rapidly Changing:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.apps.npr.org/2014/09/02/reusable-data-processing.html&quot;&gt;NPR Viz Data processing workflow&lt;/a&gt;, published on Tuesday&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/rstudio/rmarkdown/commits/master&quot;&gt;RMarkdown&lt;/a&gt; Released Tuesday&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://beakernotebook.com&quot;&gt;Beaker Notebook&lt;/a&gt; release May&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;Vega&quot;&gt;vega&lt;/a&gt; latest release July&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/hadley/dplyr&quot;&gt;dplyr&lt;/a&gt; constant development&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/mbostock/d3&quot;&gt;D3&lt;/a&gt; last point release in December&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/theupshot&quot;&gt;Upshot&lt;/a&gt; New features weekly?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;Some things are… timeless?&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://sappingattention.blogspot.com/2014/08/data-visualization-rules-1915.html&quot;&gt;Guidance from 1915&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://4.bp.blogspot.com/-gRF2vrK5VZc/U-qIG-FLrrI/AAAAAAAAEeM/A7hLYmTbrXU/s1600/1890StatAt.jpeg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h3&gt;Master the everyday, mundane but indispensible…&lt;/h3&gt;
+
+&lt;p&gt;…tools of the trade: &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;text editors&lt;/li&gt;
+&lt;li&gt;version control (git)&lt;/li&gt;
+&lt;li&gt;the command line&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Practice iterative and collaborative development of your projects&lt;/li&gt;
+&lt;li&gt;Initiate and participate in code and project reviews&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Fail early, learn from it, and ask for help&lt;/em&gt;
+&lt;/section&gt;
+&lt;/section&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;section&gt;
+&lt;section&gt;
+# My roles
+&lt;/section&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;section&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Editor, Curator&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Lots of readings to be familiar with&lt;/li&gt;
+&lt;li&gt;A few slides?&lt;/li&gt;
+&lt;li&gt;Tons of links&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;Senior Developer&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;debug&lt;/li&gt;
+&lt;li&gt;readable&lt;/li&gt;
+&lt;li&gt;reproducible&lt;/li&gt;
+&lt;li&gt;present&lt;/li&gt;
+&lt;li&gt;share mistakes!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;Project manager&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;help with presentation structure&lt;/li&gt;
+&lt;li&gt;help project organization &lt;/li&gt;
+&lt;li&gt;divide tasks&lt;/li&gt;
+&lt;li&gt;the simplest thing that could possibly work&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/section&gt;
+&lt;/section&gt;&lt;/p&gt;
+
+&lt;section&gt;
+    &lt;section&gt;
+# Think about graphs like a data scientist  
+&lt;/section&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;section&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;State migrations&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.nytimes.com/2014/08/16/upshot/mapping-migration-in-the-united-states-since-1900.html?abt=0002&amp;amp;abg=0&quot;&gt;&lt;img src=&quot;http://stat4701.github.io/edav/assets/intro-statemigration.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;
+&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;100 people&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.washingtonpost.com/blogs/worldviews/wp/2015/01/06/chart-if-the-world-were-100-people/&quot;&gt;&lt;img src=&quot;http://www.washingtonpost.com/wp-apps/imrs.php?src=http://img.washingtonpost.com/blogs/worldviews/files/2015/01/World-as-100-People.png&amp;amp;w=1484&quot; alt=&quot;&quot;&gt;&lt;/a&gt;
+&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;Diversity at Yahoo!&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://yahoo.tumblr.com/post/89085398949/workforce-diversity-at-yahoo&quot;&gt;&lt;img src=&quot;http://media.tumblr.com/d066fcf68802ae2e28541a5cd7499c42/tumblr_inline_n7fmd6mpSf1qhxx5s.jpg&quot; alt=&quot;&quot;&gt;&lt;/a&gt;
+&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;Huh?&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://xianblog.wordpress.com/2015/01/18/another-terrible-graph/&quot;&gt;&lt;img src=&quot;https://i0.wp.com/s1.lemde.fr/image/2015/01/12/534x0/4554677_6_7f72_sur-pres-de-7-4-milliards-d-humains-les_95361f87d1619e031d3db29e5c1b54e4.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;
+&lt;/section&gt;
+&lt;/section&gt; &lt;/p&gt;
+
+&lt;section&gt;
+    &lt;section&gt;
+# After class
+- Make a Github account if you don&#39;t already have one
+- Fork the repo — your assignments will be in the form of pull requests!
+- Install [R](http://www.r-project.org/) and [RStudio](http://www.rstudio.com/products/RStudio/#Desk) for next week&#39;s gentle intro to R
+- Read about [RMarkdown](http://rmarkdown.rstudio.com/)
+
+&lt;/section&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;section&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Blogs&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://flowingdata.com&quot;&gt;Flowing Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://andrewgelman.com&quot;&gt;Gelman&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://junkcharts.typepad.com&quot;&gt;Junk Charts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.r-bloggers.com&quot;&gt;R-bloggers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://solomonmessing.wordpress.com/blog/&quot;&gt;Messing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.okcupid.com&quot;&gt;OKCupid&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://chartsnthings.tumblr.com/&quot;&gt;chartsnthings&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.fastcodesign.com/section/infographic-of-the-day&quot;&gt;FastCo Design&lt;/a&gt;
+&lt;/section&gt;
+&lt;section&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://skli.se/2012/09/22/introduction-to-git/&quot;&gt;Git intro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=LXoWxrTdXkM&quot;&gt;Another intro video&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://skli.se/2012/10/07/git-workflow-beginner/&quot;&gt;Git workflow for beginners&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/articles/fork-a-repo&quot;&gt;Forking&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/channel/UCP7RrmoueENv9TZts3HXXtw&quot;&gt;Training and Guides&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=ifAEho6BmH0&amp;amp;list=PLg7s6cbtAD17uAwaZwiykDci_q3te3CTY&quot;&gt;Sharing and Collaborating&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/section&gt;
+    &lt;section&gt;
+&lt;a href=&quot;http://pcottle.github.io/learnGitBranching/&quot;&gt;&lt;img src=&quot;http://stat4701.github.io/edav/assets/git-branching.png&quot; alt=&quot;Git branching game!&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/section&gt;
+    &lt;section&gt;&lt;/p&gt;
+
+&lt;h2&gt;Fork and clone&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git clone https://github.com/YOUR-NAME/edav.git
+cd edav
+git remote add upstream https://github.com/stat4701/edav.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/github/media/master/octocats/octocat.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/section&gt;
+&lt;/section&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ 
+</feed>
